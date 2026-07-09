@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="128 128 768 768" role="img" aria-label="PatchRush logo">
+  <defs>
+    <linearGradient id="patchrush-bg" x1="150" y1="180" x2="860" y2="840" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#36d399"/>
+      <stop offset=".48" stop-color="#f5c542"/>
+      <stop offset="1" stop-color="#ff7a35"/>
+    </linearGradient>
+  </defs>
+  <rect x="128" y="128" width="768" height="768" rx="168" fill="url(#patchrush-bg)"/>
+  <rect x="129.5" y="129.5" width="765" height="765" rx="166.5" fill="none" stroke="#16211d" stroke-opacity=".2" stroke-width="3"/>
+  <g fill="#16211d">
+    <rect x="280" y="304" width="124" height="124" rx="18"/>
+    <rect x="450" y="304" width="124" height="124" rx="18" opacity=".78"/>
+    <rect x="620" y="304" width="124" height="124" rx="18"/>
+    <rect x="280" y="474" width="124" height="124" rx="18" opacity=".78"/>
+    <path d="M450 474h124v124H450z" opacity=".96"/>
+    <path d="M620 474h124v124H620z" opacity=".78"/>
+    <rect x="280" y="644" width="124" height="124" rx="18"/>
+    <rect x="450" y="644" width="124" height="124" rx="18" opacity=".78"/>
+  </g>
+  <path d="M546 236v294" fill="none" stroke="#16211d" stroke-width="34" stroke-linecap="round"/>
+  <path d="M546 252h150l-38 54 38 54H546z" fill="#fffaf0" stroke="#16211d" stroke-width="22" stroke-linejoin="round"/>
+</svg>

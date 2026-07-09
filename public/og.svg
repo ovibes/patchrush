@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="PatchRush preview">
+  <rect width="1200" height="630" fill="#f4f0e6"/>
+  <text x="94" y="170" fill="#16211d" font-family="Arial, sans-serif" font-size="94" font-weight="800">PatchRush</text>
+  <text x="100" y="232" fill="#46544d" font-family="Arial, sans-serif" font-size="34">Daily on-chain territory for Celo and Stacks</text>
+  <g transform="translate(790 122)">
+    <rect width="282" height="282" rx="36" fill="#16211d"/>
+    <g transform="translate(32 32)">
+      <rect width="58" height="58" rx="10" fill="#36d399"/>
+      <rect x="80" width="58" height="58" rx="10" fill="#ff7a35"/>
+      <rect x="160" width="58" height="58" rx="10" fill="#f5c542"/>
+      <rect y="80" width="58" height="58" rx="10" fill="#2d6cdf"/>
+      <rect x="80" y="80" width="58" height="58" rx="10" fill="#36d399"/>
+      <rect x="160" y="80" width="58" height="58" rx="10" fill="#cf3d7a"/>
+      <rect y="160" width="58" height="58" rx="10" fill="#f5c542"/>
+      <rect x="80" y="160" width="58" height="58" rx="10" fill="#fffaf0"/>
+      <rect x="160" y="160" width="58" height="58" rx="10" fill="#2d6cdf"/>
+    </g>
+  </g>
+  <g fill="#16211d" font-family="Arial, sans-serif" font-size="28" font-weight="700">
+    <text x="104" y="384">Claim cells</text>
+    <text x="104" y="438">Score neighbors</text>
+    <text x="104" y="492">Boost once per wallet</text>
+  </g>
+</svg>

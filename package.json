@@ -1,0 +1,68 @@
+{
+  "name": "patchrush",
+  "version": "0.1.0",
+  "description": "A tiny dual-network on-chain territory game for Celo and Stacks.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev --webpack",
+    "dev:mobile": "WATCHPACK_POLLING=true next dev --webpack -H 0.0.0.0",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint app components lib scripts stacks test hardhat.config.ts next.config.mjs eslint.config.mjs postcss.config.mjs vitest.config.ts --ext .ts,.tsx,.mjs --max-warnings=0",
+    "typecheck": "next typegen && tsc --noEmit",
+    "compile:celo": "hardhat compile",
+    "test": "npm run test:celo && npm run test:stacks",
+    "test:celo": "hardhat test",
+    "check:stacks": "node scripts/check-stacks.mjs",
+    "check:stacks:clarinet": "clarinet check",
+    "test:stacks": "vitest run stacks/tests",
+    "deploy:celo:sepolia": "hardhat run scripts/deploy-celo.ts --network celoSepolia",
+    "deploy:celo:mainnet": "hardhat run scripts/deploy-celo.ts --network celo",
+    "verify:celo:sepolia": "hardhat run scripts/verify-celo.ts --network celoSepolia",
+    "verify:celo:mainnet": "hardhat run scripts/verify-celo.ts --network celo",
+    "deploy:stacks:testnet": "STACKS_NETWORK=testnet node scripts/deploy-stacks.mjs",
+    "deploy:stacks:mainnet": "STACKS_NETWORK=mainnet node scripts/deploy-stacks.mjs"
+  },
+  "dependencies": {
+    "@stacks/connect": "8.2.6",
+    "@stacks/transactions": "7.5.0",
+    "clsx": "^2.1.1",
+    "ethers": "^6.15.0",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "viem": "^2.54.6"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@nomicfoundation/hardhat-ethers": "^4.0.8",
+    "@nomicfoundation/hardhat-ethers-chai-matchers": "^3.0.5",
+    "@nomicfoundation/hardhat-mocha": "^3.0.16",
+    "@nomicfoundation/hardhat-verify": "^3.0.14",
+    "@stacks/clarinet-sdk": "^3.21.1",
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "19.2.3",
+    "chai": "^6.2.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.10",
+    "hardhat": "^3.0.12",
+    "mocha": "^11.7.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "diff": "^8.0.3",
+    "postcss": "^8.5.10",
+    "serialize-javascript": "^7.0.5",
+    "ws": "^8.21.0"
+  }
+}

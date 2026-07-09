@@ -1,0 +1,10 @@
+[project]
+name = "patchrush"
+description = "PatchRush daily on-chain territory board."
+authors = ["Gelborn"]
+telemetry = false
+
+[contracts.patchrush-arena]
+path = "stacks/contracts/patchrush-arena.clar"
+clarity_version = 3
+epoch = 3.0
