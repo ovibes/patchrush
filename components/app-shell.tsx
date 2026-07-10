@@ -18,6 +18,8 @@ const routes = [
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
+  const playHref = pathname.startsWith("/stacks") ? "/stacks" : "/celo";
+  const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
 
   return (
     <div className="app-shell">
@@ -48,8 +50,12 @@ export function AppShell({ children }: AppShellProps) {
           })}
         </nav>
 
-        <Link className="header-play-link" href={pathname.startsWith("/stacks") ? "/stacks" : "/celo"}>
-          Play now <ArrowUpRight aria-hidden="true" />
+        <Link
+          className="header-play-link"
+          href={playHref}
+          aria-label={`Play on ${playLabel}`}
+        >
+          Play on {playLabel} <ArrowUpRight aria-hidden="true" />
         </Link>
       </header>
 
