@@ -128,6 +128,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
   const isToday = roundId === todayRoundId;
   const isBusy = busyPhases.has(transaction.phase);
   const modeLabel = configured ? "Live board" : "Demo board";
+  const receiptLinkLabel = `View the ${networkLabel} transaction receipt in a new tab`;
   const predictedScore = selectedCell
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;
@@ -381,7 +382,13 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             <span>{transaction.message}</span>
           </div>
           {transaction.txUrl ? (
-            <a href={transaction.txUrl} target="_blank" rel="noreferrer">
+            <a
+              href={transaction.txUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={receiptLinkLabel}
+              title={receiptLinkLabel}
+            >
               Receipt <ArrowUpRight aria-hidden="true" />
             </a>
           ) : null}
