@@ -27,6 +27,17 @@ export function extractUint(json: unknown) {
   return 0;
 }
 
+export function extractBool(json: unknown): boolean {
+  if (!json || typeof json !== "object") return false;
+
+  const record = json as Record<string, unknown>;
+  if (typeof record.value === "boolean") return record.value;
+  if (record.type === "ok" && record.value) return extractBool(record.value);
+  if (record.type === "true") return true;
+
+  return false;
+}
+
 function unwrapPrincipal(value: unknown) {
   if (!value || typeof value !== "object") return "";
 

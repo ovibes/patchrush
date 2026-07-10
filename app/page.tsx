@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, CalendarClock, Grid3X3, Sparkles, Zap } from "lucide-react";
 import { NetworkPickerModal } from "@/components/network-picker-modal";
 import { GameBoard } from "@/components/game-board";
 import { getCeloChainLabel, publicEnv } from "@/lib/env";
-import {
-  getBoardStats,
-  sampleCeloCells
-} from "@/lib/patchrush";
+import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 
 export const metadata: Metadata = {
   other: publicEnv.talentProjectVerification
-    ? {
-        "talentapp:project_verification": publicEnv.talentProjectVerification
-      }
+    ? { "talentapp:project_verification": publicEnv.talentProjectVerification }
     : undefined
 };
 
@@ -25,15 +22,86 @@ export default function HomePage() {
     publicEnv.stacksNetwork === "mainnet" ? "Stacks Mainnet" : "Stacks Testnet";
 
   return (
-    <div className="landing-page">
-      <section className="landing-hero" aria-labelledby="home-title">
-        <div className="landing-hero-copy">
-          <span className="hud-tag">Daily on-chain territory</span>
-          <h1 id="home-title">PatchRush</h1>
+    <main className="landing-page">
+      <section className="hero-section" aria-labelledby="home-title">
+        <div className="hero-copy">
+          <span className="eyebrow"><Sparkles aria-hidden="true" /> A fresh board every UTC day</span>
+          <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
-            Claim cells on a shared daily board, score adjacency bonuses, and
-            boost territory on Celo or Stacks.
+            Pick a patch, earn more for smart placement, and shape a shared 6×6 board—one
+            quick on-chain move at a time.
           </p>
+          <div className="hero-actions">
+            <NetworkPickerModal
+              celoNetworkLabel={getCeloChainLabel()}
+              stacksNetworkLabel={stacksNetworkLabel}
+              celoReady={celoReady}
+              stacksReady={stacksReady}
+            />
+            <span>No account. Just your wallet.</span>
+          </div>
+          <div className="hero-proof" aria-label="Game highlights">
+            <span><strong>3</strong> claims per day</span>
+            <span><strong>36</strong> shared patches</span>
+            <span><strong>2</strong> networks, same rules</span>
+          </div>
+        </div>
+
+        <div className="hero-board-wrap">
+          <div className="hero-board-glow" aria-hidden="true" />
+          <GameBoard
+            cells={sampleCeloCells}
+            selectedIndex={14}
+            networkLabel="Today's board preview"
+          />
+          <div className="score-equation" aria-label="Selected patch scores 16 points">
+            <span>Smart placement</span>
+            <div><strong>10</strong><small>base</small><b>+</b><strong>2×3</strong><small>neighbors</small><b>=</b><strong>16</strong><small>points</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mechanics-section" aria-labelledby="how-title">
+        <header className="section-heading">
+          <span className="eyebrow">The whole game in 30 seconds</span>
+          <h2 id="how-title">Simple to start.<br />Rewarding to place well.</h2>
+          <p>Every move is clear before your wallet asks you to approve it.</p>
+        </header>
+        <div className="mechanics-grid">
+          <article>
+            <span className="step-icon"><Grid3X3 aria-hidden="true" /></span>
+            <span className="step-number">01</span>
+            <h3>Choose an open patch</h3>
+            <p>Tap any open square. PatchRush shows its expected score before you commit.</p>
+          </article>
+          <article>
+            <span className="step-icon"><Sparkles aria-hidden="true" /></span>
+            <span className="step-number">02</span>
+            <h3>Build beside others</h3>
+            <p>Start with 10 points and add 3 for every occupied neighbor touching an edge.</p>
+          </article>
+          <article>
+            <span className="step-icon"><Zap aria-hidden="true" /></span>
+            <span className="step-number">03</span>
+            <h3>Boost the board</h3>
+            <p>Give a claimed patch one extra point. Every wallet can boost each patch once.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="daily-section" aria-labelledby="daily-title">
+        <div>
+          <span className="eyebrow"><CalendarClock aria-hidden="true" /> Made for a daily ritual</span>
+          <h2 id="daily-title">Today matters.<br />Tomorrow resets.</h2>
+          <p>
+            You get three claims each UTC round. Browse earlier boards whenever you like;
+            only today&apos;s board accepts new moves.
+          </p>
+        </div>
+        <div className="daily-card">
+          <span>Today&apos;s preview</span>
+          <strong>{stats.claimed}<small>/36</small></strong>
+          <p>patches already claimed</p>
           <NetworkPickerModal
             celoNetworkLabel={getCeloChainLabel()}
             stacksNetworkLabel={stacksNetworkLabel}
@@ -41,86 +109,28 @@ export default function HomePage() {
             stacksReady={stacksReady}
           />
         </div>
-
-        <div className="landing-hero-panel" aria-label="PatchRush quick facts">
-          <span>6x6 board</span>
-          <strong>{stats.claimed}/36 claimed in preview</strong>
-          <small>Celo and Stacks routes share the same rules.</small>
-        </div>
       </section>
 
-      <section className="landing-layer" aria-labelledby="how-title">
-        <div className="section-heading-clean">
-          <span className="hud-tag">How it works</span>
-          <h2 id="how-title">Three moves, one daily board.</h2>
-        </div>
-        <div className="how-grid">
-          <article>
-            <span>1</span>
-            <h3>Pick a cell</h3>
-            <p>Open cells can be claimed. Claimed cells can be boosted.</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>Score placement</h3>
-            <p>Every claim starts at 10 and gets +3 per occupied neighbor.</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>Return daily</h3>
-            <p>Each UTC round has a fresh board and a three-claim limit.</p>
-          </article>
+      <section className="network-explainer" aria-labelledby="network-title">
+        <header className="section-heading compact">
+          <span className="eyebrow">Your network, your choice</span>
+          <h2 id="network-title">Same board rules.<br />Use the wallet you know.</h2>
+        </header>
+        <div className="network-summary-grid">
+          <Link href="/celo" className="network-summary is-celo">
+            <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
+            <strong>Celo</strong>
+            <p>MiniPay-ready and designed for quick mobile play.</p>
+            <span>Open Celo arena <ArrowRight aria-hidden="true" /></span>
+          </Link>
+          <Link href="/stacks" className="network-summary is-stacks">
+            <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
+            <strong>Stacks</strong>
+            <p>Connect with a Stacks wallet and play the same daily rules.</p>
+            <span>Open Stacks arena <ArrowRight aria-hidden="true" /></span>
+          </Link>
         </div>
       </section>
-
-      <section className="landing-preview" aria-labelledby="preview-title">
-        <GameBoard
-          cells={sampleCeloCells}
-          selectedIndex={14}
-          networkLabel="Demo board preview"
-        />
-
-        <aside className="hud-panel scoreboard-panel">
-          <span className="hud-tag">Preview</span>
-          <h2 id="preview-title">Board shape</h2>
-          <p>
-            This sample board shows the scoring texture. The real play routes
-            keep the board first and open a cell modal when you click.
-          </p>
-          <dl className="score-ledger" aria-label="Preview board stats">
-            <div>
-              <dt>Cells</dt>
-              <dd>{stats.claimed}/36</dd>
-            </div>
-            <div>
-              <dt>Boosts</dt>
-              <dd>{stats.boosts}</dd>
-            </div>
-            <div>
-              <dt>Peak</dt>
-              <dd>{stats.topScore}</dd>
-            </div>
-          </dl>
-          <div className="rules-stack" aria-label="Round rules">
-            <span>3 claims / wallet</span>
-            <span>+3 orthogonal bonus</span>
-            <span>1 boost / wallet / cell</span>
-          </div>
-        </aside>
-      </section>
-
-      <section className="network-readiness" aria-label="Network readiness">
-        <div>
-          <span className="hud-tag">Celo</span>
-          <strong>{getCeloChainLabel()}</strong>
-          <p>{celoReady ? "Contract configured." : "Sample mode until deployment."}</p>
-        </div>
-        <div>
-          <span className="hud-tag">Stacks</span>
-          <strong>{stacksNetworkLabel}</strong>
-          <p>{stacksReady ? "Contract configured." : "Sample mode until deployment."}</p>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 }

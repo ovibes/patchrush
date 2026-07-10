@@ -11,12 +11,12 @@ export const metadata: Metadata = {
     template: "%s | PatchRush"
   },
   description:
-    "A tiny on-chain territory game for daily Celo and Stacks board rounds.",
+    "Claim territory, build your score, and return tomorrow in a daily on-chain board game for Celo and Stacks.",
   applicationName: "PatchRush",
   openGraph: {
     title: "PatchRush",
     description:
-      "Claim daily board territory, earn adjacency points, and boost patches on Celo or Stacks.",
+      "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
     type: "website",
     images: ["/og.png"]
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PatchRush",
     description:
-      "Claim daily board territory, earn adjacency points, and boost patches on Celo or Stacks.",
+      "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
     images: ["/og.png"]
   }
 };
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#07090f"
+  themeColor: "#090b10"
 };
 
 export default function RootLayout({

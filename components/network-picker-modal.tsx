@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ArrowRight, Gamepad2, Smartphone, Wallet, X } from "lucide-react";
+import { AccessibleDialog } from "./accessible-dialog";
 
 type NetworkPickerModalProps = {
   celoNetworkLabel: string;
@@ -20,57 +22,52 @@ export function NetworkPickerModal({
 
   return (
     <>
-      <button
-        type="button"
-        className="command-button landing-cta"
-        onClick={() => setOpen(true)}
-      >
-        <span className="button-glyph" aria-hidden="true">
-          GO
-        </span>
+      <button type="button" className="primary-button hero-cta" onClick={() => setOpen(true)}>
+        <Gamepad2 aria-hidden="true" />
         Play today&apos;s round
+        <ArrowRight aria-hidden="true" />
       </button>
 
-      {open ? (
-        <div className="modal-backdrop" role="presentation">
-          <div
-            className="network-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="network-picker-title"
+      <AccessibleDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        labelledBy="network-picker-title"
+        describedBy="network-picker-description"
+        className="network-dialog"
+      >
+        <header className="dialog-heading">
+          <span className="eyebrow">Choose how you play</span>
+          <button
+            type="button"
+            className="icon-button"
+            aria-label="Close network picker"
+            onClick={() => setOpen(false)}
           >
-            <div className="modal-heading">
-              <span className="hud-tag">Choose network</span>
-              <button
-                type="button"
-                className="modal-close"
-                aria-label="Close network picker"
-                onClick={() => setOpen(false)}
-              >
-                X
-              </button>
-            </div>
-            <h2 id="network-picker-title">Where do you want to play?</h2>
-            <p>
-              Both routes use the same board rules. Pick the wallet/network you
-              want to use for this round.
-            </p>
+            <X aria-hidden="true" />
+          </button>
+        </header>
+        <h2 id="network-picker-title">Pick your network</h2>
+        <p id="network-picker-description">
+          The game is identical on both networks. Choose the wallet already on your device.
+        </p>
 
-            <div className="network-choice-grid">
-              <Link className="network-choice is-celo" href="/celo">
-                <span>{celoReady ? "Contract configured" : "Sample mode"}</span>
-                <strong>Celo</strong>
-                <small>{celoNetworkLabel} / MiniPay-ready</small>
-              </Link>
-              <Link className="network-choice is-stacks" href="/stacks">
-                <span>{stacksReady ? "Contract configured" : "Sample mode"}</span>
-                <strong>Stacks</strong>
-                <small>{stacksNetworkLabel} / Stacks Connect</small>
-              </Link>
-            </div>
-          </div>
+        <div className="network-choice-grid">
+          <Link className="network-choice is-celo" href="/celo">
+            <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
+            <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
+            <strong>Celo</strong>
+            <small>Best with MiniPay or a Celo-compatible wallet</small>
+            <span className="choice-meta">{celoNetworkLabel}<ArrowRight aria-hidden="true" /></span>
+          </Link>
+          <Link className="network-choice is-stacks" href="/stacks">
+            <span className="choice-icon"><Wallet aria-hidden="true" /></span>
+            <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
+            <strong>Stacks</strong>
+            <small>Use Leather, Xverse, or another Stacks Connect wallet</small>
+            <span className="choice-meta">{stacksNetworkLabel}<ArrowRight aria-hidden="true" /></span>
+          </Link>
         </div>
-      ) : null}
+      </AccessibleDialog>
     </>
   );
 }

@@ -68,23 +68,42 @@ export async function GET(request: Request) {
 
   try {
     const readOnlyOptions = getReadOnlyOptions(contract, senderAddress);
-    const claimedResponse = await fetchCallReadOnlyFunction({
-      ...readOnlyOptions,
-      functionName: "get-round-claimed-count",
-      functionArgs: [Cl.uint(roundId)]
-    });
-    const claimedCount = extractUint(cvToJSON(claimedResponse));
-
-    const cells = await Promise.all(
-      Array.from({ length: CELL_COUNT }, async (_, index) => {
-        const response = await fetchCallReadOnlyFunction({
+    const requestedSender = url.searchParams.get("sender")?.trim() || "";
+    const hasPlayer = requestedSender.startsWith("S");
+    const [claimedResponse, cells, playerScoreResponse, claimCountResponse] =
+      await Promise.all([
+        fetchCallReadOnlyFunction({
           ...readOnlyOptions,
-          functionName: "get-cell",
-          functionArgs: [Cl.uint(roundId), Cl.uint(index)]
-        });
-        return mapStacksCell(cvToJSON(response), index, roundId);
-      })
-    );
+          functionName: "get-round-claimed-count",
+          functionArgs: [Cl.uint(roundId)]
+        }),
+        Promise.all(
+          Array.from({ length: CELL_COUNT }, async (_, index) => {
+            const response = await fetchCallReadOnlyFunction({
+              ...readOnlyOptions,
+              functionName: "get-cell",
+              functionArgs: [Cl.uint(roundId), Cl.uint(index)]
+            });
+            return mapStacksCell(cvToJSON(response), index, roundId);
+          })
+        ),
+        hasPlayer
+          ? fetchCallReadOnlyFunction({
+              ...readOnlyOptions,
+              functionName: "get-player-score",
+              functionArgs: [Cl.uint(roundId), Cl.principal(requestedSender)]
+            })
+          : Promise.resolve(null),
+        hasPlayer
+          ? fetchCallReadOnlyFunction({
+              ...readOnlyOptions,
+              functionName: "get-claim-count",
+              functionArgs: [Cl.uint(roundId), Cl.principal(requestedSender)]
+            })
+          : Promise.resolve(null)
+      ]);
+    const claimedCount = extractUint(cvToJSON(claimedResponse));
+    const claimsUsed = claimCountResponse ? extractUint(cvToJSON(claimCountResponse)) : 0;
 
     return NextResponse.json(
       {
@@ -92,6 +111,15 @@ export async function GET(request: Request) {
         roundId,
         claimedCount,
         cells: cells.filter((cell) => Boolean(cell)),
+        player: hasPlayer
+          ? {
+              score: playerScoreResponse
+                ? extractUint(cvToJSON(playerScoreResponse))
+                : 0,
+              claimsUsed,
+              claimsRemaining: Math.max(0, 3 - claimsUsed)
+            }
+          : null,
         source: getStacksApiUrl(),
         checkedAt: new Date().toISOString()
       },

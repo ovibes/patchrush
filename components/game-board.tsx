@@ -1,10 +1,15 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { Check, Plus } from "lucide-react";
 import {
+  BOARD_SIZE,
   colorToHex,
   getBoardStats,
+  getContrastTextColor,
+  getPredictedClaimScore,
   shortAddress,
+  type BoardLoadState,
   type PatchCell
 } from "@/lib/patchrush";
 
@@ -12,54 +17,95 @@ type GameBoardProps = {
   cells: PatchCell[];
   selectedIndex: number | null;
   networkLabel: string;
+  walletAddress?: string;
+  selectedHasBoosted?: boolean | null;
   onSelect?(cell: PatchCell): void;
   pendingClaimIndex?: number | null;
   pendingBoostIndex?: number | null;
+  loadState?: BoardLoadState;
 };
 
 export function GameBoard({
   cells,
   selectedIndex,
   networkLabel,
+  walletAddress = "",
+  selectedHasBoosted,
   onSelect,
   pendingClaimIndex,
-  pendingBoostIndex
+  pendingBoostIndex,
+  loadState = "ready"
 }: GameBoardProps) {
   const stats = getBoardStats(cells);
+  const [focusIndex, setFocusIndex] = useState(selectedIndex ?? 0);
+  const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const interactive = Boolean(onSelect);
+
+  const moveFocus = (nextIndex: number) => {
+    const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));
+    setFocusIndex(clamped);
+    cellRefs.current[clamped]?.focus();
+  };
+
+  const handleGridKey = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (!interactive) return;
+
+    let nextIndex: number | null = null;
+    if (event.key === "ArrowLeft") nextIndex = index % BOARD_SIZE === 0 ? index : index - 1;
+    if (event.key === "ArrowRight") {
+      nextIndex = index % BOARD_SIZE === BOARD_SIZE - 1 ? index : index + 1;
+    }
+    if (event.key === "ArrowUp") nextIndex = index - BOARD_SIZE;
+    if (event.key === "ArrowDown") nextIndex = index + BOARD_SIZE;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = cells.length - 1;
+
+    if (nextIndex !== null) {
+      event.preventDefault();
+      moveFocus(nextIndex);
+    }
+  };
 
   return (
-    <div className="arena-board-panel">
-      <div className="arena-board-header">
+    <section className="board-card" aria-label={`${networkLabel} board`}>
+      <header className="board-card-header">
         <div>
-          <span className="hud-tag">{networkLabel}</span>
+          <span className="eyebrow">{networkLabel}</span>
           <h2>Arena grid</h2>
         </div>
-        <dl className="telemetry-row" aria-label="Board stats">
-          <div>
-            <dt>Claimed</dt>
-            <dd>{stats.claimed}/36</dd>
-          </div>
-          <div>
-            <dt>Boost</dt>
-            <dd>{stats.boosts}</dd>
-          </div>
-          <div>
-            <dt>Top</dt>
-            <dd>{stats.topScore}</dd>
-          </div>
-        </dl>
-      </div>
+        <div className="board-count" aria-label={`${stats.claimed} of 36 patches claimed`}>
+          <strong>{stats.claimed}</strong>
+          <span>/ 36 claimed</span>
+        </div>
+      </header>
 
-      <div className="patch-board" role="grid" aria-label={`${networkLabel} PatchRush board`}>
+      <div
+        className={`patch-board ${loadState === "loading" ? "is-loading" : ""}`}
+        role="grid"
+        aria-label={`${networkLabel} PatchRush board`}
+        aria-readonly={!interactive}
+        aria-busy={loadState === "loading" || loadState === "refreshing"}
+      >
         {cells.map((cell) => {
           const claimed = Boolean(cell.owner);
           const selected = selectedIndex === cell.index;
           const pending = pendingClaimIndex === cell.index || pendingBoostIndex === cell.index;
+          const yours = Boolean(
+            claimed && walletAddress && cell.owner.toLowerCase() === walletAddress.toLowerCase()
+          );
+          const predictedScore = getPredictedClaimScore(cells, cell.index);
+          const totalScore = cell.score + cell.boosts;
           const style = claimed
             ? ({
-                "--cell-color": colorToHex(cell.color)
+                "--cell-color": colorToHex(cell.color),
+                "--cell-foreground": getContrastTextColor(cell.color)
               } as CSSProperties)
             : undefined;
+          const actionText = claimed
+            ? selected && selectedHasBoosted
+              ? "Already boosted by you."
+              : "Select to view boost details."
+            : `Estimated claim score ${predictedScore} points.`;
 
           return (
             <button
@@ -68,42 +114,60 @@ export function GameBoard({
               className={[
                 "patch-cell",
                 claimed ? "is-claimed" : "is-open",
+                yours ? "is-yours" : "",
                 selected ? "is-selected" : "",
+                selected && selectedHasBoosted ? "is-boosted-by-you" : "",
                 pending ? "is-pending" : ""
               ]
                 .filter(Boolean)
                 .join(" ")}
               key={cell.index}
+              ref={(node) => {
+                cellRefs.current[cell.index] = node;
+              }}
               style={style}
               aria-selected={selected}
               aria-label={
                 claimed
-                  ? `Cell ${cell.x + 1}, ${cell.y + 1}, claimed by ${shortAddress(
-                      cell.owner
-                    )}, score ${cell.score}, boosts ${cell.boosts}`
-                  : `Open cell ${cell.x + 1}, ${cell.y + 1}`
+                  ? `Patch row ${cell.y + 1}, column ${cell.x + 1}. ${
+                      yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
+                    }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}`
+                  : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}`
               }
-              disabled={!onSelect}
+              disabled={!interactive}
+              tabIndex={interactive ? (focusIndex === cell.index ? 0 : -1) : -1}
+              onFocus={() => setFocusIndex(cell.index)}
+              onKeyDown={(event) => handleGridKey(event, cell.index)}
               onClick={onSelect ? () => onSelect(cell) : undefined}
             >
               <span className="cell-coordinate">
-                X{cell.x + 1} Y{cell.y + 1}
+                {cell.y + 1}.{cell.x + 1}
               </span>
               {claimed ? (
                 <>
-                  {selected ? <span className="cell-status-label">Boost</span> : null}
-                  <strong>{cell.score + cell.boosts}</strong>
-                  <small>{shortAddress(cell.owner)}</small>
+                  <strong>{cell.score}</strong>
+                  <span className="cell-owner">{yours ? "Yours" : shortAddress(cell.owner)}</span>
+                  {cell.boosts ? <span className="cell-boost-count">+{cell.boosts}</span> : null}
+                  {selected && selectedHasBoosted ? (
+                    <span className="cell-state-badge" aria-hidden="true">
+                      <Check size={12} strokeWidth={3} /> Boosted
+                    </span>
+                  ) : null}
                 </>
               ) : (
-                <span className={selected ? "open-marker is-selected" : "open-marker"}>
-                  {selected ? "Claim" : "+"}
+                <span className="open-score">
+                  <Plus size={13} strokeWidth={3} /> {predictedScore}
                 </span>
               )}
             </button>
           );
         })}
+        {loadState === "loading" ? (
+          <div className="board-loading" role="status">
+            Loading today&apos;s board…
+          </div>
+        ) : null}
       </div>
-    </div>
+    </section>
   );
 }

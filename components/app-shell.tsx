@@ -1,5 +1,9 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 type AppShellProps = {
@@ -7,41 +11,59 @@ type AppShellProps = {
 };
 
 const routes = [
-  { href: "/", label: "Arena", code: "00" },
-  { href: "/celo", label: "Celo", code: "CE" },
-  { href: "/stacks", label: "Stacks", code: "ST" }
+  { href: "/", label: "Home" },
+  { href: "/celo", label: "Celo" },
+  { href: "/stacks", label: "Stacks" }
 ] as const;
 
 export function AppShell({ children }: AppShellProps) {
+  const pathname = usePathname();
+
   return (
-    <div className="arcade-frame">
-      <header className="machine-rail">
-        <Link href="/" className="machine-brand" aria-label="PatchRush arena">
+    <div className="app-shell">
+      <header className="site-header">
+        <Link href="/" className="site-brand" aria-label="PatchRush home">
           <Image
             src="/patchrush-logo.png"
             alt=""
-            width={64}
-            height={64}
+            width={52}
+            height={52}
             priority
-            className="brand-token"
+            className="brand-mark"
           />
-          <span className="brand-type">
+          <span>
             <strong>PatchRush</strong>
-            <small>Dual-chain arcade grid</small>
+            <small>Daily territory</small>
           </span>
         </Link>
-        <nav className="machine-nav" aria-label="Primary navigation">
-          {routes.map((route) => (
-            <Link href={route.href} key={route.href} data-code={route.code}>
-              {route.label}
-            </Link>
-          ))}
+
+        <nav className="site-nav" aria-label="Primary navigation">
+          {routes.map((route) => {
+            const active = route.href === "/" ? pathname === "/" : pathname.startsWith(route.href);
+            return (
+              <Link href={route.href} key={route.href} aria-current={active ? "page" : undefined}>
+                {route.label}
+              </Link>
+            );
+          })}
         </nav>
+
+        <Link className="header-play-link" href={pathname.startsWith("/stacks") ? "/stacks" : "/celo"}>
+          Play now <ArrowUpRight aria-hidden="true" />
+        </Link>
       </header>
-      <main className="machine-screen">{children}</main>
-      <footer className="system-footer">
-        <span>BOARD STATE: CONTRACT</span>
-        <span>CHAINS: CELO / STACKS</span>
+
+      <div className="site-content">{children}</div>
+
+      <footer className="site-footer">
+        <div>
+          <strong>PatchRush</strong>
+          <span>One board. Three claims. A fresh round every UTC day.</span>
+        </div>
+        <div className="footer-links">
+          <Link href="/celo">Play on Celo</Link>
+          <Link href="/stacks">Play on Stacks</Link>
+        </div>
       </footer>
     </div>
   );

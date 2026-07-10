@@ -4,46 +4,38 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { getStacksExplorerTxUrl, publicEnv } from "@/lib/env";
 import {
   CELL_COUNT,
+  buildEmptyBoard,
   colorSwatches,
-  colorToHex,
+  emptyPlayerRoundStats,
+  getFriendlyActionError,
   getTodayRoundId,
+  idleTransaction,
   mergeCells,
-  normalizeRoundId,
   sampleStacksCells,
-  shortAddress,
-  type PatchCell
+  type BoardLoadState,
+  type PatchCell,
+  type PlayerRoundStats,
+  type TransactionState
 } from "@/lib/patchrush";
 import type { StacksContractRef } from "@/lib/stacks-cell-parser";
-import { CellActionModal } from "./cell-action-modal";
-import { GameBoard } from "./game-board";
+import { ArenaExperience } from "./arena-experience";
 
-type StacksWalletState = {
-  address: string;
-  connected: boolean;
-};
-
+type StacksWalletState = { address: string; connected: boolean };
 type StacksBoardResponse = {
   configured: boolean;
   roundId: number;
   cells: PatchCell[];
-  source: string;
+  claimedCount: number;
+  player?: PlayerRoundStats | null;
   error?: string;
 };
+type TxStatusResponse = { phase: "pending" | "confirmed" | "failed"; status?: string };
 
-const emptyWallet: StacksWalletState = {
-  address: "",
-  connected: false
-};
+const emptyWallet: StacksWalletState = { address: "", connected: false };
 
 function getStacksContract(): StacksContractRef | null {
-  if (!publicEnv.stacksContractAddress || !publicEnv.stacksContractName) {
-    return null;
-  }
-
-  return {
-    address: publicEnv.stacksContractAddress,
-    name: publicEnv.stacksContractName
-  };
+  if (!publicEnv.stacksContractAddress || !publicEnv.stacksContractName) return null;
+  return { address: publicEnv.stacksContractAddress, name: publicEnv.stacksContractName };
 }
 
 const configuredStacksContract = getStacksContract();
@@ -54,17 +46,10 @@ function getContractId(contract: StacksContractRef) {
 
 async function getConnectedAddress() {
   const { getLocalStorage, isConnected } = await import("@stacks/connect");
-
-  if (!isConnected()) {
-    return "";
-  }
-
+  if (!isConnected()) return "";
   const userData = getLocalStorage() as {
-    addresses?: {
-      stx?: Array<{ address: string }>;
-    };
+    addresses?: { stx?: Array<{ address: string }> };
   } | null;
-
   return userData?.addresses?.stx?.[0]?.address || "";
 }
 
@@ -73,38 +58,54 @@ function getTxId(response: unknown) {
   return record.txid || record.txId || "";
 }
 
+const wait = (milliseconds: number) =>
+  new Promise<void>((resolve) => window.setTimeout(resolve, milliseconds));
+
+async function waitForStacksTransaction(txId: string) {
+  for (let attempt = 0; attempt < 24; attempt += 1) {
+    try {
+      const response = await fetch(`/api/stacks/tx/${encodeURIComponent(txId)}`, {
+        cache: "no-store"
+      });
+      const body = (await response.json()) as TxStatusResponse;
+      if (body.phase === "confirmed" || body.phase === "failed") return body.phase;
+    } catch {
+      // A temporary status read failure should not turn a submitted transaction into an error.
+    }
+    await wait(5000);
+  }
+  return "pending" as const;
+}
+
 export function StacksConsole() {
+  const contract = configuredStacksContract;
+  const configured = Boolean(contract);
+  const todayRoundId = useMemo(() => getTodayRoundId(), []);
   const [wallet, setWallet] = useState<StacksWalletState>(emptyWallet);
-  const [cells, setCells] = useState<PatchCell[]>(sampleStacksCells);
-  const [roundInput, setRoundInput] = useState(String(getTodayRoundId()));
+  const [cells, setCells] = useState<PatchCell[]>(
+    configured ? buildEmptyBoard("stacks") : sampleStacksCells
+  );
+  const [roundId, setRoundId] = useState(todayRoundId);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [cellModalOpen, setCellModalOpen] = useState(false);
+  const [selectedHasBoosted, setSelectedHasBoosted] = useState<boolean | null>(false);
   const [color, setColor] = useState(colorSwatches[1].value);
-  const [message, setMessage] = useState("");
-  const [txUrl, setTxUrl] = useState("");
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [playerStats, setPlayerStats] = useState<PlayerRoundStats>(emptyPlayerRoundStats);
+  const [loadState, setLoadState] = useState<BoardLoadState>(configured ? "idle" : "ready");
+  const [loadError, setLoadError] = useState("");
+  const [transaction, setTransaction] = useState<TransactionState>(idleTransaction);
   const [pendingClaimIndex, setPendingClaimIndex] = useState<number | null>(null);
   const [pendingBoostIndex, setPendingBoostIndex] = useState<number | null>(null);
 
-  const contract = configuredStacksContract;
-  const isConfigured = Boolean(contract);
-  const roundId = useMemo(() => normalizeRoundId(roundInput), [roundInput]);
-  const selectedCell =
-    selectedIndex === null ? null : cells.find((cell) => cell.index === selectedIndex);
-  const hasWallet = wallet.connected && Boolean(wallet.address);
-  const pendingCellAction =
-    selectedCell &&
-    (pendingClaimIndex === selectedCell.index || pendingBoostIndex === selectedCell.index);
+  const selectedCell = selectedIndex === null ? null : cells[selectedIndex] || null;
 
   const refreshWallet = useCallback(async () => {
     try {
       const address = await getConnectedAddress();
-      setWallet({
-        address,
-        connected: Boolean(address)
-      });
+      setWallet({ address, connected: Boolean(address) });
+      return address;
     } catch {
       setWallet(emptyWallet);
+      return "";
     }
   }, []);
 
@@ -112,10 +113,7 @@ export function StacksConsole() {
     const { connect } = await import("@stacks/connect");
     await connect();
     const address = await getConnectedAddress();
-    setWallet({
-      address,
-      connected: Boolean(address)
-    });
+    setWallet({ address, connected: Boolean(address) });
     return address;
   }, []);
 
@@ -123,70 +121,145 @@ export function StacksConsole() {
     const { disconnect } = await import("@stacks/connect");
     disconnect();
     setWallet(emptyWallet);
+    setPlayerStats(emptyPlayerRoundStats);
+    setSelectedHasBoosted(false);
+    setTransaction(idleTransaction);
   }, []);
 
-  const loadBoard = useCallback(async (forceFresh = false) => {
+  const loadBoard = useCallback(async () => {
     if (!contract) {
       setCells(sampleStacksCells);
+      setPlayerStats(emptyPlayerRoundStats);
+      setLoadError("");
+      setLoadState("ready");
       return;
     }
 
-    setIsRefreshing(true);
+    setLoadState((current) => (current === "ready" ? "refreshing" : "loading"));
+    setLoadError("");
     try {
-      const params = new URLSearchParams();
-      params.set("round", String(roundId));
+      const params = new URLSearchParams({ round: String(roundId) });
       if (wallet.address) params.set("sender", wallet.address);
-      if (forceFresh) params.set("refresh", Date.now().toString());
-      const response = await fetch(`/api/stacks/board?${params.toString()}`);
+      params.set("refresh", Date.now().toString());
+      const response = await fetch(`/api/stacks/board?${params.toString()}`, {
+        cache: "no-store"
+      });
       const body = (await response.json()) as StacksBoardResponse;
+      if (!response.ok || body.error) throw new Error(body.error || "Could not load board.");
 
-      if (!response.ok || body.error) {
-        throw new Error(body.error || "Could not load Stacks board.");
-      }
-
-      setCells(mergeCells("stacks", body.cells || []));
-      setMessage("Loaded live Stacks board.");
-    } catch (error) {
-      setCells(sampleStacksCells);
-      setMessage(
-        error instanceof Error
-          ? `Could not load Stacks board: ${error.message}`
-          : "Could not load Stacks board."
+      setCells(
+        body.cells.length === CELL_COUNT ? body.cells : mergeCells("stacks", body.cells || [])
       );
-    } finally {
-      setIsRefreshing(false);
+      setPlayerStats(body.player || emptyPlayerRoundStats);
+      setLoadState("ready");
+    } catch (error) {
+      setLoadError(
+        getFriendlyActionError(error, "We could not refresh the Stacks board. Your last board is still shown.")
+      );
+      setLoadState("error");
     }
   }, [contract, roundId, wallet.address]);
 
-  const claimSelected = useCallback(async () => {
-    if (!selectedCell) {
-      setMessage("Pick a cell before claiming.");
+  useEffect(() => {
+    const timer = window.setTimeout(() => void refreshWallet(), 0);
+    return () => window.clearTimeout(timer);
+  }, [refreshWallet]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => void loadBoard(), 0);
+    return () => window.clearTimeout(timer);
+  }, [loadBoard]);
+
+  useEffect(() => {
+    if (
+      !configured ||
+      !wallet.address ||
+      !selectedCell?.owner ||
+      roundId !== todayRoundId
+    ) {
       return;
     }
 
-    if (selectedCell.owner) {
-      setMessage("That patch is already claimed. Boost it instead.");
-      return;
-    }
+    let cancelled = false;
+    const params = new URLSearchParams({
+      round: String(roundId),
+      sender: wallet.address,
+      cell: String(selectedCell.index)
+    });
+    const check = async () => {
+      try {
+        const response = await fetch(`/api/stacks/action-state?${params.toString()}`, {
+          cache: "no-store"
+        });
+        const body = (await response.json()) as { hasBoosted?: boolean };
+        if (!response.ok) throw new Error("Could not check boost status.");
+        if (!cancelled) setSelectedHasBoosted(Boolean(body.hasBoosted));
+      } catch {
+        if (!cancelled) setSelectedHasBoosted(false);
+      }
+    };
+    void check();
+    return () => {
+      cancelled = true;
+    };
+  }, [configured, roundId, selectedCell, todayRoundId, wallet.address]);
 
-    if (!contract) {
-      setMessage("Live Stacks contract is not configured yet. Sample board is shown.");
+  const connectFromInterface = async () => {
+    setTransaction({ phase: "connecting", message: "Opening Stacks Connect…" });
+    try {
+      const address = await connectWallet();
+      if (!address) throw new Error("No Stacks account was selected.");
+      setTransaction(idleTransaction);
+    } catch (error) {
+      setTransaction({
+        phase: "failed",
+        message: getFriendlyActionError(error, "We could not connect your Stacks wallet.")
+      });
+    }
+  };
+
+  const finishStacksTransaction = async (txId: string, successMessage: string) => {
+    const txUrl = getStacksExplorerTxUrl(txId);
+    setTransaction({
+      phase: "submitted",
+      message: "Submitted to Stacks. Confirmation can take a little while.",
+      txUrl
+    });
+    const finalPhase = await waitForStacksTransaction(txId);
+    if (finalPhase === "failed") {
+      throw new Error("Stacks rejected the submitted transaction.");
+    }
+    if (finalPhase === "confirmed") {
+      setTransaction({ phase: "confirmed", message: successMessage, txUrl });
+      await refreshWallet();
+      await loadBoard();
       return;
     }
+    setTransaction({
+      phase: "submitted",
+      message: "Still processing on Stacks. You can leave this page and follow the receipt.",
+      txUrl
+    });
+  };
+
+  const claimSelected = async () => {
+    if (!selectedCell || selectedCell.owner || !contract || roundId !== todayRoundId) return;
 
     setPendingClaimIndex(selectedCell.index);
-    setMessage("");
-    setTxUrl("");
-
     try {
+      let address = wallet.address;
+      if (!address) {
+        setTransaction({ phase: "connecting", message: "Opening Stacks Connect…" });
+        address = await connectWallet();
+      }
+      if (!address) throw new Error("Connect a Stacks wallet before claiming.");
+
+      setTransaction({
+        phase: "awaiting-signature",
+        message: "Review the claim in your wallet. Nothing is submitted until you approve."
+      });
       const { request } = await import("@stacks/connect");
       const { Cl } = await import("@stacks/transactions");
-      const address = wallet.address || (await connectWallet());
-
-      if (!address) {
-        throw new Error("Connect a Stacks wallet before claiming.");
-      }
-
       const response = await request("stx_callContract", {
         contract: getContractId(contract),
         functionName: "claim-cell",
@@ -199,195 +272,100 @@ export function StacksConsole() {
         network: publicEnv.stacksNetwork
       });
       const txId = getTxId(response);
-
-      if (txId) setTxUrl(getStacksExplorerTxUrl(txId));
-      setMessage(`Submitted claim for patch ${selectedCell.x + 1},${selectedCell.y + 1}.`);
-      await refreshWallet();
-      await loadBoard(true);
-    } catch (error) {
-      setMessage(
-        error instanceof Error ? error.message : "Stacks claim transaction was rejected."
+      if (!txId) throw new Error("The wallet did not return a transaction ID.");
+      await finishStacksTransaction(
+        txId,
+        `Patch ${selectedCell.y + 1}.${selectedCell.x + 1} is now yours.`
       );
+    } catch (error) {
+      setTransaction({
+        phase: "failed",
+        message: getFriendlyActionError(error, "The Stacks claim was not completed.")
+      });
     } finally {
       setPendingClaimIndex(null);
     }
-  }, [
-    color,
-    connectWallet,
-    contract,
-    loadBoard,
-    refreshWallet,
-    roundId,
-    selectedCell,
-    wallet.address
-  ]);
+  };
 
-  const boostCell = useCallback(
-    async (cell: PatchCell) => {
-      if (!contract) {
-        setMessage("Live Stacks boosts are not configured yet.");
-        return;
+  const boostSelected = async () => {
+    if (!selectedCell?.owner || !contract || roundId !== todayRoundId) return;
+
+    setPendingBoostIndex(selectedCell.index);
+    try {
+      let address = wallet.address;
+      if (!address) {
+        setTransaction({ phase: "connecting", message: "Opening Stacks Connect…" });
+        address = await connectWallet();
       }
+      if (!address) throw new Error("Connect a Stacks wallet before boosting.");
 
-      setPendingBoostIndex(cell.index);
-      setMessage("");
-      setTxUrl("");
-
-      try {
-        const { request } = await import("@stacks/connect");
-        const { Cl } = await import("@stacks/transactions");
-        if (!wallet.address) await connectWallet();
-        const response = await request("stx_callContract", {
-          contract: getContractId(contract),
-          functionName: "boost-cell",
-          functionArgs: [Cl.uint(roundId), Cl.uint(cell.index)],
-          network: publicEnv.stacksNetwork
-        });
-        const txId = getTxId(response);
-
-        if (txId) setTxUrl(getStacksExplorerTxUrl(txId));
-        setMessage(`Submitted boost for patch ${cell.x + 1},${cell.y + 1}.`);
-        await loadBoard(true);
-      } catch (error) {
-        setMessage(error instanceof Error ? error.message : "Could not boost cell.");
-      } finally {
-        setPendingBoostIndex(null);
-      }
-    },
-    [connectWallet, contract, loadBoard, roundId, wallet.address]
-  );
-
-  useEffect(() => {
-    const refreshId = window.setTimeout(() => {
-      void refreshWallet();
-      void loadBoard();
-    }, 0);
-
-    return () => window.clearTimeout(refreshId);
-  }, [loadBoard, refreshWallet]);
+      setTransaction({
+        phase: "awaiting-signature",
+        message: "Review the boost in your wallet. Nothing is submitted until you approve."
+      });
+      const { request } = await import("@stacks/connect");
+      const { Cl } = await import("@stacks/transactions");
+      const response = await request("stx_callContract", {
+        contract: getContractId(contract),
+        functionName: "boost-cell",
+        functionArgs: [Cl.uint(roundId), Cl.uint(selectedCell.index)],
+        network: publicEnv.stacksNetwork
+      });
+      const txId = getTxId(response);
+      if (!txId) throw new Error("The wallet did not return a transaction ID.");
+      await finishStacksTransaction(
+        txId,
+        `Patch ${selectedCell.y + 1}.${selectedCell.x + 1} received your boost.`
+      );
+      setSelectedHasBoosted(true);
+    } catch (error) {
+      setTransaction({
+        phase: "failed",
+        message: getFriendlyActionError(error, "The Stacks boost was not completed.")
+      });
+    } finally {
+      setPendingBoostIndex(null);
+    }
+  };
 
   return (
-    <section className="play-page stacks-play" aria-labelledby="stacks-title">
-      <div className="play-topbar">
-        <div className="play-title-block">
-          <span className="hud-tag">STACKS // {publicEnv.stacksNetwork}</span>
-          <h1 id="stacks-title">Stacks arena</h1>
-          <p>Pick a cell. Claim open cells. Boost claimed cells.</p>
-        </div>
-
-        <div className="play-toolbar" aria-label="Stacks controls">
-          <label className="round-control">
-            <span>Round</span>
-            <input
-              value={roundInput}
-              onChange={(event) => setRoundInput(event.target.value)}
-              inputMode="numeric"
-              maxLength={8}
-              placeholder="20260708"
-            />
-          </label>
-
-          <div className="swatch-group compact" aria-label="Claim color">
-            <span>Color</span>
-            <div>
-              {colorSwatches.map((swatch) => (
-                <button
-                  type="button"
-                  className={swatch.value === color ? "swatch is-selected" : "swatch"}
-                  key={swatch.value}
-                  style={{ backgroundColor: colorToHex(swatch.value) }}
-                  aria-label={`Use ${swatch.label}`}
-                  title={swatch.label}
-                  onClick={() => setColor(swatch.value)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="wallet-chip">
-            <span>Wallet</span>
-            <strong>{hasWallet ? shortAddress(wallet.address) : "Not connected"}</strong>
-            {hasWallet ? (
-              <button
-                type="button"
-                className="ghost-button"
-                onClick={() => void disconnectWallet()}
-              >
-                Disconnect
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="ghost-button"
-                onClick={() => void connectWallet()}
-              >
-                Connect
-              </button>
-            )}
-          </div>
-
-          <button
-            type="button"
-            className="ghost-button"
-            onClick={() => void loadBoard(true)}
-          >
-            <span className="button-glyph" aria-hidden="true">
-              RLD
-            </span>
-            {isRefreshing ? "Refreshing" : "Refresh"}
-          </button>
-        </div>
-      </div>
-
-      <GameBoard
-        cells={cells.length === CELL_COUNT ? cells : mergeCells("stacks", cells)}
-        selectedIndex={selectedIndex}
-        networkLabel="Stacks arena"
-        onSelect={(cell) => {
-          setSelectedIndex(cell.index);
-          setMessage("");
-          setTxUrl("");
-          setCellModalOpen(true);
-        }}
-        pendingClaimIndex={pendingClaimIndex}
-        pendingBoostIndex={pendingBoostIndex}
-      />
-
-      <details className="help-panel">
-        <summary>Scoring and limits</summary>
-        <p>Every claim starts at 10 points. Each occupied orthogonal neighbor adds 3.</p>
-        <p>Boosts add one point to the patch owner and are limited to once per wallet.</p>
-        <p className="color-readout">
-          <span style={{ backgroundColor: colorToHex(color) }} aria-hidden="true" />
-          Current color{" "}
-          <strong>{colorToHex(color)}</strong>
-        </p>
-        <p>
-          {isConfigured
-            ? "Live Stacks board is configured."
-            : "Sample board shown until the Stacks contract id is set."}
-        </p>
-      </details>
-
-      {cellModalOpen ? (
-        <CellActionModal
-          cell={selectedCell || null}
-          color={color}
-          message={message}
-          networkLabel="Stacks"
-          onClaim={() => void claimSelected()}
-          onClose={() => setCellModalOpen(false)}
-          onConnect={() => void connectWallet()}
-          onBoost={() => {
-            if (selectedCell) void boostCell(selectedCell);
-          }}
-          pending={Boolean(pendingCellAction)}
-          roundId={roundId}
-          txUrl={txUrl}
-          walletConnected={hasWallet}
-          walletLabel="Stacks wallet"
-        />
-      ) : null}
-    </section>
+    <ArenaExperience
+      network="stacks"
+      networkLabel="Stacks"
+      networkDetail={publicEnv.stacksNetwork === "mainnet" ? "Mainnet" : "Testnet"}
+      configured={configured}
+      cells={cells}
+      selectedIndex={selectedIndex}
+      selectedHasBoosted={selectedHasBoosted}
+      color={color}
+      walletAddress={wallet.address}
+      walletName="Stacks wallet"
+      playerStats={playerStats}
+      roundId={roundId}
+      todayRoundId={todayRoundId}
+      loadState={loadState}
+      loadError={loadError}
+      transaction={transaction}
+      pendingClaimIndex={pendingClaimIndex}
+      pendingBoostIndex={pendingBoostIndex}
+      onSelect={(cell) => {
+        setSelectedHasBoosted(cell.owner && wallet.address ? null : false);
+        setSelectedIndex(cell.index);
+      }}
+      onCloseSelection={() => setSelectedIndex(null)}
+      onColorChange={setColor}
+      onConnect={connectFromInterface}
+      onDisconnect={disconnectWallet}
+      onRefresh={loadBoard}
+      onRoundChange={(nextRoundId) => {
+        setRoundId(nextRoundId);
+        setSelectedIndex(null);
+        setSelectedHasBoosted(false);
+        setTransaction(idleTransaction);
+        setLoadError("");
+      }}
+      onClaim={claimSelected}
+      onBoost={boostSelected}
+    />
   );
 }
