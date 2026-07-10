@@ -52,14 +52,22 @@ export function NetworkPickerModal({
         </p>
 
         <div className="network-choice-grid">
-          <Link className="network-choice is-celo" href="/celo">
+          <Link
+            className="network-choice is-celo"
+            href="/celo"
+            aria-label={`Open ${celoReady ? "live" : "demo"} Celo game on ${celoNetworkLabel}`}
+          >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
             <small>Best with MiniPay or a Celo-compatible wallet</small>
             <span className="choice-meta">{celoNetworkLabel}<ArrowRight aria-hidden="true" /></span>
           </Link>
-          <Link className="network-choice is-stacks" href="/stacks">
+          <Link
+            className="network-choice is-stacks"
+            href="/stacks"
+            aria-label={`Open ${stacksReady ? "live" : "demo"} Stacks game on ${stacksNetworkLabel}`}
+          >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
