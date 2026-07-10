@@ -317,11 +317,23 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           </div>
         </div>
         <div className="round-controls">
-          <button type="button" className="secondary-button" onClick={() => onRoundChange(shiftRoundId(roundId, -1))}>
+          <button
+            type="button"
+            className="secondary-button"
+            aria-label={`View the round before ${formatRoundId(roundId)}`}
+            title={`View the round before ${formatRoundId(roundId)}`}
+            onClick={() => onRoundChange(shiftRoundId(roundId, -1))}
+          >
             <ChevronLeft aria-hidden="true" /> Previous
           </button>
           {!isToday ? (
-            <button type="button" className="secondary-button" onClick={() => onRoundChange(todayRoundId)}>
+            <button
+              type="button"
+              className="secondary-button"
+              aria-label={`Return to today's round ${formatRoundId(todayRoundId)}`}
+              title={`Return to today's round ${formatRoundId(todayRoundId)}`}
+              onClick={() => onRoundChange(todayRoundId)}
+            >
               Today
             </button>
           ) : null}
@@ -329,6 +341,16 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             type="button"
             className="secondary-button icon-only-mobile"
             disabled={roundId >= todayRoundId}
+            aria-label={
+              roundId >= todayRoundId
+                ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
+                : `View the round after ${formatRoundId(roundId)}`
+            }
+            title={
+              roundId >= todayRoundId
+                ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
+                : `View the round after ${formatRoundId(roundId)}`
+            }
             onClick={() => onRoundChange(Math.min(todayRoundId, shiftRoundId(roundId, 1)))}
           >
             Next <ChevronRight aria-hidden="true" />
