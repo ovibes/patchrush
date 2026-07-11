@@ -106,6 +106,11 @@ export function GameBoard({
               ? "Already boosted by you."
               : "Select to view boost details."
             : `Estimated claim score ${predictedScore} points.`;
+          const cellLabel = claimed
+            ? `Patch row ${cell.y + 1}, column ${cell.x + 1}. ${
+                yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
+              }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}`
+            : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}`;
 
           return (
             <button
@@ -127,13 +132,8 @@ export function GameBoard({
               }}
               style={style}
               aria-selected={selected}
-              aria-label={
-                claimed
-                  ? `Patch row ${cell.y + 1}, column ${cell.x + 1}. ${
-                      yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
-                    }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}`
-                  : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}`
-              }
+              aria-label={cellLabel}
+              title={cellLabel}
               disabled={!interactive}
               tabIndex={interactive ? (focusIndex === cell.index ? 0 : -1) : -1}
               onFocus={() => setFocusIndex(cell.index)}
