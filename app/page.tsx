@@ -20,6 +20,8 @@ export default function HomePage() {
   );
   const stacksNetworkLabel =
     publicEnv.stacksNetwork === "mainnet" ? "Stacks Mainnet" : "Stacks Testnet";
+  const celoArenaLabel = `Open the ${celoReady ? "live" : "demo"} Celo arena`;
+  const stacksArenaLabel = `Open the ${stacksReady ? "live" : "demo"} Stacks arena`;
 
   return (
     <main className="landing-page">
@@ -117,13 +119,23 @@ export default function HomePage() {
           <h2 id="network-title">Same board rules.<br />Use the wallet you know.</h2>
         </header>
         <div className="network-summary-grid">
-          <Link href="/celo" className="network-summary is-celo">
+          <Link
+            href="/celo"
+            className="network-summary is-celo"
+            aria-label={celoArenaLabel}
+            title={celoArenaLabel}
+          >
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
             <p>MiniPay-ready and designed for quick mobile play.</p>
             <span>Open Celo arena <ArrowRight aria-hidden="true" /></span>
           </Link>
-          <Link href="/stacks" className="network-summary is-stacks">
+          <Link
+            href="/stacks"
+            className="network-summary is-stacks"
+            aria-label={stacksArenaLabel}
+            title={stacksArenaLabel}
+          >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
             <p>Connect with a Stacks wallet and play the same daily rules.</p>
