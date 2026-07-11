@@ -304,8 +304,22 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           <p>Choose a patch, see its score before you move, and make today count.</p>
         </div>
         <div className="network-switcher" aria-label="Choose network">
-          <Link href="/celo" aria-current={network === "celo" ? "page" : undefined}>Celo</Link>
-          <Link href="/stacks" aria-current={network === "stacks" ? "page" : undefined}>Stacks</Link>
+          <Link
+            href="/celo"
+            aria-current={network === "celo" ? "page" : undefined}
+            aria-label="Switch to the Celo arena"
+            title="Switch to the Celo arena"
+          >
+            Celo
+          </Link>
+          <Link
+            href="/stacks"
+            aria-current={network === "stacks" ? "page" : undefined}
+            aria-label="Switch to the Stacks arena"
+            title="Switch to the Stacks arena"
+          >
+            Stacks
+          </Link>
         </div>
       </section>
 
