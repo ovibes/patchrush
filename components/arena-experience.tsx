@@ -205,6 +205,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             type="button"
             className="icon-button inspector-close"
             aria-label="Close patch details"
+            title="Close patch details"
             onClick={onCloseSelection}
             data-autofocus={mobileInspector ? "true" : undefined}
           >
