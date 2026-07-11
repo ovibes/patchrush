@@ -139,7 +139,14 @@ export function CellActionModal({
           </div>
         ) : null}
         {txUrl ? (
-          <a className="tx-link" href={txUrl} target="_blank" rel="noreferrer">
+          <a
+            className="tx-link"
+            href={txUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open the ${networkLabel} explorer receipt in a new tab`}
+            title={`Open the ${networkLabel} explorer receipt in a new tab`}
+          >
             Open explorer receipt
           </a>
         ) : null}
