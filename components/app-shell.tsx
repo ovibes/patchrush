@@ -72,8 +72,15 @@ export function AppShell({ children }: AppShellProps) {
           <span>One board. Three claims. A fresh round every UTC day.</span>
         </div>
         <div className="footer-links">
-          <Link href="/celo">Play on Celo</Link>
-          <Link href="/stacks">Play on Stacks</Link>
+          <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
+            Play on Celo
+          </Link>
+          <Link
+            href="/stacks"
+            aria-current={pathname.startsWith("/stacks") ? "page" : undefined}
+          >
+            Play on Stacks
+          </Link>
         </div>
       </footer>
     </div>
