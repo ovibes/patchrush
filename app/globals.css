@@ -109,6 +109,27 @@ summary:focus-visible,
   flex-direction: column;
 }
 
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 80;
+  padding: 10px 14px;
+  border: 1px solid var(--acid);
+  border-radius: 999px;
+  color: var(--acid-dark);
+  background: var(--acid);
+  font-size: 0.84rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-160%);
+  transition: transform 140ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 .site-header {
   position: sticky;
   top: 0;

@@ -23,6 +23,9 @@ export function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <header className="site-header">
         <Link href="/" className="site-brand" aria-label="PatchRush home">
           <Image
@@ -59,7 +62,9 @@ export function AppShell({ children }: AppShellProps) {
         </Link>
       </header>
 
-      <div className="site-content">{children}</div>
+      <div className="site-content" id="main-content" tabIndex={-1}>
+        {children}
+      </div>
 
       <footer className="site-footer">
         <div>
