@@ -56,6 +56,7 @@ export function NetworkPickerModal({
             className="network-choice is-celo"
             href="/celo"
             aria-label={`Open ${celoReady ? "live" : "demo"} Celo game on ${celoNetworkLabel}`}
+            title={`Open ${celoReady ? "live" : "demo"} Celo game on ${celoNetworkLabel}`}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
@@ -67,6 +68,7 @@ export function NetworkPickerModal({
             className="network-choice is-stacks"
             href="/stacks"
             aria-label={`Open ${stacksReady ? "live" : "demo"} Stacks game on ${stacksNetworkLabel}`}
+            title={`Open ${stacksReady ? "live" : "demo"} Stacks game on ${stacksNetworkLabel}`}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
