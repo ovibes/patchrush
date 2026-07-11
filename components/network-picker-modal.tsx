@@ -41,6 +41,7 @@ export function NetworkPickerModal({
             type="button"
             className="icon-button"
             aria-label="Close network picker"
+            title="Close network picker"
             onClick={() => setOpen(false)}
           >
             <X aria-hidden="true" />

@@ -80,6 +80,7 @@ export function CellActionModal({
             type="button"
             className="modal-close"
             aria-label="Close cell action"
+            title="Close cell action"
             onClick={onClose}
           >
             X
