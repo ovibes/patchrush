@@ -428,9 +428,23 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           <strong className="mono">{walletAddress ? shortAddress(walletAddress) : configured ? "Not connected" : "Demo mode"}</strong>
           {configured ? (
             walletAddress && onDisconnect ? (
-              <button type="button" onClick={() => void onDisconnect()}>Disconnect</button>
+              <button
+                type="button"
+                aria-label={`Disconnect ${walletName}`}
+                title={`Disconnect ${walletName}`}
+                onClick={() => void onDisconnect()}
+              >
+                Disconnect
+              </button>
             ) : !walletAddress ? (
-              <button type="button" onClick={() => void onConnect()}>Connect</button>
+              <button
+                type="button"
+                aria-label={`Connect ${walletName}`}
+                title={`Connect ${walletName}`}
+                onClick={() => void onConnect()}
+              >
+                Connect
+              </button>
             ) : null
           ) : null}
         </div>
