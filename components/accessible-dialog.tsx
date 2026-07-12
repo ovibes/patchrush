@@ -4,6 +4,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 type AccessibleDialogProps = {
+  id?: string;
   open: boolean;
   onClose(): void;
   labelledBy: string;
@@ -22,6 +23,7 @@ const focusableSelector = [
 ].join(",");
 
 export function AccessibleDialog({
+  id,
   open,
   onClose,
   labelledBy,
@@ -99,6 +101,7 @@ export function AccessibleDialog({
       }}
     >
       <div
+        id={id}
         className={className}
         ref={panelRef}
         role="dialog"

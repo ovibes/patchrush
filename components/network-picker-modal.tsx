@@ -19,16 +19,25 @@ export function NetworkPickerModal({
   stacksReady
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
+  const dialogId = "network-picker-dialog";
 
   return (
     <>
-      <button type="button" className="primary-button hero-cta" onClick={() => setOpen(true)}>
+      <button
+        type="button"
+        className="primary-button hero-cta"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls={dialogId}
+        onClick={() => setOpen(true)}
+      >
         <Gamepad2 aria-hidden="true" />
         Play today&apos;s round
         <ArrowRight aria-hidden="true" />
       </button>
 
       <AccessibleDialog
+        id={dialogId}
         open={open}
         onClose={() => setOpen(false)}
         labelledBy="network-picker-title"
