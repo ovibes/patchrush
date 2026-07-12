@@ -26,6 +26,7 @@ export function NetworkPickerModal({
       <button
         type="button"
         className="primary-button hero-cta"
+        aria-label="Choose a network to play today's round"
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
