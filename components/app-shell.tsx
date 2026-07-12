@@ -57,6 +57,7 @@ export function AppShell({ children }: AppShellProps) {
           className="header-play-link"
           href={playHref}
           aria-label={`Play on ${playLabel}`}
+          title={`Play on ${playLabel}`}
         >
           Play on {playLabel} <ArrowUpRight aria-hidden="true" />
         </Link>
