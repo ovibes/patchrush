@@ -12,11 +12,25 @@ export const metadata: Metadata = {
   },
   description:
     "Claim territory, build your score, and return tomorrow in a daily on-chain board game for Celo and Stacks.",
+  keywords: [
+    "PatchRush",
+    "on-chain game",
+    "daily board game",
+    "Celo game",
+    "Stacks game",
+    "territory game",
+    "wallet game"
+  ],
   applicationName: "PatchRush",
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
     title: "PatchRush",
     description:
       "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
+    url: "/",
+    siteName: "PatchRush",
     type: "website",
     images: ["/og.png"]
   },
