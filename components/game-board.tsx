@@ -164,7 +164,7 @@ export function GameBoard({
         })}
         {loadState === "loading" ? (
           <div className="board-loading" role="status">
-            Loading today&apos;s board…
+            Loading board…
           </div>
         ) : null}
       </div>
