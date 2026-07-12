@@ -25,6 +25,8 @@ export default function HomePage() {
     publicEnv.stacksNetwork === "mainnet" ? "Stacks Mainnet" : "Stacks Testnet";
   const celoArenaLabel = `Open the ${celoReady ? "live" : "demo"} Celo arena`;
   const stacksArenaLabel = `Open the ${stacksReady ? "live" : "demo"} Stacks arena`;
+  const celoArenaCta = `Open ${celoReady ? "live" : "demo"} Celo arena`;
+  const stacksArenaCta = `Open ${stacksReady ? "live" : "demo"} Stacks arena`;
 
   return (
     <main className="landing-page">
@@ -131,7 +133,7 @@ export default function HomePage() {
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
             <p>MiniPay-ready and designed for quick mobile play.</p>
-            <span>Open Celo arena <ArrowRight aria-hidden="true" /></span>
+            <span>{celoArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
           <Link
             href="/stacks"
@@ -142,7 +144,7 @@ export default function HomePage() {
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
             <p>Connect with a Stacks wallet and play the same daily rules.</p>
-            <span>Open Stacks arena <ArrowRight aria-hidden="true" /></span>
+            <span>{stacksArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
       </section>
