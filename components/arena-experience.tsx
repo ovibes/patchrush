@@ -129,6 +129,11 @@ export function ArenaExperience(props: ArenaExperienceProps) {
   const isBusy = busyPhases.has(transaction.phase);
   const modeLabel = configured ? "Live board" : "Demo board";
   const receiptLinkLabel = `View the ${networkLabel} transaction receipt in a new tab`;
+  const refreshBoardLabel =
+    loadState === "refreshing"
+      ? `Refreshing the ${networkLabel} board`
+      : `Refresh the ${networkLabel} board`;
+  const retryBoardLabel = `Retry loading the ${networkLabel} board`;
   const predictedScore = selectedCell
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;
@@ -385,7 +390,14 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         <div className="error-banner" role="alert">
           <CircleAlert aria-hidden="true" />
           <span>{loadError}</span>
-          <button type="button" onClick={() => void onRefresh()}>Try again</button>
+          <button
+            type="button"
+            aria-label={retryBoardLabel}
+            title={retryBoardLabel}
+            onClick={() => void onRefresh()}
+          >
+            Reload board
+          </button>
         </div>
       ) : null}
 
@@ -433,7 +445,14 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         <div className="hud-card">
           <span>{modeLabel}</span>
           <strong>{boardStats.claimed}<small>/ 36</small></strong>
-          <button type="button" className="refresh-link" onClick={() => void onRefresh()} disabled={loadState === "loading" || loadState === "refreshing"}>
+          <button
+            type="button"
+            className="refresh-link"
+            aria-label={refreshBoardLabel}
+            title={refreshBoardLabel}
+            onClick={() => void onRefresh()}
+            disabled={loadState === "loading" || loadState === "refreshing"}
+          >
             <RefreshCw className={loadState === "refreshing" ? "spin" : ""} aria-hidden="true" />
             {loadState === "refreshing" ? "Refreshing" : "Refresh"}
           </button>
