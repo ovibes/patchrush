@@ -51,6 +51,11 @@ export function CellActionModal({
     : claimed
       ? "Boost this claimed cell once from your wallet."
       : "Claim this open cell with your selected color.";
+  const actionButtonLabel = !walletConnected
+    ? `Connect ${walletLabel} to act on cell ${cell.x + 1}, ${cell.y + 1}`
+    : claimed
+      ? `Boost cell ${cell.x + 1}, ${cell.y + 1}`
+      : `Claim cell ${cell.x + 1}, ${cell.y + 1}`;
 
   const runAction = () => {
     if (!walletConnected) {
@@ -123,8 +128,10 @@ export function CellActionModal({
           <button
             type="button"
             className={claimed ? "command-button magenta" : "command-button"}
+            aria-label={actionButtonLabel}
             disabled={pending}
             onClick={runAction}
+            title={actionButtonLabel}
           >
             <span className="button-glyph" aria-hidden="true">
               {actionGlyph}
