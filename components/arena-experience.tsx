@@ -404,7 +404,12 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       ) : null}
 
       {transaction.phase !== "idle" ? (
-        <div className={`transaction-banner is-${transaction.phase}`} role={transaction.phase === "failed" ? "alert" : "status"}>
+        <div
+          className={`transaction-banner is-${transaction.phase}`}
+          role={transaction.phase === "failed" ? "alert" : "status"}
+          aria-live={transaction.phase === "failed" ? "assertive" : "polite"}
+          aria-atomic="true"
+        >
           <StatusIcon transaction={transaction} />
           <div>
             <strong>{transaction.phase === "confirmed" ? "Move complete" : transaction.phase === "failed" ? "Move not completed" : "Move in progress"}</strong>
