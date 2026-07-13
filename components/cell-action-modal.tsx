@@ -78,6 +78,7 @@ export function CellActionModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="cell-action-title"
+        aria-describedby="cell-action-summary cell-action-help"
       >
         <div className="modal-heading">
           <span className="hud-tag">{networkLabel}</span>
@@ -95,7 +96,7 @@ export function CellActionModal({
         <h2 id="cell-action-title">
           Cell {cell.x + 1}, {cell.y + 1}
         </h2>
-        <p>{claimed ? "Claimed cell selected." : "Open cell selected."}</p>
+        <p id="cell-action-summary">{claimed ? "Claimed cell selected." : "Open cell selected."}</p>
 
         <dl className="modal-data-grid">
           <div>
@@ -138,7 +139,7 @@ export function CellActionModal({
             </span>
             {actionLabel}
           </button>
-          <p>{actionHelp}</p>
+          <p id="cell-action-help">{actionHelp}</p>
         </div>
 
         {message ? (
