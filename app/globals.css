@@ -457,12 +457,14 @@ summary:focus-visible,
   display: flex;
   flex-wrap: wrap;
   gap: 12px 22px;
+  padding: 0;
+  list-style: none;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 650;
 }
 
-.hero-proof span {
+.hero-proof li {
   display: inline-flex;
   align-items: baseline;
   gap: 5px;
@@ -1986,7 +1988,7 @@ summary:focus-visible,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .hero-proof span:last-child {
+  .hero-proof li:last-child {
     grid-column: 1 / -1;
   }
 

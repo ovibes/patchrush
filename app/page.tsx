@@ -47,11 +47,11 @@ export default function HomePage() {
             />
             <span>No account. Just your wallet.</span>
           </div>
-          <div className="hero-proof" aria-label="Game highlights">
-            <span><strong>3</strong> claims per day</span>
-            <span><strong>36</strong> shared patches</span>
-            <span><strong>2</strong> networks, same rules</span>
-          </div>
+          <ul className="hero-proof" aria-label="Game highlights">
+            <li><strong>3</strong> claims per day</li>
+            <li><strong>36</strong> shared patches</li>
+            <li><strong>2</strong> networks, same rules</li>
+          </ul>
         </div>
 
         <div className="hero-board-wrap">
