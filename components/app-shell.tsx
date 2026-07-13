@@ -75,7 +75,7 @@ export function AppShell({ children }: AppShellProps) {
       <footer className="site-footer">
         <div>
           <strong>PatchRush</strong>
-          <span>One board. Three claims. A fresh round every UTC day.</span>
+          <span>One board. Three claims. A fresh round starts at 00:00 UTC.</span>
         </div>
         <div className="footer-links">
           <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
