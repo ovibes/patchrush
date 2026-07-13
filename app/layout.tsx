@@ -22,6 +22,26 @@ export const metadata: Metadata = {
     "wallet game"
   ],
   applicationName: "PatchRush",
+  icons: {
+    icon: [
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml"
+      },
+      {
+        url: "/icon-192.png",
+        sizes: "192x192",
+        type: "image/png"
+      }
+    ],
+    shortcut: ["/icon.svg"],
+    apple: [
+      {
+        url: "/icon-192.png",
+        sizes: "192x192"
+      }
+    ]
+  },
   alternates: {
     canonical: "/"
   },
