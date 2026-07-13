@@ -272,6 +272,8 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             type="button"
             className="primary-button"
             disabled={actionDisabled}
+            aria-describedby="patch-inspector-description"
+            title={actionLabel}
             onClick={() => void actionHandler()}
           >
             {isBusy ? <LoaderCircle className="spin" aria-hidden="true" /> : claimed ? <Zap aria-hidden="true" /> : <Sparkles aria-hidden="true" />}
