@@ -107,7 +107,10 @@ export default function HomePage() {
         </div>
         <div className="daily-card">
           <span>Today&apos;s preview</span>
-          <strong>{stats.claimed}<small>/36</small></strong>
+          <strong aria-label={`${stats.claimed} of 36 patches claimed today`}>
+            {stats.claimed}
+            <small aria-hidden="true">/36</small>
+          </strong>
           <p>patches already claimed</p>
           <NetworkPickerModal
             celoNetworkLabel={getCeloChainLabel()}
