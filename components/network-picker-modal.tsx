@@ -53,6 +53,7 @@ export function NetworkPickerModal({
             className="icon-button"
             aria-label="Close network picker"
             title="Close network picker"
+            data-autofocus="true"
             onClick={() => setOpen(false)}
           >
             <X aria-hidden="true" />

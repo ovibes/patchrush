@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { NetworkPickerModal } from "@/components/network-picker-modal";
@@ -18,6 +18,9 @@ describe("NetworkPickerModal", () => {
     await user.click(trigger);
 
     expect(screen.getByRole("dialog", { name: "Pick your network" })).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: /close network picker/i })).toHaveFocus();
+    });
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
