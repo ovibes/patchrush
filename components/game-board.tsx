@@ -73,7 +73,12 @@ export function GameBoard({
           <span className="eyebrow">{networkLabel}</span>
           <h2>Arena grid</h2>
         </div>
-        <div className="board-count" aria-label={`${stats.claimed} of 36 patches claimed`}>
+        <div
+          className="board-count"
+          aria-label={`${stats.claimed} of 36 patches claimed`}
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <strong>{stats.claimed}</strong>
           <span>/ 36 claimed</span>
         </div>
