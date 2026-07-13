@@ -52,14 +52,26 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "PatchRush",
     type: "website",
-    images: ["/og.png"]
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "PatchRush daily on-chain territory game preview"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "PatchRush",
     description:
       "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
-    images: ["/og.png"]
+    images: [
+      {
+        url: "/og.png",
+        alt: "PatchRush daily on-chain territory game preview"
+      }
+    ]
   }
 };
 
