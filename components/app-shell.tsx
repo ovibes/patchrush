@@ -27,7 +27,12 @@ export function AppShell({ children }: AppShellProps) {
         Skip to content
       </a>
       <header className="site-header">
-        <Link href="/" className="site-brand" aria-label="PatchRush home">
+        <Link
+          href="/"
+          className="site-brand"
+          aria-label="PatchRush home"
+          title="PatchRush home"
+        >
           <Image
             src="/patchrush-logo.png"
             alt=""
