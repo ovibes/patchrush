@@ -68,9 +68,9 @@ export function AppShell({ children }: AppShellProps) {
         </Link>
       </header>
 
-      <div className="site-content" id="main-content" tabIndex={-1}>
+      <main className="site-content" id="main-content" tabIndex={-1}>
         {children}
-      </div>
+      </main>
 
       <footer className="site-footer">
         <div>
