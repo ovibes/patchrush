@@ -470,7 +470,15 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         </div>
         <div className="hud-card">
           <span>Your score</span>
-          <strong>{walletAddress ? playerStats.score : "—"}</strong>
+          <strong
+            aria-label={
+              walletAddress
+                ? `${playerStats.score} points`
+                : "Score unavailable until wallet connects"
+            }
+          >
+            {walletAddress ? playerStats.score : "—"}
+          </strong>
         </div>
         <div className="hud-card">
           <span>{modeLabel}</span>
