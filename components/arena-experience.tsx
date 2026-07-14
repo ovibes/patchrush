@@ -167,7 +167,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     const yours = Boolean(
       walletAddress && selectedCell.owner.toLowerCase() === walletAddress.toLowerCase()
     );
-    let actionLabel = claimed ? "Boost this patch" : `Claim for ${predictedScore} pts`;
+    let actionLabel = claimed ? "Boost this patch" : `Claim for ${predictedScore} points`;
     let actionDisabled = isBusy;
     let actionHandler = claimed ? onBoost : onClaim;
     let actionHelp = claimed
