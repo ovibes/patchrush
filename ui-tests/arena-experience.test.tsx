@@ -43,9 +43,9 @@ function renderArena(overrides: Partial<Parameters<typeof ArenaExperience>[0]> =
 }
 
 describe("ArenaExperience", () => {
-  it("labels unconfigured actions as a demo preview", () => {
+  it("labels unconfigured actions as preview only", () => {
     renderArena({ configured: false, walletAddress: "" });
-    expect(screen.getByRole("button", { name: "Demo preview" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Preview only" })).toBeDisabled();
     expect(screen.getByText(/demo mode/i)).toBeInTheDocument();
   });
 

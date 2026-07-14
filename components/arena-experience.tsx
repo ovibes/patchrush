@@ -175,7 +175,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       : "Your wallet will ask you to approve the claim.";
 
     if (!configured) {
-      actionLabel = "Demo preview";
+      actionLabel = "Preview only";
       actionDisabled = true;
       actionHelp = "This route becomes playable when its contract address is configured.";
     } else if (!isToday) {
