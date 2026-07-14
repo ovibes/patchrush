@@ -48,7 +48,7 @@ export default function HomePage() {
               celoReady={celoReady}
               stacksReady={stacksReady}
             />
-            <span>No account. Just your wallet.</span>
+            <span>No signup. Just your wallet.</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
             <li><strong>3</strong> claims per day</li>
