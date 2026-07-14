@@ -457,7 +457,16 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         </div>
         <div className="hud-card">
           <span>Claims left</span>
-          <strong>{walletAddress ? playerStats.claimsRemaining : "—"}<small>/ 3</small></strong>
+          <strong
+            aria-label={
+              walletAddress
+                ? `${playerStats.claimsRemaining} of 3 claims remaining`
+                : "Claims remaining unavailable until wallet connects"
+            }
+          >
+            {walletAddress ? playerStats.claimsRemaining : "—"}
+            <small aria-hidden="true">/ 3</small>
+          </strong>
         </div>
         <div className="hud-card">
           <span>Your score</span>
@@ -465,7 +474,10 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         </div>
         <div className="hud-card">
           <span>{modeLabel}</span>
-          <strong>{boardStats.claimed}<small>/ 36</small></strong>
+          <strong aria-label={`${boardStats.claimed} of 36 patches claimed`}>
+            {boardStats.claimed}
+            <small aria-hidden="true">/ 36</small>
+          </strong>
           <button
             type="button"
             className="refresh-link"
