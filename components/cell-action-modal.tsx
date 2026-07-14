@@ -35,6 +35,8 @@ export function CellActionModal({
 }: CellActionModalProps) {
   if (!cell) return null;
 
+  const row = cell.y + 1;
+  const column = cell.x + 1;
   const claimed = Boolean(cell.owner);
   const actionLabel = !walletConnected
     ? "Connect wallet"
@@ -52,10 +54,10 @@ export function CellActionModal({
       ? "Boost this claimed cell once from your wallet."
       : "Claim this open cell with your selected color.";
   const actionButtonLabel = !walletConnected
-    ? `Connect ${walletLabel} to act on cell ${cell.x + 1}, ${cell.y + 1}`
+    ? `Connect ${walletLabel} to act on row ${row}, column ${column}`
     : claimed
-      ? `Boost cell ${cell.x + 1}, ${cell.y + 1}`
-      : `Claim cell ${cell.x + 1}, ${cell.y + 1}`;
+      ? `Boost row ${row}, column ${column}`
+      : `Claim row ${row}, column ${column}`;
 
   const runAction = () => {
     if (!walletConnected) {
@@ -93,9 +95,7 @@ export function CellActionModal({
           </button>
         </div>
 
-        <h2 id="cell-action-title">
-          Cell {cell.x + 1}, {cell.y + 1}
-        </h2>
+        <h2 id="cell-action-title">Row {row}, column {column}</h2>
         <p id="cell-action-summary">{claimed ? "Claimed cell selected." : "Open cell selected."}</p>
 
         <dl className="modal-data-grid">
