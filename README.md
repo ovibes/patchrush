@@ -5,7 +5,7 @@ cells on a daily 6x6 board, score adjacency bonuses, and boost claimed patches.
 
 ## Product
 
-- `/`: playable board preview, rules, and network entry points
+- `/`: board preview, rules, and network entry points
 - `/celo`: MiniPay-ready Celo flow backed by `PatchRushArena.sol`
 - `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`
 
