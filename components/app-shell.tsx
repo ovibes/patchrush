@@ -80,7 +80,7 @@ export function AppShell({ children }: AppShellProps) {
             <time dateTime="00:00Z">00:00 UTC</time>.
           </span>
         </div>
-        <div className="footer-links">
+        <nav className="footer-links" aria-label="Footer navigation">
           <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
             Play on Celo
           </Link>
@@ -90,7 +90,7 @@ export function AppShell({ children }: AppShellProps) {
           >
             Play on Stacks
           </Link>
-        </div>
+        </nav>
       </footer>
     </div>
   );
