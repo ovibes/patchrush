@@ -40,6 +40,7 @@ export function GameBoard({
   const [focusIndex, setFocusIndex] = useState(selectedIndex ?? 0);
   const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const interactive = Boolean(onSelect);
+  const boardHeading = interactive ? "Arena grid" : "Board preview";
 
   const moveFocus = (nextIndex: number) => {
     const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));
@@ -71,7 +72,7 @@ export function GameBoard({
       <header className="board-card-header">
         <div>
           <span className="eyebrow">{networkLabel}</span>
-          <h2>Arena grid</h2>
+          <h2>{boardHeading}</h2>
         </div>
         <div
           className="board-count"
