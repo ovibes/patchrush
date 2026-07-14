@@ -32,7 +32,10 @@ export default function HomePage() {
     <main className="landing-page">
       <section className="hero-section" aria-labelledby="home-title">
         <div className="hero-copy">
-          <span className="eyebrow"><Sparkles aria-hidden="true" /> A fresh board every day at 00:00 UTC</span>
+          <span className="eyebrow">
+            <Sparkles aria-hidden="true" /> A fresh board every day at{" "}
+            <time dateTime="00:00Z">00:00 UTC</time>
+          </span>
           <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
             Pick a patch, earn more for smart placement, and shape a shared 6×6 board—one
