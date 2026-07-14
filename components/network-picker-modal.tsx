@@ -61,7 +61,7 @@ export function NetworkPickerModal({
         </header>
         <h2 id="network-picker-title">Pick your network</h2>
         <p id="network-picker-description">
-          The game is identical on both networks. Choose the wallet already on your device.
+          The game is identical on both networks. Choose the wallet already on your device, or open a demo board first.
         </p>
 
         <div className="network-choice-grid">
