@@ -432,7 +432,18 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       <section className="player-hud" aria-label="Player and board summary">
         <div className="hud-card wallet-hud">
           <span><Wallet aria-hidden="true" /> {walletName}</span>
-          <strong className="mono">{walletAddress ? shortAddress(walletAddress) : configured ? "Not connected" : "Demo mode"}</strong>
+          <strong
+            className="mono"
+            aria-label={
+              walletAddress
+                ? `${walletName} connected as ${walletAddress}`
+                : configured
+                  ? `${walletName} not connected`
+                  : `${walletName} demo mode`
+            }
+          >
+            {walletAddress ? shortAddress(walletAddress) : configured ? "Not connected" : "Demo mode"}
+          </strong>
           {configured ? (
             walletAddress && onDisconnect ? (
               <button
