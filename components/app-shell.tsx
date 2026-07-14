@@ -24,7 +24,7 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">
-        Skip to content
+        Skip to main content
       </a>
       <header className="site-header">
         <Link
