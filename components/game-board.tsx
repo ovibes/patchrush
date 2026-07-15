@@ -89,6 +89,8 @@ export function GameBoard({
         className={`patch-board ${loadState === "loading" ? "is-loading" : ""}`}
         role="grid"
         aria-label={`${networkLabel} PatchRush board`}
+        aria-rowcount={BOARD_SIZE}
+        aria-colcount={BOARD_SIZE}
         aria-readonly={!interactive}
         aria-busy={loadState === "loading" || loadState === "refreshing"}
       >
