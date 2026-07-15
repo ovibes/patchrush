@@ -311,7 +311,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           <h1 id="arena-title">{isToday ? "Today's arena" : "Round history"}</h1>
           <p>Choose a patch, see its score before you move, and make today count.</p>
         </div>
-        <div className="network-switcher" aria-label="Choose network">
+        <nav className="network-switcher" aria-label="Choose network">
           <Link
             href="/celo"
             aria-current={network === "celo" ? "page" : undefined}
@@ -328,7 +328,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           >
             Stacks
           </Link>
-        </div>
+        </nav>
       </section>
 
       <section className="round-bar" aria-label="Round navigation">
