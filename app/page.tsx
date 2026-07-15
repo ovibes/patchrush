@@ -7,9 +7,9 @@ import { getCeloChainLabel, publicEnv } from "@/lib/env";
 import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 
 export const metadata: Metadata = {
-  title: "Daily On-Chain Territory Game",
+  title: "Preview Today's Board",
   description:
-    "Claim territory, build your score, and return tomorrow in PatchRush's daily on-chain board game for Celo and Stacks.",
+    "See today's PatchRush board, learn the rules, and jump into the live or demo arena on Celo or Stacks.",
   other: publicEnv.talentProjectVerification
     ? { "talentapp:project_verification": publicEnv.talentProjectVerification }
     : undefined
