@@ -86,7 +86,7 @@ export default function HomePage() {
             <span className="step-icon"><Grid3X3 aria-hidden="true" /></span>
             <span className="step-number">01</span>
             <h3>Choose an open patch</h3>
-            <p>Select any open square. PatchRush shows its expected score before you commit.</p>
+            <p>Select any open patch. PatchRush shows its expected score before you commit.</p>
           </article>
           <article>
             <span className="step-icon"><Sparkles aria-hidden="true" /></span>
