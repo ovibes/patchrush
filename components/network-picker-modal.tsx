@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ArrowRight, Gamepad2, Smartphone, Wallet, X } from "lucide-react";
 import { AccessibleDialog } from "./accessible-dialog";
 
@@ -19,7 +19,9 @@ export function NetworkPickerModal({
   stacksReady
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
-  const dialogId = "network-picker-dialog";
+  const dialogId = useId();
+  const titleId = `${dialogId}-title`;
+  const descriptionId = `${dialogId}-description`;
 
   return (
     <>
@@ -42,8 +44,8 @@ export function NetworkPickerModal({
         id={dialogId}
         open={open}
         onClose={() => setOpen(false)}
-        labelledBy="network-picker-title"
-        describedBy="network-picker-description"
+        labelledBy={titleId}
+        describedBy={descriptionId}
         className="network-dialog"
       >
         <header className="dialog-heading">
@@ -59,8 +61,8 @@ export function NetworkPickerModal({
             <X aria-hidden="true" />
           </button>
         </header>
-        <h2 id="network-picker-title">Pick your network</h2>
-        <p id="network-picker-description">
+        <h2 id={titleId}>Pick your network</h2>
+        <p id={descriptionId}>
           The game is identical on both networks. Choose the wallet already on your device, or open a demo board first.
         </p>
 
