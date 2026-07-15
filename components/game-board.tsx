@@ -139,6 +139,8 @@ export function GameBoard({
                 cellRefs.current[cell.index] = node;
               }}
               style={style}
+              aria-rowindex={cell.y + 1}
+              aria-colindex={cell.x + 1}
               aria-selected={selected}
               aria-label={cellLabel}
               title={cellLabel}
