@@ -64,9 +64,13 @@ export default function HomePage() {
             selectedIndex={14}
             networkLabel="Today's board preview"
           />
-          <div className="score-equation" aria-label="Selected patch scores 16 points">
-            <span>Smart placement</span>
-            <div><strong>10</strong><small>base</small><b>+</b><strong>2×3</strong><small>neighbors</small><b>=</b><strong>16</strong><small>points</small></div>
+          <div
+            className="score-equation"
+            role="img"
+            aria-label="Example scoring: a selected patch earns 16 points from a base 10 plus 2 times 3 occupied neighboring patches."
+          >
+            <span aria-hidden="true">Smart placement</span>
+            <div aria-hidden="true"><strong>10</strong><small>base</small><b>+</b><strong>2×3</strong><small>neighbors</small><b>=</b><strong>16</strong><small>points</small></div>
           </div>
         </div>
       </section>
