@@ -511,7 +511,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         </div>
       </section>
 
-      <main className="arena-layout">
+      <div className="arena-layout">
         <GameBoard
           cells={cells}
           selectedIndex={selectedIndex}
@@ -529,7 +529,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             {inspectorContent}
           </aside>
         ) : null}
-      </main>
+      </div>
 
       {mobileInspector && selectedCell ? (
         <AccessibleDialog

@@ -29,7 +29,7 @@ export default function HomePage() {
   const stacksArenaCta = `Open ${stacksReady ? "live" : "demo"} Stacks arena`;
 
   return (
-    <main className="landing-page">
+    <div className="landing-page">
       <section className="hero-section" aria-labelledby="home-title">
         <div className="hero-copy">
           <span className="eyebrow">
@@ -154,6 +154,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
