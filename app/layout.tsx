@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     "wallet game"
   ],
   applicationName: "PatchRush",
+  appleWebApp: {
+    capable: true,
+    title: "PatchRush",
+    statusBarStyle: "black-translucent"
+  },
   icons: {
     icon: [
       {
