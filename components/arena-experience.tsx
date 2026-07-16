@@ -134,6 +134,11 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       ? `Refreshing the ${networkLabel} board`
       : `Refresh the ${networkLabel} board`;
   const retryBoardLabel = `Retry loading the ${networkLabel} board`;
+  const nextRoundId = Math.min(todayRoundId, shiftRoundId(roundId, 1));
+  const nextRoundLabel =
+    roundId >= todayRoundId
+      ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
+      : `View round ${formatRoundId(nextRoundId)}`;
   const predictedScore = selectedCell
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;
@@ -368,17 +373,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             type="button"
             className="secondary-button icon-only-mobile"
             disabled={roundId >= todayRoundId}
-            aria-label={
-              roundId >= todayRoundId
-                ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
-                : `View the round after ${formatRoundId(roundId)}`
-            }
-            title={
-              roundId >= todayRoundId
-                ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
-                : `View the round after ${formatRoundId(roundId)}`
-            }
-            onClick={() => onRoundChange(Math.min(todayRoundId, shiftRoundId(roundId, 1)))}
+            aria-label={nextRoundLabel}
+            title={nextRoundLabel}
+            onClick={() => onRoundChange(nextRoundId)}
           >
             Next <ChevronRight aria-hidden="true" />
           </button>
