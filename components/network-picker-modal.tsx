@@ -32,7 +32,7 @@ export function NetworkPickerModal({
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
-        title="Choose a network for today's round"
+        title="Choose a network to play today's round"
         onClick={() => setOpen(true)}
       >
         <Gamepad2 aria-hidden="true" />
