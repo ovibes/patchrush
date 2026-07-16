@@ -10,7 +10,7 @@ patches on a daily 6x6 board, score adjacency bonuses, and boost claimed patches
 - `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`
 
 The app has no database, no auth, and no indexer. It reads board state directly
-from the contracts, with sample cells shown until live contract values are set.
+from the contracts, with sample patches shown until live contract values are set.
 
 ## Quick Start
 
