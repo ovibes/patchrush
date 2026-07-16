@@ -315,16 +315,20 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           <Link
             href="/celo"
             aria-current={network === "celo" ? "page" : undefined}
-            aria-label="Switch to the Celo arena"
-            title="Switch to the Celo arena"
+            aria-label={network === "celo" ? "Viewing the Celo arena" : "Switch to the Celo arena"}
+            title={network === "celo" ? "Viewing the Celo arena" : "Switch to the Celo arena"}
           >
             Celo
           </Link>
           <Link
             href="/stacks"
             aria-current={network === "stacks" ? "page" : undefined}
-            aria-label="Switch to the Stacks arena"
-            title="Switch to the Stacks arena"
+            aria-label={
+              network === "stacks" ? "Viewing the Stacks arena" : "Switch to the Stacks arena"
+            }
+            title={
+              network === "stacks" ? "Viewing the Stacks arena" : "Switch to the Stacks arena"
+            }
           >
             Stacks
           </Link>
