@@ -43,16 +43,16 @@ export function CellActionModal({
     : claimed
       ? pending
         ? "Boosting"
-        : "Boost cell"
+        : "Boost patch"
       : pending
         ? "Claiming"
-        : "Claim cell";
+        : "Claim patch";
   const actionGlyph = !walletConnected ? "CON" : claimed ? "BST" : "CLM";
   const actionHelp = !walletConnected
     ? `Connect ${walletLabel} to continue. No transaction is sent yet.`
     : claimed
-      ? "Boost this claimed cell once from your wallet."
-      : "Claim this open cell with your selected color.";
+      ? "Boost this claimed patch once from your wallet."
+      : "Claim this open patch with your selected color.";
   const actionButtonLabel = !walletConnected
     ? `Connect ${walletLabel} to act on row ${row}, column ${column}`
     : claimed
@@ -96,7 +96,7 @@ export function CellActionModal({
         </div>
 
         <h2 id="cell-action-title">Row {row}, column {column}</h2>
-        <p id="cell-action-summary">{claimed ? "Claimed cell selected." : "Open cell selected."}</p>
+        <p id="cell-action-summary">{claimed ? "Claimed patch selected." : "Open patch selected."}</p>
 
         <dl className="modal-data-grid">
           <div>
@@ -116,7 +116,7 @@ export function CellActionModal({
             </>
           ) : (
             <div>
-              <dt>Claim color</dt>
+              <dt>Patch color</dt>
               <dd className="modal-color-value">
                 <span style={{ backgroundColor: colorToHex(color) }} aria-hidden="true" />
                 {colorToHex(color)}
