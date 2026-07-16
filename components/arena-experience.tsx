@@ -139,6 +139,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     roundId >= todayRoundId
       ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
       : `View round ${formatRoundId(nextRoundId)}`;
+  const introDescription = isToday
+    ? "Choose a patch, see its score before you move, and make today count."
+    : "Review past rounds, compare placements, and return to today's arena when you're ready to play.";
   const predictedScore = selectedCell
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;
@@ -314,7 +317,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         <div className="play-intro-copy">
           <span className="eyebrow">{networkLabel} · {networkDetail}</span>
           <h1 id="arena-title">{isToday ? "Today's arena" : "Round history"}</h1>
-          <p>Choose a patch, see its score before you move, and make today count.</p>
+          <p>{introDescription}</p>
         </div>
         <nav className="network-switcher" aria-label="Choose network">
           <Link
