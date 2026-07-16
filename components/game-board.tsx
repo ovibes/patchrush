@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Check, Plus } from "lucide-react";
 import {
   BOARD_SIZE,
@@ -37,6 +37,7 @@ export function GameBoard({
   loadState = "ready"
 }: GameBoardProps) {
   const stats = getBoardStats(cells);
+  const instructionsId = useId();
   const [focusIndex, setFocusIndex] = useState(selectedIndex ?? 0);
   const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const interactive = Boolean(onSelect);
@@ -89,6 +90,7 @@ export function GameBoard({
         className={`patch-board ${loadState === "loading" ? "is-loading" : ""}`}
         role="grid"
         aria-label={`${networkLabel} PatchRush board`}
+        aria-describedby={interactive ? instructionsId : undefined}
         aria-rowcount={BOARD_SIZE}
         aria-colcount={BOARD_SIZE}
         aria-readonly={!interactive}
@@ -178,6 +180,12 @@ export function GameBoard({
           </div>
         ) : null}
       </div>
+      {interactive ? (
+        <p id={instructionsId} className="sr-only">
+          Use arrow keys to move between patches, then press Enter or Space to select the
+          focused patch.
+        </p>
+      ) : null}
     </section>
   );
 }
