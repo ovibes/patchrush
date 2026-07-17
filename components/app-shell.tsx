@@ -21,7 +21,7 @@ export function AppShell({ children }: AppShellProps) {
   const playHref = pathname.startsWith("/stacks") ? "/stacks" : "/celo";
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
   const playLinkLabel =
-    pathname === playHref ? `Viewing ${playLabel} arena` : `Play on ${playLabel}`;
+    pathname === playHref ? `Viewing ${playLabel} arena` : `Open ${playLabel} arena`;
 
   return (
     <div className="app-shell">
