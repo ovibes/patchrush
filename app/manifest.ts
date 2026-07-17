@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "PatchRush",
     short_name: "PatchRush",
     description:
-      "A tiny daily on-chain territory game for Celo and Stacks.",
+      "Claim patches, score adjacent bonuses, and boost your territory in a daily on-chain arena for Celo and Stacks.",
     start_url: "/",
     scope: "/",
     display: "standalone",
