@@ -61,5 +61,5 @@ npm test
 ```
 
 For production launch, save the Celo deployment receipt, the Stacks deployment
-receipt, one live Celo claim/boost receipt, and one live Stacks claim/boost
-receipt.
+receipt, one live Celo claim receipt, one live Celo boost receipt, one live
+Stacks claim receipt, and one live Stacks boost receipt.
