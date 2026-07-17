@@ -34,7 +34,7 @@ export default function HomePage() {
         <div className="hero-copy">
           <span className="eyebrow">
             <Sparkles aria-hidden="true" /> A fresh arena every day at{" "}
-            <time dateTime="00:00Z">00:00 UTC</time>
+            <time dateTime="00:00">00:00 UTC</time>
           </span>
           <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
