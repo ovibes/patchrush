@@ -20,8 +20,10 @@ export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const playHref = pathname.startsWith("/stacks") ? "/stacks" : "/celo";
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
-  const playLinkLabel =
-    pathname === playHref ? `Viewing ${playLabel} arena` : `Open ${playLabel} arena`;
+  const viewingArena = pathname === playHref;
+  const playLinkLabel = viewingArena
+    ? `Current page: ${playLabel} arena`
+    : `Open ${playLabel} arena`;
 
   return (
     <div className="app-shell">
@@ -63,10 +65,11 @@ export function AppShell({ children }: AppShellProps) {
         <Link
           className="header-play-link"
           href={playHref}
+          aria-current={viewingArena ? "page" : undefined}
           aria-label={playLinkLabel}
           title={playLinkLabel}
         >
-          {playLinkLabel} <ArrowUpRight aria-hidden="true" />
+          {viewingArena ? `${playLabel} arena` : playLinkLabel} <ArrowUpRight aria-hidden="true" />
         </Link>
       </header>
 
