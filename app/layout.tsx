@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   keywords: [
     "PatchRush",
     "on-chain game",
-    "daily board game",
+    "daily arena game",
     "Celo game",
     "Stacks game",
     "territory game",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "PatchRush daily on-chain territory game preview"
+        alt: "PatchRush daily on-chain territory arena preview"
       }
     ]
   },
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og.png",
-        alt: "PatchRush daily on-chain territory game preview"
+        alt: "PatchRush daily on-chain territory arena preview"
       }
     ]
   }
