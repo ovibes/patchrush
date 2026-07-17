@@ -84,13 +84,13 @@ export function AppShell({ children }: AppShellProps) {
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
           <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
-            Play on Celo
+            Open Celo arena
           </Link>
           <Link
             href="/stacks"
             aria-current={pathname.startsWith("/stacks") ? "page" : undefined}
           >
-            Play on Stacks
+            Open Stacks arena
           </Link>
         </nav>
       </footer>
