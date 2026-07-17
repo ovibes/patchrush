@@ -33,12 +33,12 @@ export default function HomePage() {
       <section className="hero-section" aria-labelledby="home-title">
         <div className="hero-copy">
           <span className="eyebrow">
-            <Sparkles aria-hidden="true" /> A fresh board every day at{" "}
+            <Sparkles aria-hidden="true" /> A fresh arena every day at{" "}
             <time dateTime="00:00Z">00:00 UTC</time>
           </span>
           <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
-            Pick a patch, earn more for smart placement, and shape a shared 6×6 board—one
+            Pick a patch, earn more for smart placement, and shape a shared 6×6 arena—one
             quick on-chain move at a time.
           </p>
           <div className="hero-actions">
@@ -108,8 +108,8 @@ export default function HomePage() {
           <span className="eyebrow"><CalendarClock aria-hidden="true" /> Made for a daily ritual</span>
           <h2 id="daily-title">Today matters.<br />Tomorrow resets.</h2>
           <p>
-            You get three claims each UTC round. Browse earlier boards whenever you like;
-            only today&apos;s board accepts new moves.
+            You get three claims each UTC round. Browse earlier arenas whenever you like;
+            only today&apos;s arena accepts new moves.
           </p>
         </div>
         <div className="daily-card">
@@ -131,7 +131,7 @@ export default function HomePage() {
       <section className="network-explainer" aria-labelledby="network-title">
         <header className="section-heading compact">
           <span className="eyebrow">Your network, your choice</span>
-          <h2 id="network-title">Same board rules.<br />Use the wallet you know.</h2>
+          <h2 id="network-title">Same arena rules.<br />Use the wallet you know.</h2>
         </header>
         <div className="network-summary-grid">
           <Link
