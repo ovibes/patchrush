@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | PatchRush"
   },
   description:
-    "Claim territory, build your score, and return tomorrow in a daily on-chain board game for Celo and Stacks.",
+    "Claim territory, build your score, and return tomorrow in a daily on-chain arena for Celo and Stacks.",
   keywords: [
     "PatchRush",
     "on-chain game",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PatchRush",
     description:
-      "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
+      "Claim territory. Build your score. Return tomorrow. Play the daily arena on Celo or Stacks.",
     url: "/",
     siteName: "PatchRush",
     type: "website",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PatchRush",
     description:
-      "Claim territory. Build your score. Return tomorrow. Play the daily board on Celo or Stacks.",
+      "Claim territory. Build your score. Return tomorrow. Play the daily arena on Celo or Stacks.",
     images: [
       {
         url: "/og.png",
