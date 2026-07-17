@@ -42,6 +42,8 @@ export function GameBoard({
   const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const interactive = Boolean(onSelect);
   const boardHeading = interactive ? "Arena grid" : "Board preview";
+  const sectionLabel = interactive ? `${networkLabel} arena` : `${networkLabel} board preview`;
+  const gridLabel = interactive ? `${networkLabel} PatchRush arena grid` : `${networkLabel} PatchRush board preview`;
 
   const moveFocus = (nextIndex: number) => {
     const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));
@@ -69,7 +71,7 @@ export function GameBoard({
   };
 
   return (
-    <section className="board-card" aria-label={`${networkLabel} board`}>
+    <section className="board-card" aria-label={sectionLabel}>
       <header className="board-card-header">
         <div>
           <span className="eyebrow">{networkLabel}</span>
@@ -89,7 +91,7 @@ export function GameBoard({
       <div
         className={`patch-board ${loadState === "loading" ? "is-loading" : ""}`}
         role="grid"
-        aria-label={`${networkLabel} PatchRush board`}
+        aria-label={gridLabel}
         aria-describedby={interactive ? instructionsId : undefined}
         aria-rowcount={BOARD_SIZE}
         aria-colcount={BOARD_SIZE}
