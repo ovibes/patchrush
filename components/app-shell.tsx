@@ -78,7 +78,7 @@ export function AppShell({ children }: AppShellProps) {
         <div>
           <strong>PatchRush</strong>
           <span>
-            One board. Three claims. A fresh round starts at{" "}
+            One arena. Three claims. A fresh round starts at{" "}
             <time dateTime="00:00Z">00:00 UTC</time>.
           </span>
         </div>
