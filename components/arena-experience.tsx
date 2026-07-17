@@ -127,13 +127,13 @@ export function ArenaExperience(props: ArenaExperienceProps) {
   const boardStats = getBoardStats(cells);
   const isToday = roundId === todayRoundId;
   const isBusy = busyPhases.has(transaction.phase);
-  const modeLabel = configured ? "Live board" : "Demo board";
+  const modeLabel = configured ? "Live arena" : "Demo arena";
   const receiptLinkLabel = `View the ${networkLabel} transaction receipt in a new tab`;
   const refreshBoardLabel =
     loadState === "refreshing"
-      ? `Refreshing the ${networkLabel} board`
-      : `Refresh the ${networkLabel} board`;
-  const retryBoardLabel = `Retry loading the ${networkLabel} board`;
+      ? `Refreshing the ${networkLabel} arena`
+      : `Refresh the ${networkLabel} arena`;
+  const retryBoardLabel = `Retry loading the ${networkLabel} arena`;
   const nextRoundId = Math.min(todayRoundId, shiftRoundId(roundId, 1));
   const nextRoundLabel =
     roundId >= todayRoundId
@@ -189,7 +189,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     } else if (!isToday) {
       actionLabel = "History is view-only";
       actionDisabled = true;
-      actionHelp = "Return to today's board to claim or boost patches.";
+      actionHelp = "Return to today's arena to claim or boost patches.";
     } else if (!walletAddress) {
       actionLabel = `Connect ${walletName}`;
       actionHandler = onConnect;
@@ -388,7 +388,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       {!isToday ? (
         <div className="info-banner" role="status">
           <CalendarDays aria-hidden="true" />
-          <span>This round is part of history. Claims and boosts are available only on today&apos;s board.</span>
+          <span>This round is part of history. Claims and boosts are available only on today&apos;s arena.</span>
         </div>
       ) : null}
 
@@ -402,7 +402,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             title={retryBoardLabel}
             onClick={() => void onRefresh()}
           >
-            Reload board
+            Reload arena
           </button>
         </div>
       ) : null}
@@ -433,7 +433,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         </div>
       ) : null}
 
-      <section className="player-hud" aria-label="Player and board summary">
+      <section className="player-hud" aria-label="Player and arena summary">
         <div className="hud-card wallet-hud">
           <span><Wallet aria-hidden="true" /> {walletName}</span>
           <strong
@@ -552,7 +552,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         <div>
           <p>Every claim starts at 10 points and adds 3 for each occupied patch directly above, below, left, or right.</p>
           <p>Each wallet gets three claims per UTC round and can boost each claimed patch once.</p>
-          <p>{configured ? `This is the live ${networkLabel} board.` : `This is a preview until the ${networkLabel} contract is configured.`}</p>
+          <p>{configured ? `This is the live ${networkLabel} arena.` : `This is a preview arena until the ${networkLabel} contract is configured.`}</p>
         </div>
       </details>
     </div>
