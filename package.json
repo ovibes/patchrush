@@ -4,6 +4,21 @@
   "description": "A tiny dual-network on-chain territory game for Celo and Stacks.",
   "private": true,
   "type": "module",
+  "homepage": "https://github.com/ovibes/patchrush#readme",
+  "bugs": {
+    "url": "https://github.com/ovibes/patchrush/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovibes/patchrush.git"
+  },
+  "keywords": [
+    "celo",
+    "stacks",
+    "nextjs",
+    "web3",
+    "game"
+  ],
   "engines": {
     "node": ">=22.13.0"
   },
