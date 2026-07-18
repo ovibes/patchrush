@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | PatchRush"
   },
   description:
-    "Claim territory, build your score, and return tomorrow in a daily on-chain arena for Celo and Stacks.",
+    "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
   keywords: [
     "PatchRush",
     "on-chain game",
