@@ -580,6 +580,10 @@ summary:focus-visible,
   line-height: 1.62;
 }
 
+#network-title {
+  scroll-margin-top: 108px;
+}
+
 .mechanics-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
