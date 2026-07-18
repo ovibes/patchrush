@@ -38,8 +38,8 @@ export default function HomePage() {
           </span>
           <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
-            Pick a patch, earn more for smart placement, and shape a shared 6×6 arena—one
-            quick on-chain move at a time.
+            Pick a patch, earn more for smart placement, and shape a shared 6×6 arena one
+            quick move at a time, whether you start in demo mode or jump into the live round.
           </p>
           <div className="hero-actions">
             <NetworkPickerModal
