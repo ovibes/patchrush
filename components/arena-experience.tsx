@@ -476,7 +476,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             aria-label={
               walletAddress
                 ? `${playerStats.claimsRemaining} of 3 claims remaining`
-                : "Claims remaining unavailable until wallet connects"
+                : configured
+                  ? "Claims remaining unavailable until wallet connects"
+                  : "Claims remaining unavailable in demo mode"
             }
           >
             {walletAddress ? playerStats.claimsRemaining : "—"}
@@ -489,7 +491,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
             aria-label={
               walletAddress
                 ? `${playerStats.score} points`
-                : "Score unavailable until wallet connects"
+                : configured
+                  ? "Score unavailable until wallet connects"
+                  : "Score unavailable in demo mode"
             }
           >
             {walletAddress ? playerStats.score : "—"}
