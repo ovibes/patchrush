@@ -22,21 +22,26 @@ export function NetworkPickerModal({
   const dialogId = useId();
   const titleId = `${dialogId}-title`;
   const descriptionId = `${dialogId}-description`;
+  const hasLiveNetwork = celoReady || stacksReady;
+  const triggerLabel = hasLiveNetwork
+    ? "Choose a network to play today's round"
+    : "Choose a network to preview today's round";
+  const triggerText = hasLiveNetwork ? "Play today's round" : "Preview today's round";
 
   return (
     <>
       <button
         type="button"
         className="primary-button hero-cta"
-        aria-label="Choose a network to play today's round"
+        aria-label={triggerLabel}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
-        title="Choose a network to play today's round"
+        title={triggerLabel}
         onClick={() => setOpen(true)}
       >
         <Gamepad2 aria-hidden="true" />
-        Play today&apos;s round
+        {triggerText}
         <ArrowRight aria-hidden="true" />
       </button>
 
