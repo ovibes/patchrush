@@ -24,9 +24,9 @@ export function NetworkPickerModal({
   const descriptionId = `${dialogId}-description`;
   const hasLiveNetwork = celoReady || stacksReady;
   const triggerLabel = hasLiveNetwork
-    ? "Choose a network to play today's round"
-    : "Choose a network to preview today's round";
-  const triggerText = hasLiveNetwork ? "Play today's round" : "Preview today's round";
+    ? "Choose today's arena"
+    : "Preview today's arena";
+  const triggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
 
   return (
     <>
@@ -66,9 +66,10 @@ export function NetworkPickerModal({
             <X aria-hidden="true" />
           </button>
         </header>
-        <h2 id={titleId}>Pick your network</h2>
+        <h2 id={titleId}>{hasLiveNetwork ? "Choose today's arena" : "Preview today's arena"}</h2>
         <p id={descriptionId}>
-          The game is identical on both networks. Choose the wallet already on your device, or open a demo arena first.
+          The game is identical on both networks. Choose the wallet already on your
+          device, or open a demo arena first.
         </p>
 
         <div className="network-choice-grid">
