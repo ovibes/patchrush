@@ -18,12 +18,16 @@ const routes = [
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
+  const onHomePage = pathname === "/";
   const playHref = pathname.startsWith("/stacks") ? "/stacks" : "/celo";
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
   const viewingArena = pathname === playHref;
-  const playLinkLabel = viewingArena
-    ? `Current page: ${playLabel} arena`
-    : `Open ${playLabel} arena`;
+  const playLinkHref = onHomePage ? "/#network-title" : playHref;
+  const playLinkLabel = onHomePage
+    ? "Choose a network"
+    : viewingArena
+      ? `Current page: ${playLabel} arena`
+      : `Open ${playLabel} arena`;
 
   return (
     <div className="app-shell">
@@ -64,8 +68,8 @@ export function AppShell({ children }: AppShellProps) {
 
         <Link
           className="header-play-link"
-          href={playHref}
-          aria-current={viewingArena ? "page" : undefined}
+          href={playLinkHref}
+          aria-current={!onHomePage && viewingArena ? "page" : undefined}
           aria-label={playLinkLabel}
           title={playLinkLabel}
         >
