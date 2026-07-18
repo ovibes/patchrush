@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "PatchRush",
+    title: "Choose Today's Arena | PatchRush",
     description:
-      "Claim territory. Build your score. Return tomorrow. Play the daily arena on Celo or Stacks.",
+      "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
     url: "/",
     siteName: "PatchRush",
     type: "website",
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PatchRush",
+    title: "Choose Today's Arena | PatchRush",
     description:
-      "Claim territory. Build your score. Return tomorrow. Play the daily arena on Celo or Stacks.",
+      "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
     images: [
       {
         url: "/og.png",
