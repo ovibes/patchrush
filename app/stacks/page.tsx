@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { StacksConsole } from "@/components/stacks-console";
 
 export const metadata: Metadata = {
-  title: "Play on Stacks",
+  title: "Play Today's Stacks Arena",
   description:
-    "Preview today's PatchRush arena on Stacks, then claim and boost patches with Stacks Connect when the live arena is available."
+    "Preview today's PatchRush arena on Stacks, then jump into the live or demo round with Leather, Xverse, or another Stacks wallet."
 };
 
 export default function StacksPage() {
