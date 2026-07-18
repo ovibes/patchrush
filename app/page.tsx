@@ -7,9 +7,9 @@ import { getCeloChainLabel, publicEnv } from "@/lib/env";
 import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 
 export const metadata: Metadata = {
-  title: "Preview Today's Arena",
+  title: "Choose Today's Arena",
   description:
-    "See today's PatchRush arena, learn the rules, and jump into the live or demo arena on Celo or Stacks.",
+    "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
   other: publicEnv.talentProjectVerification
     ? { "talentapp:project_verification": publicEnv.talentProjectVerification }
     : undefined
