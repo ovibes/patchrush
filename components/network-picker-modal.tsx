@@ -27,6 +27,9 @@ export function NetworkPickerModal({
     ? "Choose today's arena"
     : "Preview today's arena";
   const triggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
+  const descriptionText = hasLiveNetwork
+    ? "The game is identical on both networks. Choose the wallet already on your device, or open a demo arena first."
+    : "The game is identical on both networks. Start in demo mode with the wallet path that best fits your device.";
 
   return (
     <>
@@ -67,10 +70,7 @@ export function NetworkPickerModal({
           </button>
         </header>
         <h2 id={titleId}>{hasLiveNetwork ? "Choose today's arena" : "Preview today's arena"}</h2>
-        <p id={descriptionId}>
-          The game is identical on both networks. Choose the wallet already on your
-          device, or open a demo arena first.
-        </p>
+        <p id={descriptionId}>{descriptionText}</p>
 
         <div className="network-choice-grid">
           <Link
