@@ -38,6 +38,7 @@ export function GameBoard({
 }: GameBoardProps) {
   const stats = getBoardStats(cells);
   const instructionsId = useId();
+  const previewSummaryId = useId();
   const [focusIndex, setFocusIndex] = useState(selectedIndex ?? 0);
   const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const interactive = Boolean(onSelect);
@@ -92,7 +93,7 @@ export function GameBoard({
         className={`patch-board ${loadState === "loading" ? "is-loading" : ""}`}
         role="grid"
         aria-label={gridLabel}
-        aria-describedby={interactive ? instructionsId : undefined}
+        aria-describedby={interactive ? instructionsId : previewSummaryId}
         aria-rowcount={BOARD_SIZE}
         aria-colcount={BOARD_SIZE}
         aria-readonly={!interactive}
@@ -187,7 +188,12 @@ export function GameBoard({
           Use arrow keys to move between patches, then press Enter or Space to select the
           focused patch.
         </p>
-      ) : null}
+      ) : (
+        <p id={previewSummaryId} className="sr-only">
+          Preview only. {stats.claimed} of 36 patches are already claimed in this sample
+          board. Open patches show their estimated claim score.
+        </p>
+      )}
     </section>
   );
 }
