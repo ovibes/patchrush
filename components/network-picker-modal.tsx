@@ -30,6 +30,12 @@ export function NetworkPickerModal({
   const descriptionText = hasLiveNetwork
     ? "The game is identical on both networks. Choose the wallet already on your device, or open a demo arena first."
     : "The game is identical on both networks. Start in demo mode with the wallet path that best fits your device.";
+  const celoChoiceText = celoReady
+    ? "Best with MiniPay or a Celo-compatible wallet"
+    : "Preview first, then connect a Celo-compatible wallet when live";
+  const stacksChoiceText = stacksReady
+    ? "Use Leather, Xverse, or another Stacks Connect wallet"
+    : "Preview first, then connect a Stacks wallet when live";
 
   return (
     <>
@@ -82,7 +88,7 @@ export function NetworkPickerModal({
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
-            <small>Best with MiniPay or a Celo-compatible wallet</small>
+            <small>{celoChoiceText}</small>
             <span className="choice-meta">{celoNetworkLabel}<ArrowRight aria-hidden="true" /></span>
           </Link>
           <Link
@@ -94,7 +100,7 @@ export function NetworkPickerModal({
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
-            <small>Use Leather, Xverse, or another Stacks Connect wallet</small>
+            <small>{stacksChoiceText}</small>
             <span className="choice-meta">{stacksNetworkLabel}<ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
