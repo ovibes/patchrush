@@ -15,6 +15,20 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en",
     dir: "ltr",
     categories: ["games", "entertainment", "social"],
+    shortcuts: [
+      {
+        name: "Open Celo arena",
+        short_name: "Celo arena",
+        description: "Jump straight to the Celo PatchRush arena.",
+        url: "/celo"
+      },
+      {
+        name: "Open Stacks arena",
+        short_name: "Stacks arena",
+        description: "Jump straight to the Stacks PatchRush arena.",
+        url: "/stacks"
+      }
+    ],
     icons: [
       {
         src: "/icon-192.png",
