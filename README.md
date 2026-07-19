@@ -24,6 +24,10 @@ cp .env.example .env
 npm run dev
 ```
 
+With the default `.env.example` values, PatchRush runs in demo mode locally. Add the
+`NEXT_PUBLIC_PATCHRUSH_*` contract values only when you want the app to read live
+on-chain state.
+
 Local routes:
 
 - `http://localhost:3000`
