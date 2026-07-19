@@ -79,7 +79,7 @@ export default function HomePage() {
         <header className="section-heading">
           <span className="eyebrow">The whole game in 30 seconds</span>
           <h2 id="how-title">Simple to start.<br />Rewarding to place well.</h2>
-          <p>Every move is clear before your wallet asks you to approve it.</p>
+          <p>Every move is clear before you preview it in demo mode or approve it live from your wallet.</p>
         </header>
         <div className="mechanics-grid">
           <article>
