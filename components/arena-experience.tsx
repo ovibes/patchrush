@@ -165,7 +165,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
           </div>
           <div className="mini-rule">
             <strong>+3</strong>
-            <span>per adjacent patch</span>
+            <span>per edge-touching claimed patch</span>
           </div>
         </div>
       );
@@ -250,7 +250,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
               <span>Estimated score</span>
               <strong>{predictedScore}</strong>
               <small>
-                {BASE_SCORE} base + {occupiedNeighbors} × {NEIGHBOR_BONUS} adjacent
+                {BASE_SCORE} base + {occupiedNeighbors} × {NEIGHBOR_BONUS} edge-touching
               </small>
             </div>
             <fieldset className="color-picker">
