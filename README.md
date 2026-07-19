@@ -6,8 +6,8 @@ patches on a daily 6x6 board, score +3 for each adjacent patch, and boost claime
 ## Product
 
 - `/`: board preview, rules, and network entry points
-- `/celo`: MiniPay-ready Celo flow backed by `PatchRushArena.sol`
-- `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`
+- `/celo`: MiniPay-ready Celo flow backed by `PatchRushArena.sol`, with a demo fallback until live values are configured
+- `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`, with a demo fallback until live values are configured
 
 The app has no database, no auth, and no indexer. It reads board state directly
 from the contracts, with sample patches shown until live contract values are set.
