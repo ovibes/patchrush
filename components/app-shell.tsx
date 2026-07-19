@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { publicEnv } from "@/lib/env";
 
 type AppShellProps = {
   children: ReactNode;
@@ -19,6 +20,10 @@ const routes = [
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const onHomePage = pathname === "/";
+  const celoReady = Boolean(publicEnv.celoContractAddress);
+  const stacksReady = Boolean(
+    publicEnv.stacksContractAddress && publicEnv.stacksContractName
+  );
   const playHref = pathname.startsWith("/stacks") ? "/stacks" : "/celo";
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
   const viewingArena = pathname === playHref;
@@ -28,6 +33,10 @@ export function AppShell({ children }: AppShellProps) {
     : viewingArena
       ? `Current page: ${playLabel} arena`
       : `Open ${playLabel} arena`;
+  const celoFooterLabel = celoReady ? "Open live Celo arena" : "Preview Celo arena";
+  const stacksFooterLabel = stacksReady
+    ? "Open live Stacks arena"
+    : "Preview Stacks arena";
 
   return (
     <div className="app-shell">
@@ -91,13 +100,13 @@ export function AppShell({ children }: AppShellProps) {
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
           <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
-            Open Celo arena
+            {celoFooterLabel}
           </Link>
           <Link
             href="/stacks"
             aria-current={pathname.startsWith("/stacks") ? "page" : undefined}
           >
-            Open Stacks arena
+            {stacksFooterLabel}
           </Link>
         </nav>
       </footer>
