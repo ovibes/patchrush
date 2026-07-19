@@ -1,7 +1,8 @@
 # PatchRush
 
 PatchRush is a tiny on-chain territory game for Celo and Stacks. Players claim
-patches on a daily 6x6 board, score +3 for each adjacent patch, and boost claimed patches.
+patches on a daily 6x6 board, start each move at 10 points, score +3 for each
+edge-adjacent claimed patch, and boost claimed patches.
 
 ## Product
 
