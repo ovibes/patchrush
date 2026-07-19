@@ -29,7 +29,7 @@ export function NetworkPickerModal({
   const triggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
   const descriptionText = hasLiveNetwork
     ? "The game is identical on both networks. Choose the wallet already on your device, or open a demo arena first."
-    : "The game is identical on both networks. Start in demo mode with the wallet path that best fits your device.";
+    : "The game is identical on both networks. Start in demo mode and pick the wallet flow that best fits your device.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
     : "Preview first, then connect a Celo-compatible wallet when live";
