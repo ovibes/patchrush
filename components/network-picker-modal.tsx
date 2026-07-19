@@ -36,6 +36,12 @@ export function NetworkPickerModal({
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks Connect wallet"
     : "Preview first, then connect a Stacks wallet when live";
+  const celoLinkLabel = celoReady
+    ? `Open live Celo arena on ${celoNetworkLabel}`
+    : `Preview Celo arena on ${celoNetworkLabel}`;
+  const stacksLinkLabel = stacksReady
+    ? `Open live Stacks arena on ${stacksNetworkLabel}`
+    : `Preview Stacks arena on ${stacksNetworkLabel}`;
 
   return (
     <>
@@ -82,8 +88,8 @@ export function NetworkPickerModal({
           <Link
             className="network-choice is-celo"
             href="/celo"
-            aria-label={`Open ${celoReady ? "live" : "demo"} Celo arena on ${celoNetworkLabel}`}
-            title={`Open ${celoReady ? "live" : "demo"} Celo arena on ${celoNetworkLabel}`}
+            aria-label={celoLinkLabel}
+            title={celoLinkLabel}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
@@ -94,8 +100,8 @@ export function NetworkPickerModal({
           <Link
             className="network-choice is-stacks"
             href="/stacks"
-            aria-label={`Open ${stacksReady ? "live" : "demo"} Stacks arena on ${stacksNetworkLabel}`}
-            title={`Open ${stacksReady ? "live" : "demo"} Stacks arena on ${stacksNetworkLabel}`}
+            aria-label={stacksLinkLabel}
+            title={stacksLinkLabel}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
