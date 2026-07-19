@@ -23,10 +23,16 @@ export default function HomePage() {
   );
   const stacksNetworkLabel =
     publicEnv.stacksNetwork === "mainnet" ? "Stacks Mainnet" : "Stacks Testnet";
-  const celoArenaLabel = `Open today's ${celoReady ? "live" : "demo"} Celo arena`;
-  const stacksArenaLabel = `Open today's ${stacksReady ? "live" : "demo"} Stacks arena`;
-  const celoArenaCta = `Open today's ${celoReady ? "live" : "demo"} Celo arena`;
-  const stacksArenaCta = `Open today's ${stacksReady ? "live" : "demo"} Stacks arena`;
+  const celoArenaLabel = celoReady
+    ? "Open today's live Celo arena"
+    : "Preview today's Celo arena";
+  const stacksArenaLabel = stacksReady
+    ? "Open today's live Stacks arena"
+    : "Preview today's Stacks arena";
+  const celoArenaCta = celoReady ? "Open today's live Celo arena" : "Preview today's Celo arena";
+  const stacksArenaCta = stacksReady
+    ? "Open today's live Stacks arena"
+    : "Preview today's Stacks arena";
 
   return (
     <div className="landing-page">
