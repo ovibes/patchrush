@@ -159,7 +159,7 @@ export default function HomePage() {
           >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
-            <p>Connect with a Stacks wallet and play the same daily rules.</p>
+            <p>Preview in demo mode or connect a Stacks wallet for the same daily rules.</p>
             <span>{stacksArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
