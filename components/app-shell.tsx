@@ -29,7 +29,7 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#network-title" : playHref;
   const playLinkLabel = onHomePage
-    ? "Choose a network"
+    ? "Choose today's arena"
     : viewingArena
       ? `Current page: ${playLabel} arena`
       : `Open ${playLabel} arena`;
