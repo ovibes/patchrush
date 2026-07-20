@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { NetworkPickerModal } from "@/components/network-picker-modal";
 
 describe("NetworkPickerModal", () => {
-  it("opens accessibly, closes with Escape, and restores focus", async () => {
+  it("opens accessibly, wraps backward focus, closes with Escape, and restores focus", async () => {
     const user = userEvent.setup();
     render(
       <NetworkPickerModal
@@ -14,13 +14,16 @@ describe("NetworkPickerModal", () => {
         stacksReady={false}
       />
     );
-    const trigger = screen.getByRole("button", { name: /play today's round/i });
+    const trigger = screen.getByRole("button", { name: /choose today's arena/i });
     await user.click(trigger);
 
-    expect(screen.getByRole("dialog", { name: "Pick your network" })).toBeInTheDocument();
+    const dialog = screen.getByRole("dialog", { name: "Choose today's arena" });
+    expect(dialog).toBeInTheDocument();
     await waitFor(() => {
       expect(screen.getByRole("button", { name: /close network picker/i })).toHaveFocus();
     });
+    await user.tab({ shift: true });
+    expect(screen.getByRole("link", { name: /preview stacks arena on stacks mainnet/i })).toHaveFocus();
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
