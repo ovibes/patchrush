@@ -60,7 +60,7 @@ export default function HomePage() {
               celoReady={celoReady}
               stacksReady={stacksReady}
             />
-            <span>No signup. Bring a wallet or open a demo first.</span>
+            <span>No signup required. Bring a wallet or open a demo first.</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
             <li><strong>3</strong> claims per day</li>
