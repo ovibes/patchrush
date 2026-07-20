@@ -21,13 +21,12 @@ Use Node `22.13.0` or newer.
 nvm install 22.13.0
 nvm use 22.13.0
 npm install
-cp .env.example .env
 npm run dev
 ```
 
-With the default `.env.example` values, PatchRush runs in demo mode locally. Add the
-`NEXT_PUBLIC_PATCHRUSH_*` contract values only when you want the app to read live
-on-chain state.
+PatchRush runs in demo mode locally without any env file. Add a local `.env` only
+when you want the app to read live on-chain state through `NEXT_PUBLIC_PATCHRUSH_*`
+values.
 
 Local routes:
 

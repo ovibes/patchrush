@@ -7,8 +7,10 @@ nvm install 22.13.0
 nvm use 22.13.0
 node -v
 npm install
-cp .env.example .env
 ```
+
+Create a local `.env` only before deployment work or live contract checks. The app
+can run in demo mode locally without any env file.
 
 ## Celo Mainnet
 
