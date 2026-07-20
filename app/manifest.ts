@@ -3,10 +3,10 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "PatchRush: Choose Today's Arena",
+    name: "PatchRush Daily Territory Arena",
     short_name: "PatchRush",
     description:
-      "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet flows, and jump into the live or demo arena.",
     start_url: "/",
     scope: "/",
     display: "standalone",

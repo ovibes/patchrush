@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
   ),
   title: {
-    default: "PatchRush",
+    default: "PatchRush Daily Territory Arena",
     template: "%s | PatchRush"
   },
   description:
-    "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
+    "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet flows, and jump into the live or demo arena.",
   keywords: [
     "PatchRush",
     "on-chain game",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Choose Today's Arena | PatchRush",
     description:
-      "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet flows, and jump into the live or demo arena.",
     url: "/",
     siteName: "PatchRush",
     type: "website",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Choose Today's Arena | PatchRush",
     description:
-      "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet flows, and jump into the live or demo arena.",
     images: [
       {
         url: "/og.png",

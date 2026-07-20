@@ -9,7 +9,7 @@ import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 export const metadata: Metadata = {
   title: "Choose Today's Arena",
   description:
-    "Preview today's PatchRush arena, compare Celo and Stacks, and jump into the live or demo network that fits your wallet.",
+    "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
   other: publicEnv.talentProjectVerification
     ? { "talentapp:project_verification": publicEnv.talentProjectVerification }
     : undefined
