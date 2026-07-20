@@ -23,7 +23,9 @@ describe("NetworkPickerModal", () => {
       expect(screen.getByRole("button", { name: /close network picker/i })).toHaveFocus();
     });
     await user.tab({ shift: true });
-    expect(screen.getByRole("link", { name: /preview stacks arena on stacks mainnet/i })).toHaveFocus();
+    expect(
+      screen.getByRole("link", { name: /open stacks demo arena on stacks mainnet/i })
+    ).toHaveFocus();
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();

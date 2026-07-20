@@ -29,14 +29,14 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#network-title" : playHref;
   const playLinkLabel = onHomePage
-    ? "Compare Celo and Stacks"
+    ? "Choose today's arena"
     : viewingArena
       ? `Current page: ${playLabel} arena`
       : `Open ${playLabel} arena`;
-  const celoFooterLabel = celoReady ? "Open live Celo arena" : "Preview Celo arena";
+  const celoFooterLabel = celoReady ? "Open live Celo arena" : "Open Celo demo arena";
   const stacksFooterLabel = stacksReady
     ? "Open live Stacks arena"
-    : "Preview Stacks arena";
+    : "Open Stacks demo arena";
 
   return (
     <div className="app-shell">

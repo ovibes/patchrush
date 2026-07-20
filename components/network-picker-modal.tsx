@@ -32,16 +32,16 @@ export function NetworkPickerModal({
     : "The game is identical on both networks. Start in demo mode and pick the wallet flow that best fits your device.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
-    : "Preview first, then connect a Celo-compatible wallet when live";
+    : "Open the demo now, then connect a Celo-compatible wallet when live";
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks wallet"
-    : "Preview first, then connect a Stacks wallet when live";
+    : "Open the demo now, then connect a Stacks wallet when live";
   const celoLinkLabel = celoReady
     ? `Open live Celo arena on ${celoNetworkLabel}`
-    : `Preview Celo arena on ${celoNetworkLabel}`;
+    : `Open Celo demo arena on ${celoNetworkLabel}`;
   const stacksLinkLabel = stacksReady
     ? `Open live Stacks arena on ${stacksNetworkLabel}`
-    : `Preview Stacks arena on ${stacksNetworkLabel}`;
+    : `Open Stacks demo arena on ${stacksNetworkLabel}`;
 
   return (
     <>

@@ -25,20 +25,20 @@ export default function HomePage() {
     publicEnv.stacksNetwork === "mainnet" ? "Stacks Mainnet" : "Stacks Testnet";
   const celoArenaLabel = celoReady
     ? "Open today's live Celo arena"
-    : "Preview today's Celo arena";
+    : "Open today's Celo demo arena";
   const stacksArenaLabel = stacksReady
     ? "Open today's live Stacks arena"
-    : "Preview today's Stacks arena";
-  const celoArenaCta = celoReady ? "Open today's live Celo arena" : "Preview today's Celo arena";
+    : "Open today's Stacks demo arena";
+  const celoArenaCta = celoReady ? "Open today's live Celo arena" : "Open today's Celo demo arena";
   const stacksArenaCta = stacksReady
     ? "Open today's live Stacks arena"
-    : "Preview today's Stacks arena";
+    : "Open today's Stacks demo arena";
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
-    : "Preview in demo mode or connect a Celo-compatible wallet for quick mobile play.";
+    : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when live.";
   const stacksCardDescription = stacksReady
     ? "Built for Leather, Xverse, and other Stacks wallets."
-    : "Preview in demo mode or connect a Stacks wallet for the same daily rules.";
+    : "Open the demo now, then connect a Stacks wallet for the same daily rules when live.";
 
   return (
     <div className="landing-page">
