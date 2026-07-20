@@ -4,7 +4,7 @@ import { StacksConsole } from "@/components/stacks-console";
 export const metadata: Metadata = {
   title: "Open Today's Stacks Arena",
   description:
-    "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks wallet."
+    "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another compatible wallet."
 };
 
 export default function StacksPage() {

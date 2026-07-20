@@ -37,7 +37,7 @@ export default function HomePage() {
     ? "MiniPay-ready and designed for quick mobile play."
     : "Preview in demo mode or connect a Celo-compatible wallet for quick mobile play.";
   const stacksCardDescription = stacksReady
-    ? "Leather-ready and built for the same daily rules."
+    ? "Built for Leather, Xverse, and other Stacks wallets."
     : "Preview in demo mode or connect a Stacks wallet for the same daily rules.";
 
   return (

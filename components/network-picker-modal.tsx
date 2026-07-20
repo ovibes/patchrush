@@ -34,7 +34,7 @@ export function NetworkPickerModal({
     ? "Best with MiniPay or a Celo-compatible wallet"
     : "Preview first, then connect a Celo-compatible wallet when live";
   const stacksChoiceText = stacksReady
-    ? "Use Leather, Xverse, or another Stacks Connect wallet"
+    ? "Use Leather, Xverse, or another Stacks wallet"
     : "Preview first, then connect a Stacks wallet when live";
   const celoLinkLabel = celoReady
     ? `Open live Celo arena on ${celoNetworkLabel}`
