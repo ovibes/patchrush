@@ -9,12 +9,12 @@ node -v
 npm install
 ```
 
-Create a local `.env` only before deployment work or live contract checks. The app
-can run in demo mode locally without any env file.
+Create a local `.env.local` only before deployment work or live contract checks.
+The app can run in demo mode locally without any env file.
 
 ## Celo Mainnet
 
-1. Set these values in `.env`:
+1. Set these values in `.env.local`:
 
 ```bash
 PRIVATE_KEY=0x<your-celo-deployer-private-key>
@@ -46,7 +46,7 @@ npm run verify:celo:mainnet
 
 ## Stacks Mainnet
 
-1. Set these values in `.env`:
+1. Set these values in `.env.local`:
 
 ```bash
 STACKS_PRIVATE_KEY=<your-stacks-private-key>

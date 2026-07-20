@@ -24,9 +24,9 @@ npm install
 npm run dev
 ```
 
-PatchRush runs in demo mode locally without any env file. Add a local `.env` only
-when you want the app to read live on-chain state through `NEXT_PUBLIC_PATCHRUSH_*`
-values.
+PatchRush runs in demo mode locally without any env file. Add a local
+`.env.local` only when you want the app to read live on-chain state through
+`NEXT_PUBLIC_PATCHRUSH_*` values.
 
 Local routes:
 
