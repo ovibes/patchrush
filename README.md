@@ -28,6 +28,12 @@ PatchRush runs in demo mode locally without any env file. Add a local
 `.env.local` only when you want the app to read live on-chain state through
 `NEXT_PUBLIC_PATCHRUSH_*` values.
 
+For wallet testing on a phone over your local network, use:
+
+```bash
+npm run dev:mobile
+```
+
 Local routes:
 
 - `http://localhost:3000`
