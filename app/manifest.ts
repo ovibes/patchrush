@@ -19,13 +19,13 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Open Celo arena",
         short_name: "Celo arena",
-        description: "Jump straight to the Celo PatchRush arena.",
+        description: "Open the Celo PatchRush arena in live or demo mode.",
         url: "/celo"
       },
       {
         name: "Open Stacks arena",
         short_name: "Stacks arena",
-        description: "Jump straight to the Stacks PatchRush arena.",
+        description: "Open the Stacks PatchRush arena in live or demo mode.",
         url: "/stacks"
       }
     ],
