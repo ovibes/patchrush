@@ -59,6 +59,7 @@ export default function HomePage() {
               stacksNetworkLabel={stacksNetworkLabel}
               celoReady={celoReady}
               stacksReady={stacksReady}
+              triggerLabel="Choose today's arena from the hero section"
             />
             <span>No signup required. Bring a wallet or open a demo first.</span>
           </div>
@@ -136,6 +137,7 @@ export default function HomePage() {
             stacksNetworkLabel={stacksNetworkLabel}
             celoReady={celoReady}
             stacksReady={stacksReady}
+            triggerLabel="Choose today's arena from today's preview"
           />
         </div>
       </section>

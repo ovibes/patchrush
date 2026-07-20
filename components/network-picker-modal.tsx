@@ -10,20 +10,22 @@ type NetworkPickerModalProps = {
   stacksNetworkLabel: string;
   celoReady: boolean;
   stacksReady: boolean;
+  triggerLabel?: string;
 };
 
 export function NetworkPickerModal({
   celoNetworkLabel,
   stacksNetworkLabel,
   celoReady,
-  stacksReady
+  stacksReady,
+  triggerLabel
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
   const dialogId = useId();
   const titleId = `${dialogId}-title`;
   const descriptionId = `${dialogId}-description`;
   const hasLiveNetwork = celoReady || stacksReady;
-  const triggerLabel = hasLiveNetwork
+  const defaultTriggerLabel = hasLiveNetwork
     ? "Choose today's arena"
     : "Preview today's arena";
   const triggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
@@ -48,11 +50,11 @@ export function NetworkPickerModal({
       <button
         type="button"
         className="primary-button hero-cta"
-        aria-label={triggerLabel}
+        aria-label={triggerLabel || defaultTriggerLabel}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
-        title={triggerLabel}
+        title={triggerLabel || defaultTriggerLabel}
         onClick={() => setOpen(true)}
       >
         <Gamepad2 aria-hidden="true" />

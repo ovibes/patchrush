@@ -30,4 +30,20 @@ describe("NetworkPickerModal", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
   });
+
+  it("accepts a custom trigger label for distinct entry points", () => {
+    render(
+      <NetworkPickerModal
+        celoNetworkLabel="Celo Mainnet"
+        stacksNetworkLabel="Stacks Mainnet"
+        celoReady
+        stacksReady
+        triggerLabel="Choose today's arena from the hero section"
+      />
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Choose today's arena from the hero section" })
+    ).toBeInTheDocument();
+  });
 });
