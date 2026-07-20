@@ -54,7 +54,6 @@ export function NetworkPickerModal({
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
-        title={triggerLabel || defaultTriggerLabel}
         onClick={() => setOpen(true)}
       >
         <Gamepad2 aria-hidden="true" />
@@ -91,7 +90,6 @@ export function NetworkPickerModal({
             className="network-choice is-celo"
             href="/celo"
             aria-label={celoLinkLabel}
-            title={celoLinkLabel}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
@@ -103,7 +101,6 @@ export function NetworkPickerModal({
             className="network-choice is-stacks"
             href="/stacks"
             aria-label={stacksLinkLabel}
-            title={stacksLinkLabel}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>

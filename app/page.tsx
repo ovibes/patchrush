@@ -152,7 +152,6 @@ export default function HomePage() {
             href="/celo"
             className="network-summary is-celo"
             aria-label={celoArenaLabel}
-            title={celoArenaLabel}
           >
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
@@ -163,7 +162,6 @@ export default function HomePage() {
             href="/stacks"
             className="network-summary is-stacks"
             aria-label={stacksArenaLabel}
-            title={stacksArenaLabel}
           >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
