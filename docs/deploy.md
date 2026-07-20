@@ -109,5 +109,6 @@ npm test
 npm run check:stacks
 ```
 
-Create one live claim from `/celo` and one live claim from `/stacks`, then save
-both explorer receipts with the release notes.
+Create one live claim and one live boost from `/celo`, plus one live claim and
+one live boost from `/stacks`, then save all four explorer receipts with the
+release notes.
