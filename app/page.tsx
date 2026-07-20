@@ -36,6 +36,9 @@ export default function HomePage() {
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
     : "Preview in demo mode or connect a Celo-compatible wallet for quick mobile play.";
+  const stacksCardDescription = stacksReady
+    ? "Leather-ready and built for the same daily rules."
+    : "Preview in demo mode or connect a Stacks wallet for the same daily rules.";
 
   return (
     <div className="landing-page">
@@ -162,7 +165,7 @@ export default function HomePage() {
           >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
-            <p>Preview in demo mode or connect a Stacks wallet for the same daily rules.</p>
+            <p>{stacksCardDescription}</p>
             <span>{stacksArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
