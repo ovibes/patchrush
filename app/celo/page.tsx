@@ -4,7 +4,10 @@ import { CeloConsole } from "@/components/celo-console";
 export const metadata: Metadata = {
   title: "Open Today's Celo Arena",
   description:
-    "Open today's PatchRush arena on Celo in live or demo mode with MiniPay or another Celo-compatible wallet."
+    "Open today's PatchRush arena on Celo in live or demo mode with MiniPay or another Celo-compatible wallet.",
+  alternates: {
+    canonical: "/celo"
+  }
 };
 
 export default function CeloPage() {
