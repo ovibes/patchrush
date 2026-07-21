@@ -28,12 +28,13 @@ export function AppShell({ children }: AppShellProps) {
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#network-title" : playHref;
-  const playLinkText = onHomePage ? "Choose your arena" : `${playLabel} arena`;
+  const currentArenaText = `Today's ${playLabel} arena`;
+  const playLinkText = onHomePage ? "Choose your arena" : currentArenaText;
   const playLinkLabel = onHomePage
     ? "Choose your arena by comparing Celo and Stacks"
     : viewingArena
-      ? `Current page: ${playLabel} arena`
-      : `Open ${playLabel} arena`;
+      ? `Current page: ${currentArenaText}`
+      : `Open ${currentArenaText}`;
   const celoFooterText = celoReady ? "Celo live arena" : "Celo demo arena";
   const stacksFooterText = stacksReady ? "Stacks live arena" : "Stacks demo arena";
   const celoFooterLabel = celoReady ? "Open live Celo arena" : "Open Celo demo arena";
@@ -85,7 +86,7 @@ export function AppShell({ children }: AppShellProps) {
           aria-label={playLinkLabel}
           title={playLinkLabel}
         >
-          {viewingArena ? `${playLabel} arena` : playLinkText} <ArrowUpRight aria-hidden="true" />
+          {viewingArena ? currentArenaText : playLinkText} <ArrowUpRight aria-hidden="true" />
         </Link>
       </header>
 
