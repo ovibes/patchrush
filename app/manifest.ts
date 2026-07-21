@@ -17,15 +17,15 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["games", "entertainment", "social"],
     shortcuts: [
       {
-        name: "Open Celo arena",
-        short_name: "Celo arena",
-        description: "Open the Celo PatchRush arena in live or demo mode.",
+        name: "Open today's Celo arena",
+        short_name: "Today's Celo",
+        description: "Open today's Celo PatchRush arena in live or demo mode.",
         url: "/celo"
       },
       {
-        name: "Open Stacks arena",
-        short_name: "Stacks arena",
-        description: "Open the Stacks PatchRush arena in live or demo mode.",
+        name: "Open today's Stacks arena",
+        short_name: "Today's Stacks",
+        description: "Open today's Stacks PatchRush arena in live or demo mode.",
         url: "/stacks"
       }
     ],
