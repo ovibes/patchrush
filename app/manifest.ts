@@ -29,13 +29,27 @@ export default function manifest(): MetadataRoute.Manifest {
         name: "Open today's Celo arena",
         short_name: "Today's Celo",
         description: "Open today's Celo PatchRush arena in live or demo mode.",
-        url: "/celo"
+        url: "/celo",
+        icons: [
+          {
+            src: "/icon-192.png",
+            sizes: "192x192",
+            type: "image/png"
+          }
+        ]
       },
       {
         name: "Open today's Stacks arena",
         short_name: "Today's Stacks",
         description: "Open today's Stacks PatchRush arena in live or demo mode.",
-        url: "/stacks"
+        url: "/stacks",
+        icons: [
+          {
+            src: "/icon-192.png",
+            sizes: "192x192",
+            type: "image/png"
+          }
+        ]
       }
     ],
     icons: [
