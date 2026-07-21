@@ -34,6 +34,8 @@ export function AppShell({ children }: AppShellProps) {
     : viewingArena
       ? `Current page: ${playLabel} arena`
       : `Open ${playLabel} arena`;
+  const celoFooterText = celoReady ? "Celo live arena" : "Celo demo arena";
+  const stacksFooterText = stacksReady ? "Stacks live arena" : "Stacks demo arena";
   const celoFooterLabel = celoReady ? "Open live Celo arena" : "Open Celo demo arena";
   const stacksFooterLabel = stacksReady
     ? "Open live Stacks arena"
@@ -100,14 +102,19 @@ export function AppShell({ children }: AppShellProps) {
           </span>
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
-          <Link href="/celo" aria-current={pathname.startsWith("/celo") ? "page" : undefined}>
-            {celoFooterLabel}
+          <Link
+            href="/celo"
+            aria-current={pathname.startsWith("/celo") ? "page" : undefined}
+            aria-label={celoFooterLabel}
+          >
+            {celoFooterText}
           </Link>
           <Link
             href="/stacks"
             aria-current={pathname.startsWith("/stacks") ? "page" : undefined}
+            aria-label={stacksFooterLabel}
           >
-            {stacksFooterLabel}
+            {stacksFooterText}
           </Link>
         </nav>
       </footer>
