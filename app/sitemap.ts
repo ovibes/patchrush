@@ -6,15 +6,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: appUrl,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1
     },
     {
       url: `${appUrl}/celo`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8
     },
     {
       url: `${appUrl}/stacks`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8
     }
   ];
 }
