@@ -185,8 +185,9 @@ export function GameBoard({
       </div>
       {interactive ? (
         <p id={instructionsId} className="sr-only">
-          Use arrow keys to move between patches, then press Enter or Space to select the
-          focused patch.
+          Use arrow keys to move between patches. Press Home to jump to the first patch,
+          End to jump to the last patch, then press Enter or Space to select the focused
+          patch.
         </p>
       ) : (
         <p id={previewSummaryId} className="sr-only">
