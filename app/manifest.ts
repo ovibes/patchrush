@@ -15,6 +15,15 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en",
     dir: "ltr",
     categories: ["games", "entertainment", "social"],
+    screenshots: [
+      {
+        src: "/og.png",
+        sizes: "1200x630",
+        type: "image/png",
+        form_factor: "wide",
+        label: "PatchRush board preview and network selection"
+      }
+    ],
     shortcuts: [
       {
         name: "Open today's Celo arena",
