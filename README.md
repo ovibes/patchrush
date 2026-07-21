@@ -35,6 +35,9 @@ For wallet testing on a phone over your local network, use:
 npm run dev:mobile
 ```
 
+That command binds the dev server to your LAN so your phone can reach the app
+through your computer's local IP address.
+
 Local routes:
 
 - `http://localhost:3000`
