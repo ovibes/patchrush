@@ -38,6 +38,12 @@ export function NetworkPickerModal({
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks wallet"
     : "Open the demo now, then connect a Stacks wallet when live";
+  const celoChoiceLabel = celoReady
+    ? `Open today's live Celo arena on ${celoNetworkLabel} with MiniPay or another Celo-compatible wallet`
+    : `Open today's Celo demo arena on ${celoNetworkLabel} and connect a Celo-compatible wallet when live`;
+  const stacksChoiceLabel = stacksReady
+    ? `Open today's live Stacks arena on ${stacksNetworkLabel} with Leather, Xverse, or another Stacks-compatible wallet`
+    : `Open today's Stacks demo arena on ${stacksNetworkLabel} and connect a Stacks wallet when live`;
   return (
     <>
       <button
@@ -82,6 +88,7 @@ export function NetworkPickerModal({
           <Link
             className="network-choice is-celo"
             href="/celo"
+            aria-label={celoChoiceLabel}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
@@ -92,6 +99,7 @@ export function NetworkPickerModal({
           <Link
             className="network-choice is-stacks"
             href="/stacks"
+            aria-label={stacksChoiceLabel}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
