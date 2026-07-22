@@ -29,7 +29,7 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#network-title" : playHref;
   const currentArenaText = `Today's ${playLabel} arena`;
-  const playLinkText = onHomePage ? "Choose your arena" : currentArenaText;
+  const playLinkText = onHomePage ? "Compare Celo and Stacks" : currentArenaText;
   const playLinkLabel = onHomePage
     ? "Choose your arena by comparing Celo and Stacks"
     : viewingArena
