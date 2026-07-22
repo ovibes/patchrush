@@ -72,6 +72,7 @@ npm run lint
 npm run typecheck
 npm run build
 npm test
+npm run check:stacks
 ```
 
 For production launch, save the Celo deployment receipt, the Stacks deployment
