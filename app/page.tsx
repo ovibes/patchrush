@@ -27,6 +27,12 @@ export default function HomePage() {
   const stacksArenaCta = stacksReady
     ? "Open today's live Stacks arena"
     : "Open today's Stacks demo arena";
+  const celoCardAriaLabel = celoReady
+    ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
+    : "Open today's Celo demo arena and connect a Celo-compatible wallet when live";
+  const stacksCardAriaLabel = stacksReady
+    ? "Open today's live Stacks arena with Leather, Xverse, or another compatible wallet"
+    : "Open today's Stacks demo arena and connect a Stacks wallet when live";
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
     : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when live.";
@@ -147,6 +153,7 @@ export default function HomePage() {
           <Link
             href="/celo"
             className="network-summary is-celo"
+            aria-label={celoCardAriaLabel}
           >
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
@@ -156,6 +163,7 @@ export default function HomePage() {
           <Link
             href="/stacks"
             className="network-summary is-stacks"
+            aria-label={stacksCardAriaLabel}
           >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
