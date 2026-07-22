@@ -66,7 +66,7 @@ export default function HomePage() {
             <span>No signup required. Bring a wallet or open a demo first.</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
-            <li><strong>3</strong> claims per day</li>
+            <li><strong>3</strong> claims per UTC day</li>
             <li><strong>36</strong> shared patches</li>
             <li><strong>2</strong> networks, same rules</li>
           </ul>
