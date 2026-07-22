@@ -31,7 +31,7 @@ export default function HomePage() {
     ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
     : "Open today's Celo demo arena and connect a Celo-compatible wallet when live";
   const stacksCardAriaLabel = stacksReady
-    ? "Open today's live Stacks arena with Leather, Xverse, or another compatible wallet"
+    ? "Open today's live Stacks arena with Leather, Xverse, or another Stacks-compatible wallet"
     : "Open today's Stacks demo arena and connect a Stacks wallet when live";
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
