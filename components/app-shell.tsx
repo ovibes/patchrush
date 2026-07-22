@@ -98,7 +98,7 @@ export function AppShell({ children }: AppShellProps) {
         <div>
           <strong>PatchRush</strong>
           <span>
-            Two networks. One arena. Three claims. A fresh round starts at{" "}
+            Two networks. One arena. Three claims per UTC day. A fresh round starts at{" "}
             <time dateTime="00:00" aria-label="midnight UTC">
               00:00 UTC
             </time>
