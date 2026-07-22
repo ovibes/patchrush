@@ -147,7 +147,7 @@ export default function HomePage() {
       <section className="network-explainer" aria-labelledby="network-title">
         <header className="section-heading compact">
           <span className="eyebrow">Your network, your choice</span>
-          <h2 id="network-title">Same arena rules.<br />Use the wallet you know.</h2>
+          <h2 id="network-title" tabIndex={-1}>Same arena rules.<br />Use the wallet you know.</h2>
         </header>
         <div className="network-summary-grid">
           <Link
