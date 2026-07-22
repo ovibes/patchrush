@@ -3,7 +3,7 @@
 PatchRush is a tiny on-chain territory game for Celo and Stacks. Players get
 three claims per UTC day on a shared 6x6 board, start each move at 10 points,
 score +3 for each edge-adjacent claimed patch, and can boost each claimed patch
-once per wallet.
+once per wallet each round.
 
 ## Product
 
