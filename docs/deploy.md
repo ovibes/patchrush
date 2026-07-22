@@ -19,8 +19,11 @@ The app can run in demo mode locally without any env file.
 ```bash
 PRIVATE_KEY=0x<your-celo-deployer-private-key>
 CELO_MAINNET_RPC_URL=https://forno.celo.org
+NEXT_PUBLIC_CELO_MAINNET_RPC_URL=https://forno.celo.org
 NEXT_PUBLIC_CELO_NETWORK=celo
 ```
+
+Set both RPC variables when you want local browser-based live checks to use the same Celo mainnet endpoint as the deployment scripts.
 
 2. Compile and deploy:
 
