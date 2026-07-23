@@ -75,7 +75,6 @@ export function NetworkPickerModal({
             className="icon-button"
             aria-label="Close network picker"
             title="Close network picker"
-            data-autofocus="true"
             onClick={() => setOpen(false)}
           >
             <X aria-hidden="true" />
@@ -89,6 +88,7 @@ export function NetworkPickerModal({
             className="network-choice is-celo"
             href="/celo"
             aria-label={celoChoiceLabel}
+            data-autofocus="true"
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
