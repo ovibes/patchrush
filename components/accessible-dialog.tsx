@@ -96,7 +96,7 @@ export function AccessibleDialog({
       className="dialog-backdrop"
       ref={backdropRef}
       role="presentation"
-      onMouseDown={(event) => {
+      onPointerDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
     >
