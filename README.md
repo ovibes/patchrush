@@ -1,7 +1,7 @@
 # PatchRush
 
 PatchRush is a tiny on-chain territory game for Celo and Stacks. Players get
-three claims per UTC day on a shared 6x6 board, start each move at 10 points,
+three claims per UTC day on a shared 6×6 board, start each move at 10 points,
 score +3 for each edge-adjacent claimed patch, and can boost each claimed patch
 once per wallet each round.
 
@@ -44,6 +44,13 @@ Local routes:
 - `http://localhost:3000`
 - `http://localhost:3000/celo`
 - `http://localhost:3000/stacks`
+
+For UI-only changes, run the lighter jsdom suite before opening the full
+contract test matrix:
+
+```bash
+npm run test:ui
+```
 
 ## Contracts
 
