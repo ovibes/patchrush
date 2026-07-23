@@ -36,7 +36,8 @@ npm run dev:mobile
 ```
 
 That command binds the dev server to your LAN so your phone can reach the app
-through your computer's local IP address.
+through your computer's local IP address. It is the quickest way to verify
+MiniPay and other mobile wallet flows against your local build.
 
 Local routes:
 
