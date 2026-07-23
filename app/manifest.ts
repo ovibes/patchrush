@@ -27,6 +27,19 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     shortcuts: [
       {
+        name: "Open board preview",
+        short_name: "Board Preview",
+        description: "Preview today's PatchRush board and compare Celo with Stacks.",
+        url: "/",
+        icons: [
+          {
+            src: "/icon-192.png",
+            sizes: "192x192",
+            type: "image/png"
+          }
+        ]
+      },
+      {
         name: "Open Celo arena",
         short_name: "Celo Arena",
         description: "Launch today's Celo PatchRush arena in live or demo mode.",
