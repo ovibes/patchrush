@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useEffect, useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Check, Plus } from "lucide-react";
 import {
   BOARD_SIZE,
@@ -45,6 +45,11 @@ export function GameBoard({
   const boardHeading = interactive ? "Arena grid" : "Board preview";
   const sectionLabel = interactive ? `${networkLabel} arena` : `${networkLabel} board preview`;
   const gridLabel = interactive ? `${networkLabel} PatchRush arena grid` : `${networkLabel} PatchRush board preview`;
+
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    setFocusIndex(selectedIndex);
+  }, [selectedIndex]);
 
   const moveFocus = (nextIndex: number) => {
     const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));

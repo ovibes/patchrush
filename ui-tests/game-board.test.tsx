@@ -54,4 +54,29 @@ describe("GameBoard", () => {
       /15 points including 2 boosts/i
     );
   });
+
+  it("moves the roving tab stop when selection changes externally", () => {
+    const cells = buildEmptyBoard("celo");
+    const { rerender } = render(
+      <GameBoard
+        cells={cells}
+        selectedIndex={null}
+        networkLabel="Celo"
+        onSelect={() => undefined}
+      />
+    );
+
+    rerender(
+      <GameBoard
+        cells={cells}
+        selectedIndex={14}
+        networkLabel="Celo"
+        onSelect={() => undefined}
+      />
+    );
+
+    const gridCells = screen.getAllByRole("gridcell");
+    expect(gridCells[14]).toHaveAttribute("tabindex", "0");
+    expect(gridCells[0]).toHaveAttribute("tabindex", "-1");
+  });
 });
