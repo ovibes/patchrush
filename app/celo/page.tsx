@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     ]
   },
   twitter: {
+    card: "summary_large_image",
     title: "Open Today's Celo Arena | PatchRush",
     description:
       "Open today's PatchRush arena on Celo in live or demo mode with MiniPay or another Celo-compatible wallet.",

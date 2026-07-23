@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     ]
   },
   twitter: {
+    card: "summary_large_image",
     title: "Choose Today's Arena | PatchRush",
     description:
       "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",

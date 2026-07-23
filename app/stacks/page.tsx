@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     ]
   },
   twitter: {
+    card: "summary_large_image",
     title: "Open Today's Stacks Arena | PatchRush",
     description:
       "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks-compatible wallet.",
