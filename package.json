@@ -1,7 +1,7 @@
 {
   "name": "patchrush",
   "version": "0.1.0",
-  "description": "A tiny dual-network on-chain territory game for Celo and Stacks.",
+  "description": "A daily dual-network on-chain territory game for Celo and Stacks.",
   "private": true,
   "type": "module",
   "homepage": "https://github.com/ovibes/patchrush#readme",
@@ -16,6 +16,8 @@
     "celo",
     "stacks",
     "nextjs",
+    "onchain",
+    "territory-game",
     "web3",
     "game"
   ],
