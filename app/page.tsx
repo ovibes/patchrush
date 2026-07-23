@@ -10,6 +10,34 @@ export const metadata: Metadata = {
   title: "Choose Today's Arena",
   description:
     "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    title: "Choose Today's Arena | PatchRush",
+    description:
+      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+    url: "/",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "PatchRush board preview and network comparison"
+      }
+    ]
+  },
+  twitter: {
+    title: "Choose Today's Arena | PatchRush",
+    description:
+      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+    images: [
+      {
+        url: "/og.png",
+        alt: "PatchRush board preview and network comparison"
+      }
+    ]
+  },
   other: publicEnv.talentProjectVerification
     ? { "talentapp:project_verification": publicEnv.talentProjectVerification }
     : undefined
