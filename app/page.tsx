@@ -63,7 +63,7 @@ export default function HomePage() {
               stacksReady={stacksReady}
               triggerLabel="Choose today's arena from the hero section"
             />
-            <span>No signup required. Bring a wallet or open a demo first.</span>
+            <span>No signup required. Start in demo mode or connect a wallet.</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
             <li><strong>3</strong> claims per UTC day</li>
