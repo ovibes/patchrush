@@ -7,7 +7,7 @@ import { getCeloChainLabel, publicEnv } from "@/lib/env";
 import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 
 export const metadata: Metadata = {
-  title: "Choose Today's Arena | PatchRush",
+  title: "Choose Today's Arena",
   description:
     "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
   alternates: {
