@@ -21,6 +21,7 @@ export function NetworkPickerModal({
   triggerLabel
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
+  const closeDialog = () => setOpen(false);
   const dialogId = useId();
   const titleId = `${dialogId}-title`;
   const descriptionId = `${dialogId}-description`;
@@ -63,7 +64,7 @@ export function NetworkPickerModal({
       <AccessibleDialog
         id={dialogId}
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={closeDialog}
         labelledBy={titleId}
         describedBy={descriptionId}
         className="network-dialog"
@@ -75,7 +76,7 @@ export function NetworkPickerModal({
             className="icon-button"
             aria-label="Close network picker"
             title="Close network picker"
-            onClick={() => setOpen(false)}
+            onClick={closeDialog}
           >
             <X aria-hidden="true" />
           </button>
@@ -89,6 +90,7 @@ export function NetworkPickerModal({
             href="/celo"
             aria-label={celoChoiceLabel}
             data-autofocus="true"
+            onClick={closeDialog}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
@@ -100,6 +102,7 @@ export function NetworkPickerModal({
             className="network-choice is-stacks"
             href="/stacks"
             aria-label={stacksChoiceLabel}
+            onClick={closeDialog}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
