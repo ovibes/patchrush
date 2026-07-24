@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useId, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Check, Plus } from "lucide-react";
 import {
   BOARD_SIZE,
@@ -45,11 +45,7 @@ export function GameBoard({
   const boardHeading = interactive ? "Arena grid" : "Board preview";
   const sectionLabel = interactive ? `${networkLabel} arena` : `${networkLabel} board preview`;
   const gridLabel = interactive ? `${networkLabel} PatchRush arena grid` : `${networkLabel} PatchRush board preview`;
-
-  useEffect(() => {
-    if (selectedIndex === null) return;
-    setFocusIndex(selectedIndex);
-  }, [selectedIndex]);
+  const activeIndex = selectedIndex ?? focusIndex;
 
   const moveFocus = (nextIndex: number) => {
     const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));
@@ -155,7 +151,7 @@ export function GameBoard({
               aria-label={cellLabel}
               title={cellLabel}
               disabled={!interactive}
-              tabIndex={interactive ? (focusIndex === cell.index ? 0 : -1) : -1}
+              tabIndex={interactive ? (activeIndex === cell.index ? 0 : -1) : -1}
               onFocus={() => setFocusIndex(cell.index)}
               onKeyDown={(event) => handleGridKey(event, cell.index)}
               onClick={onSelect ? () => onSelect(cell) : undefined}

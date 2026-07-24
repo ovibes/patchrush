@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     description:
       "Open today's PatchRush arena on Celo in live or demo mode with MiniPay or another Celo-compatible wallet.",
     url: "/celo",
+    siteName: "PatchRush",
+    type: "website",
     images: [
       {
         url: "/og.png",

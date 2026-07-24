@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     description:
       "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks-compatible wallet.",
     url: "/stacks",
+    siteName: "PatchRush",
+    type: "website",
     images: [
       {
         url: "/og.png",
