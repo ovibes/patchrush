@@ -427,7 +427,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
               aria-label={receiptLinkLabel}
               title={receiptLinkLabel}
             >
-              Receipt <ArrowUpRight aria-hidden="true" />
+              View receipt <ArrowUpRight aria-hidden="true" />
             </a>
           ) : null}
         </div>
