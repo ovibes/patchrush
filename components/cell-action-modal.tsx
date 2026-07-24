@@ -153,8 +153,8 @@ export function CellActionModal({
             href={txUrl}
             target="_blank"
             rel="noreferrer"
-            aria-label={`Open the ${networkLabel} explorer receipt in a new tab`}
-            title={`Open the ${networkLabel} explorer receipt in a new tab`}
+            aria-label={`View the ${networkLabel} transaction receipt in a new tab`}
+            title={`View the ${networkLabel} transaction receipt in a new tab`}
           >
             View transaction receipt
           </a>
