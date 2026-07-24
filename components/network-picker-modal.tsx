@@ -25,6 +25,8 @@ export function NetworkPickerModal({
   const dialogId = useId();
   const titleId = `${dialogId}-title`;
   const descriptionId = `${dialogId}-description`;
+  const celoDescriptionId = `${dialogId}-celo-description`;
+  const stacksDescriptionId = `${dialogId}-stacks-description`;
   const hasLiveNetwork = celoReady || stacksReady;
   const defaultTriggerLabel = hasLiveNetwork
     ? "Choose today's arena"
@@ -39,12 +41,6 @@ export function NetworkPickerModal({
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks-compatible wallet"
     : "Open the demo now, then connect a Stacks wallet when live";
-  const celoChoiceLabel = celoReady
-    ? `Open today's live Celo arena on ${celoNetworkLabel} with MiniPay or another Celo-compatible wallet`
-    : `Open today's Celo demo arena on ${celoNetworkLabel} and connect a Celo-compatible wallet when live`;
-  const stacksChoiceLabel = stacksReady
-    ? `Open today's live Stacks arena on ${stacksNetworkLabel} with Leather, Xverse, or another Stacks-compatible wallet`
-    : `Open today's Stacks demo arena on ${stacksNetworkLabel} and connect a Stacks wallet when live`;
   return (
     <>
       <button
@@ -88,26 +84,26 @@ export function NetworkPickerModal({
           <Link
             className="network-choice is-celo"
             href="/celo"
-            aria-label={celoChoiceLabel}
+            aria-describedby={celoDescriptionId}
             data-autofocus="true"
             onClick={closeDialog}
           >
             <span className="choice-icon"><Smartphone aria-hidden="true" /></span>
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
-            <small>{celoChoiceText}</small>
+            <small id={celoDescriptionId}>{celoChoiceText}</small>
             <span className="choice-meta">{celoNetworkLabel}<ArrowRight aria-hidden="true" /></span>
           </Link>
           <Link
             className="network-choice is-stacks"
             href="/stacks"
-            aria-label={stacksChoiceLabel}
+            aria-describedby={stacksDescriptionId}
             onClick={closeDialog}
           >
             <span className="choice-icon"><Wallet aria-hidden="true" /></span>
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
-            <small>{stacksChoiceText}</small>
+            <small id={stacksDescriptionId}>{stacksChoiceText}</small>
             <span className="choice-meta">{stacksNetworkLabel}<ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
