@@ -156,7 +156,7 @@ export function CellActionModal({
             aria-label={`Open the ${networkLabel} explorer receipt in a new tab`}
             title={`Open the ${networkLabel} explorer receipt in a new tab`}
           >
-            Open explorer receipt
+            View transaction receipt
           </a>
         ) : null}
       </div>
