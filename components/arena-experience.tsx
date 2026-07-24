@@ -183,9 +183,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       : "Your wallet will ask you to approve the claim.";
 
     if (!configured) {
-      actionLabel = "Preview only";
+      actionLabel = "Demo preview only";
       actionDisabled = true;
-      actionHelp = "This route becomes playable when its contract address is configured.";
+      actionHelp = "This arena becomes playable after its live contract values are configured.";
     } else if (!isToday) {
       actionLabel = "History is view-only";
       actionDisabled = true;
@@ -443,7 +443,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${walletName} connected as ${walletAddress}`
                 : configured
                   ? `${walletName} not connected`
-                  : `${walletName} demo mode`
+                  : `${walletName} demo preview mode`
             }
           >
             {walletAddress ? shortAddress(walletAddress) : configured ? "Not connected" : "Demo mode"}
@@ -478,7 +478,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${playerStats.claimsRemaining} of 3 claims remaining`
                 : configured
                   ? "Claims remaining unavailable until wallet connects"
-                  : "Claims remaining unavailable in demo mode"
+                  : "Claims remaining unavailable in demo preview"
             }
           >
             {walletAddress ? playerStats.claimsRemaining : "—"}
@@ -493,7 +493,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${playerStats.score} points`
                 : configured
                   ? "Score unavailable until wallet connects"
-                  : "Score unavailable in demo mode"
+                  : "Score unavailable in demo preview"
             }
           >
             {walletAddress ? playerStats.score : "—"}
