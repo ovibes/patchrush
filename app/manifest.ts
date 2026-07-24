@@ -22,14 +22,14 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: "1200x630",
         type: "image/png",
         form_factor: "wide",
-        label: "PatchRush board preview and network selection"
+        label: "PatchRush landing page with board preview and arena chooser"
       }
     ],
     shortcuts: [
       {
         name: "Open board preview",
         short_name: "Board Preview",
-        description: "Preview today's PatchRush board and compare Celo with Stacks.",
+        description: "Preview today's PatchRush board and compare Celo and Stacks.",
         url: "/",
         icons: [
           {
