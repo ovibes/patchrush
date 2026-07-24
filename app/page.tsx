@@ -168,7 +168,7 @@ export default function HomePage() {
             stacksNetworkLabel={stacksNetworkLabel}
             celoReady={celoReady}
             stacksReady={stacksReady}
-            triggerLabel="Choose today's arena from today's preview"
+            triggerLabel="Choose an arena from the board preview"
           />
         </div>
       </section>
