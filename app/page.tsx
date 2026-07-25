@@ -72,6 +72,7 @@ export default function HomePage() {
   const stacksCardDescription = stacksReady
     ? "Built for Leather, Xverse, and other Stacks wallets."
     : "Open the demo now, then connect a Stacks wallet for the same daily rules when live.";
+  const heroCtaDescriptionId = "hero-arena-cta-description";
 
   return (
     <div className="landing-page">
@@ -95,8 +96,11 @@ export default function HomePage() {
               celoReady={celoReady}
               stacksReady={stacksReady}
               triggerLabel="Choose today's arena from the hero section"
+              triggerDescribedBy={heroCtaDescriptionId}
             />
-            <span>No signup required. Start in demo mode, then connect a wallet when you&apos;re ready.</span>
+            <span id={heroCtaDescriptionId}>
+              No signup required. Start in demo mode, then connect a wallet when you&apos;re ready.
+            </span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
             <li><strong>3</strong> claims per UTC day</li>

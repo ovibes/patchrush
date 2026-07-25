@@ -11,6 +11,7 @@ type NetworkPickerModalProps = {
   celoReady: boolean;
   stacksReady: boolean;
   triggerLabel?: string;
+  triggerDescribedBy?: string;
 };
 
 export function NetworkPickerModal({
@@ -18,7 +19,8 @@ export function NetworkPickerModal({
   stacksNetworkLabel,
   celoReady,
   stacksReady,
-  triggerLabel
+  triggerLabel,
+  triggerDescribedBy
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
   const closeDialog = () => setOpen(false);
@@ -53,6 +55,7 @@ export function NetworkPickerModal({
         type="button"
         className="primary-button hero-cta"
         aria-label={triggerLabel || defaultTriggerLabel}
+        aria-describedby={triggerDescribedBy}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={dialogId}
