@@ -64,6 +64,8 @@ export default function HomePage() {
   const stacksCardAriaLabel = stacksReady
     ? "Open today's live Stacks arena with Leather, Xverse, or another Stacks-compatible wallet"
     : "Open today's Stacks demo arena and connect a Stacks wallet when live";
+  const celoCardDescriptionId = "celo-card-description";
+  const stacksCardDescriptionId = "stacks-card-description";
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
     : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when live.";
@@ -185,20 +187,22 @@ export default function HomePage() {
             href="/celo"
             className="network-summary is-celo"
             aria-label={celoCardAriaLabel}
+            aria-describedby={celoCardDescriptionId}
           >
             <span className={celoReady ? "status-pill is-live" : "status-pill"}>{celoReady ? "Live" : "Demo"}</span>
             <strong>Celo</strong>
-            <p>{celoCardDescription}</p>
+            <p id={celoCardDescriptionId}>{celoCardDescription}</p>
             <span>{celoArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
           <Link
             href="/stacks"
             className="network-summary is-stacks"
             aria-label={stacksCardAriaLabel}
+            aria-describedby={stacksCardDescriptionId}
           >
             <span className={stacksReady ? "status-pill is-live" : "status-pill"}>{stacksReady ? "Live" : "Demo"}</span>
             <strong>Stacks</strong>
-            <p>{stacksCardDescription}</p>
+            <p id={stacksCardDescriptionId}>{stacksCardDescription}</p>
             <span>{stacksArenaCta} <ArrowRight aria-hidden="true" /></span>
           </Link>
         </div>
