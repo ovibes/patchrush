@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 import { colorToHex, shortAddress, type PatchCell } from "@/lib/patchrush";
 
 type CellActionModalProps = {
@@ -33,6 +35,28 @@ export function CellActionModal({
   walletConnected,
   walletLabel
 }: CellActionModalProps) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      previousFocusRef.current?.focus({ preventScroll: true });
+    };
+  }, [onClose]);
+
   if (!cell) return null;
 
   const row = cell.y + 1;
@@ -74,19 +98,27 @@ export function CellActionModal({
   };
 
   return (
-    <div className="modal-backdrop" role="presentation">
+    <div
+      className="modal-backdrop"
+      role="presentation"
+      onPointerDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
       <div
         className="cell-action-modal"
         role="dialog"
         aria-modal="true"
         aria-labelledby="cell-action-title"
         aria-describedby="cell-action-summary cell-action-help"
+        tabIndex={-1}
       >
         <div className="modal-heading">
           <span className="hud-tag">{networkLabel}</span>
           <button
             type="button"
             className="modal-close"
+            ref={closeButtonRef}
             aria-label="Close patch details"
             title="Close patch details"
             onClick={onClose}
