@@ -73,6 +73,8 @@ export default function HomePage() {
     ? "Built for Leather, Xverse, and other Stacks wallets."
     : "Open the demo now, then connect a Stacks wallet for the same daily rules when live.";
   const heroCtaDescriptionId = "hero-arena-cta-description";
+  const dailyPreviewCountId = "daily-preview-count";
+  const dailyPreviewDescriptionId = "daily-preview-description";
 
   return (
     <div className="landing-page">
@@ -166,17 +168,18 @@ export default function HomePage() {
         </div>
         <div className="daily-card">
           <span>Today&apos;s preview</span>
-          <strong aria-label={`${stats.claimed} of 36 patches claimed today`}>
+          <strong id={dailyPreviewCountId} aria-label={`${stats.claimed} of 36 patches claimed today`}>
             {stats.claimed}
             <small aria-hidden="true">/36</small>
           </strong>
-          <p>patches already claimed</p>
+          <p id={dailyPreviewDescriptionId}>patches already claimed</p>
           <NetworkPickerModal
             celoNetworkLabel={getCeloChainLabel()}
             stacksNetworkLabel={stacksNetworkLabel}
             celoReady={celoReady}
             stacksReady={stacksReady}
             triggerLabel="Choose an arena from the board preview"
+            triggerDescribedBy={`${dailyPreviewCountId} ${dailyPreviewDescriptionId}`}
           />
         </div>
       </section>
