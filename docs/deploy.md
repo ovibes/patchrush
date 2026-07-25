@@ -57,7 +57,11 @@ STACKS_NETWORK=mainnet
 STACKS_DEPLOY_FEE_MICROSTX=300000
 NEXT_PUBLIC_STACKS_NETWORK=mainnet
 NEXT_PUBLIC_PATCHRUSH_STACKS_CONTRACT_NAME=patchrush-arena
+NEXT_PUBLIC_STACKS_API_MAINNET=https://api.hiro.so
 ```
+
+Set the public API URL as well when you want local browser-based live checks to
+read the same Stacks mainnet endpoint as the deployed site.
 
 2. Check and deploy:
 
