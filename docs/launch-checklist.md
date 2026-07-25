@@ -5,7 +5,7 @@
 - Save the Celo contract address, deployment block, deployment transaction hash, and explorer URL.
 - Deploy `patchrush-arena.clar` on Stacks mainnet.
 - Save the Stacks contract id, deployment transaction id, and explorer URL.
-- Set the production `NEXT_PUBLIC_*` contract values before building the website.
+- Set `NEXT_PUBLIC_APP_URL` to the deployed HTTPS origin and fill in the production `NEXT_PUBLIC_*` contract values before building the website.
 - Open `/`, `/celo`, and `/stacks` on the deployed HTTPS origin.
 - Verify `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest` resolve on the deployed HTTPS origin and point at the production URL.
 - Verify the social preview card for `/`, `/celo`, and `/stacks` shows the expected PatchRush image and route-specific copy.
