@@ -7,6 +7,7 @@
 - Save the Stacks contract id, deployment transaction id, and explorer URL.
 - Set the production `NEXT_PUBLIC_*` contract values before building the website.
 - Open `/`, `/celo`, and `/stacks` on the deployed HTTPS origin.
+- Verify `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest` resolve on the deployed HTTPS origin and point at the production URL.
 - Verify the social preview card for `/`, `/celo`, and `/stacks` shows the expected PatchRush image and route-specific copy.
 - Create one live Celo claim and one live Celo boost from `/celo`, then save both explorer receipts.
 - Create one live Stacks claim and one live Stacks boost from `/stacks`, then save both explorer receipts.
