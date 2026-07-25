@@ -179,6 +179,7 @@ export default function HomePage() {
             celoReady={celoReady}
             stacksReady={stacksReady}
             triggerLabel="Choose an arena from the board preview"
+            triggerText="Compare today's arenas"
             triggerDescribedBy={`${dailyPreviewCountId} ${dailyPreviewDescriptionId}`}
           />
         </div>

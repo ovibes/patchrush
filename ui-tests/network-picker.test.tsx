@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { NetworkPickerModal } from "@/components/network-picker-modal";
 
 describe("NetworkPickerModal", () => {
-  it("opens accessibly, wraps backward focus, closes with Escape, and restores focus", async () => {
+  it("opens accessibly, focuses the first network choice, wraps backward focus, closes with Escape, and restores focus", async () => {
     const user = userEvent.setup();
     render(
       <NetworkPickerModal
@@ -20,11 +20,15 @@ describe("NetworkPickerModal", () => {
     const dialog = screen.getByRole("dialog", { name: "Choose today's arena" });
     expect(dialog).toBeInTheDocument();
     await waitFor(() => {
-      expect(screen.getByRole("button", { name: /close network picker/i })).toHaveFocus();
+      expect(
+        screen.getByRole("link", {
+          name: /open today's live celo arena with minipay or another celo-compatible wallet/i
+        })
+      ).toHaveFocus();
     });
     await user.tab({ shift: true });
     expect(
-      screen.getByRole("link", { name: /open stacks demo arena on stacks mainnet/i })
+      screen.getByRole("button", { name: /close network picker/i })
     ).toHaveFocus();
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
@@ -39,11 +43,15 @@ describe("NetworkPickerModal", () => {
         celoReady
         stacksReady
         triggerLabel="Choose today's arena from the hero section"
+        triggerText="Compare today's arenas"
       />
     );
 
     expect(
       screen.getByRole("button", { name: "Choose today's arena from the hero section" })
     ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Choose today's arena from the hero section" })).toHaveTextContent(
+      "Compare today's arenas"
+    );
   });
 });

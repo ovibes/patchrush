@@ -11,6 +11,7 @@ type NetworkPickerModalProps = {
   celoReady: boolean;
   stacksReady: boolean;
   triggerLabel?: string;
+  triggerText?: string;
   triggerDescribedBy?: string;
 };
 
@@ -20,6 +21,7 @@ export function NetworkPickerModal({
   celoReady,
   stacksReady,
   triggerLabel,
+  triggerText,
   triggerDescribedBy
 }: NetworkPickerModalProps) {
   const [open, setOpen] = useState(false);
@@ -33,7 +35,7 @@ export function NetworkPickerModal({
   const defaultTriggerLabel = hasLiveNetwork
     ? "Choose today's arena"
     : "Preview today's arena";
-  const triggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
+  const defaultTriggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arena";
   const descriptionText = hasLiveNetwork
     ? "The game is identical on both networks. Use the wallet already on your device, or start in demo mode first."
     : "The game is identical on both networks. Start in demo mode on either network, then connect the wallet flow that best fits your device when live.";
@@ -62,7 +64,7 @@ export function NetworkPickerModal({
         onClick={() => setOpen(true)}
       >
         <Gamepad2 aria-hidden="true" />
-        {triggerText}
+        {triggerText || defaultTriggerText}
         <ArrowRight aria-hidden="true" />
       </button>
 
