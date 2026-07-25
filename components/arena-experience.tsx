@@ -179,7 +179,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     let actionDisabled = isBusy;
     let actionHandler = claimed ? onBoost : onClaim;
     let actionHelp = claimed
-      ? "A boost adds one point to the patch owner's score."
+      ? "A boost adds one point to the patch owner's score. Each wallet can boost a patch once per round."
       : "Your wallet will ask you to approve the claim.";
 
     if (!configured) {
@@ -240,7 +240,13 @@ export function ArenaExperience(props: ArenaExperienceProps) {
               </div>
               <div>
                 <dt>Your boost</dt>
-                <dd>{!walletAddress ? "Connect to check" : selectedHasBoosted ? "Used" : "Available"}</dd>
+                <dd>
+                  {!walletAddress
+                    ? "Connect to check your boost status"
+                    : selectedHasBoosted
+                      ? "Used"
+                      : "Available"}
+                </dd>
               </div>
             </dl>
           </>
