@@ -36,12 +36,16 @@ export function AppShell({ children }: AppShellProps) {
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
   const homeFooterLabel = onHomePage ? "Current page: PatchRush home" : "Open PatchRush home";
-  const celoFooterText = celoReady ? "Celo live arena" : "Celo demo arena";
-  const stacksFooterText = stacksReady ? "Stacks live arena" : "Stacks demo arena";
-  const celoFooterLabel = celoReady ? "Open live Celo arena" : "Open Celo demo arena";
+  const celoFooterText = celoReady ? "Today's Celo live arena" : "Today's Celo demo arena";
+  const stacksFooterText = stacksReady
+    ? "Today's Stacks live arena"
+    : "Today's Stacks demo arena";
+  const celoFooterLabel = celoReady
+    ? "Open today's live Celo arena"
+    : "Open today's Celo demo arena";
   const stacksFooterLabel = stacksReady
-    ? "Open live Stacks arena"
-    : "Open Stacks demo arena";
+    ? "Open today's live Stacks arena"
+    : "Open today's Stacks demo arena";
 
   return (
     <div className="app-shell">
