@@ -29,6 +29,9 @@ PatchRush runs in demo mode locally without any env file. Add a local
 `.env.local` only when you want the app to read live on-chain state through
 `NEXT_PUBLIC_PATCHRUSH_*` values.
 
+Set `NEXT_PUBLIC_APP_URL` before preview or production builds so the canonical
+URL, `robots.txt`, and `sitemap.xml` all point at the correct HTTPS origin.
+
 For wallet testing on a phone over your local network, use:
 
 ```bash
