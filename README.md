@@ -55,6 +55,11 @@ contract test matrix:
 npm run test:ui
 ```
 
+Keyboard controls in the live arena are built for quick demo and wallet play:
+use the arrow keys to move between patches, `Home` and `End` to jump across
+the current row, `Ctrl`/`Cmd` + `Home` or `End` to jump to the first or last
+patch on the board, and `Enter` or `Space` to open the focused patch.
+
 ## Contracts
 
 Celo:
