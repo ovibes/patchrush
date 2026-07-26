@@ -29,9 +29,9 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#network-title" : playHref;
   const currentArenaText = `Today's ${playLabel} arena`;
-  const playLinkText = onHomePage ? "Compare arenas" : currentArenaText;
+  const playLinkText = onHomePage ? "Compare today's arenas" : currentArenaText;
   const playLinkLabel = onHomePage
-    ? "Jump to the compare arenas section"
+    ? "Jump to today's arena comparison section"
     : viewingArena
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
