@@ -14,7 +14,7 @@ describe("NetworkPickerModal", () => {
         stacksReady={false}
       />
     );
-    const trigger = screen.getByRole("button", { name: /choose today's arena/i });
+    const trigger = screen.getByRole("button", { name: /compare today's arenas/i });
     await user.click(trigger);
 
     const dialog = screen.getByRole("dialog", { name: "Choose today's arena" });
@@ -53,5 +53,23 @@ describe("NetworkPickerModal", () => {
     expect(screen.getByRole("button", { name: "Choose today's arena from the hero section" })).toHaveTextContent(
       "Compare today's arenas"
     );
+  });
+
+  it("uses plural preview copy when both networks are still in demo mode", async () => {
+    const user = userEvent.setup();
+    render(
+      <NetworkPickerModal
+        celoNetworkLabel="Celo Alfajores"
+        stacksNetworkLabel="Stacks Testnet"
+        celoReady={false}
+        stacksReady={false}
+      />
+    );
+
+    const trigger = screen.getByRole("button", { name: /preview today's arenas/i });
+    expect(trigger).toHaveTextContent("Preview today's arenas");
+
+    await user.click(trigger);
+    expect(screen.getByRole("dialog", { name: /preview today's arenas/i })).toBeInTheDocument();
   });
 });
