@@ -33,9 +33,9 @@ export function NetworkPickerModal({
   const stacksDescriptionId = `${dialogId}-stacks-description`;
   const hasLiveNetwork = celoReady || stacksReady;
   const defaultTriggerLabel = hasLiveNetwork
-    ? "Compare today's arenas"
+    ? "Choose today's arena"
     : "Preview today's arenas";
-  const defaultTriggerText = hasLiveNetwork ? "Compare today's arenas" : "Preview today's arenas";
+  const defaultTriggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arenas";
   const descriptionText = hasLiveNetwork
     ? "The game is identical on both networks. Use the wallet already on your device, or start in demo mode first."
     : "The game is identical on both networks. Start in demo mode on either network, then connect the wallet flow that best fits your device when live.";
