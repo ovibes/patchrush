@@ -25,6 +25,8 @@ describe("GameBoard", () => {
     await user.keyboard("{ArrowDown}");
     expect(gridCells[7]).toHaveFocus();
     await user.keyboard("{End}");
+    expect(gridCells[11]).toHaveFocus();
+    await user.keyboard("{Meta>}{End}{/Meta}");
     expect(gridCells[35]).toHaveFocus();
     await user.keyboard("{Enter}");
     expect(onSelect).toHaveBeenCalledWith(cells[35]);
@@ -78,5 +80,22 @@ describe("GameBoard", () => {
     const gridCells = screen.getAllByRole("gridcell");
     expect(gridCells[14]).toHaveAttribute("tabindex", "0");
     expect(gridCells[0]).toHaveAttribute("tabindex", "-1");
+  });
+
+  it("publishes keyboard shortcuts for assistive technology", () => {
+    const cells = buildEmptyBoard("celo");
+    render(
+      <GameBoard
+        cells={cells}
+        selectedIndex={null}
+        networkLabel="Celo"
+        onSelect={() => undefined}
+      />
+    );
+
+    expect(screen.getByRole("grid")).toHaveAttribute(
+      "aria-keyshortcuts",
+      "ArrowLeft ArrowRight ArrowUp ArrowDown Home End Control+Home Control+End Meta+Home Meta+End Enter Space"
+    );
   });
 });

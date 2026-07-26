@@ -45,6 +45,9 @@ export function GameBoard({
   const boardHeading = interactive ? "Arena grid" : "Board preview";
   const sectionLabel = interactive ? `${networkLabel} arena` : `${networkLabel} board preview`;
   const gridLabel = interactive ? `${networkLabel} PatchRush arena grid` : `${networkLabel} PatchRush board preview`;
+  const keyboardShortcutHints = interactive
+    ? "ArrowLeft ArrowRight ArrowUp ArrowDown Home End Control+Home Control+End Meta+Home Meta+End Enter Space"
+    : undefined;
   const activeIndex = selectedIndex ?? focusIndex;
 
   const moveFocus = (nextIndex: number) => {
@@ -103,6 +106,7 @@ export function GameBoard({
         aria-colcount={BOARD_SIZE}
         aria-readonly={!interactive}
         aria-busy={loadState === "loading" || loadState === "refreshing"}
+        aria-keyshortcuts={keyboardShortcutHints}
       >
         {cells.map((cell) => {
           const claimed = Boolean(cell.owner);
