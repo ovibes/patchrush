@@ -260,6 +260,7 @@ summary:focus-visible,
   width: min(var(--content), calc(100% - 40px));
   margin: 0 auto;
   flex: 1;
+  scroll-margin-top: 108px;
 }
 
 .site-footer {
