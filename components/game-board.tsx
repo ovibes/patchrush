@@ -57,14 +57,18 @@ export function GameBoard({
     if (!interactive) return;
 
     let nextIndex: number | null = null;
+    const rowStart = Math.floor(index / BOARD_SIZE) * BOARD_SIZE;
+    const rowEnd = Math.min(rowStart + BOARD_SIZE - 1, cells.length - 1);
     if (event.key === "ArrowLeft") nextIndex = index % BOARD_SIZE === 0 ? index : index - 1;
     if (event.key === "ArrowRight") {
       nextIndex = index % BOARD_SIZE === BOARD_SIZE - 1 ? index : index + 1;
     }
     if (event.key === "ArrowUp") nextIndex = index - BOARD_SIZE;
     if (event.key === "ArrowDown") nextIndex = index + BOARD_SIZE;
-    if (event.key === "Home") nextIndex = 0;
-    if (event.key === "End") nextIndex = cells.length - 1;
+    if (event.key === "Home") nextIndex = event.ctrlKey || event.metaKey ? 0 : rowStart;
+    if (event.key === "End") {
+      nextIndex = event.ctrlKey || event.metaKey ? cells.length - 1 : rowEnd;
+    }
 
     if (nextIndex !== null) {
       event.preventDefault();
@@ -186,9 +190,9 @@ export function GameBoard({
       </div>
       {interactive ? (
         <p id={instructionsId} className="sr-only">
-          Use arrow keys to move between patches. Press Home to jump to the first patch,
-          End to jump to the last patch, then press Enter or Space to select the focused
-          patch.
+          Use arrow keys to move between patches. Press Home or End to jump across the
+          current row, or Control plus Home or End to jump to the first or last patch.
+          Then press Enter or Space to select the focused patch.
         </p>
       ) : (
         <p id={previewSummaryId} className="sr-only">
