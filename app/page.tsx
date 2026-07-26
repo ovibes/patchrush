@@ -75,6 +75,8 @@ export default function HomePage() {
   const heroCtaDescriptionId = "hero-arena-cta-description";
   const dailyPreviewCountId = "daily-preview-count";
   const dailyPreviewDescriptionId = "daily-preview-description";
+  const dailyPreviewTriggerText =
+    celoReady || stacksReady ? "Choose today's arena" : "Preview today's arenas";
 
   return (
     <div className="landing-page">
@@ -179,7 +181,7 @@ export default function HomePage() {
             celoReady={celoReady}
             stacksReady={stacksReady}
             triggerLabel="Choose an arena from the board preview"
-            triggerText="Compare today's arenas"
+            triggerText={dailyPreviewTriggerText}
             triggerDescribedBy={`${dailyPreviewCountId} ${dailyPreviewDescriptionId}`}
           />
         </div>
