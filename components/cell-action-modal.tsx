@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 import { colorToHex, shortAddress, type PatchCell } from "@/lib/patchrush";
+import { AccessibleDialog } from "./accessible-dialog";
 
 type CellActionModalProps = {
   cell: PatchCell | null;
@@ -35,28 +34,6 @@ export function CellActionModal({
   walletConnected,
   walletLabel
 }: CellActionModalProps) {
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    previousFocusRef.current = document.activeElement as HTMLElement | null;
-    closeButtonRef.current?.focus();
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      previousFocusRef.current?.focus({ preventScroll: true });
-    };
-  }, [onClose]);
-
   if (!cell) return null;
 
   const row = cell.y + 1;
@@ -98,100 +75,91 @@ export function CellActionModal({
   };
 
   return (
-    <div
-      className="modal-backdrop"
-      role="presentation"
-      onPointerDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
+    <AccessibleDialog
+      open={Boolean(cell)}
+      onClose={onClose}
+      labelledBy="cell-action-title"
+      describedBy="cell-action-summary cell-action-help"
+      className="cell-action-modal"
     >
-      <div
-        className="cell-action-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cell-action-title"
-        aria-describedby="cell-action-summary cell-action-help"
-        tabIndex={-1}
-      >
-        <div className="modal-heading">
-          <span className="hud-tag">{networkLabel}</span>
-          <button
-            type="button"
-            className="modal-close"
-            ref={closeButtonRef}
-            aria-label="Close patch details"
-            title="Close patch details"
-            onClick={onClose}
-          >
-            X
-          </button>
-        </div>
-
-        <h2 id="cell-action-title">Row {row}, column {column}</h2>
-        <p id="cell-action-summary">{claimed ? "Claimed patch selected." : "Open patch selected."}</p>
-
-        <dl className="modal-data-grid">
-          <div>
-            <dt>Round</dt>
-            <dd>{roundId}</dd>
-          </div>
-          {claimed ? (
-            <>
-              <div>
-                <dt>Owner</dt>
-                <dd>{shortAddress(cell.owner)}</dd>
-              </div>
-              <div>
-                <dt>Score</dt>
-                <dd>{cell.score + cell.boosts}</dd>
-              </div>
-            </>
-          ) : (
-            <div>
-              <dt>Patch color</dt>
-              <dd className="modal-color-value">
-                <span style={{ backgroundColor: colorToHex(color) }} aria-hidden="true" />
-                {colorToHex(color)}
-              </dd>
-            </div>
-          )}
-        </dl>
-
-        <div className="modal-action-panel">
-          <button
-            type="button"
-            className={claimed ? "command-button magenta" : "command-button"}
-            aria-label={actionButtonLabel}
-            disabled={pending}
-            onClick={runAction}
-            title={actionButtonLabel}
-          >
-            <span className="button-glyph" aria-hidden="true">
-              {actionGlyph}
-            </span>
-            {actionLabel}
-          </button>
-          <p id="cell-action-help">{actionHelp}</p>
-        </div>
-
-        {message ? (
-          <div className="message-line modal-message" role="status">
-            {message}
-          </div>
-        ) : null}
-        {txUrl ? (
-          <a
-            className="tx-link"
-            href={txUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`View the ${networkLabel} transaction receipt in a new tab`}
-            title={`View the ${networkLabel} transaction receipt in a new tab`}
-          >
-            View transaction receipt
-          </a>
-        ) : null}
+      <div className="modal-heading">
+        <span className="hud-tag">{networkLabel}</span>
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="Close patch details"
+          title="Close patch details"
+          data-autofocus="true"
+          onClick={onClose}
+        >
+          X
+        </button>
       </div>
-    </div>
+
+      <h2 id="cell-action-title">Row {row}, column {column}</h2>
+      <p id="cell-action-summary">{claimed ? "Claimed patch selected." : "Open patch selected."}</p>
+
+      <dl className="modal-data-grid">
+        <div>
+          <dt>Round</dt>
+          <dd>{roundId}</dd>
+        </div>
+        {claimed ? (
+          <>
+            <div>
+              <dt>Owner</dt>
+              <dd>{shortAddress(cell.owner)}</dd>
+            </div>
+            <div>
+              <dt>Score</dt>
+              <dd>{cell.score + cell.boosts}</dd>
+            </div>
+          </>
+        ) : (
+          <div>
+            <dt>Patch color</dt>
+            <dd className="modal-color-value">
+              <span style={{ backgroundColor: colorToHex(color) }} aria-hidden="true" />
+              {colorToHex(color)}
+            </dd>
+          </div>
+        )}
+      </dl>
+
+      <div className="modal-action-panel">
+        <button
+          type="button"
+          className={claimed ? "command-button magenta" : "command-button"}
+          aria-label={actionButtonLabel}
+          disabled={pending}
+          onClick={runAction}
+          title={actionButtonLabel}
+        >
+          <span className="button-glyph" aria-hidden="true">
+            {actionGlyph}
+          </span>
+          {actionLabel}
+        </button>
+        <p id="cell-action-help">{actionHelp}</p>
+      </div>
+
+      {message ? (
+        <div className="message-line modal-message" role="status">
+          {message}
+        </div>
+      ) : null}
+      {txUrl ? (
+        <a
+          className="tx-link"
+          href={txUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`View the ${networkLabel} transaction receipt in a new tab`}
+          title={`View the ${networkLabel} transaction receipt in a new tab`}
+        >
+          View transaction receipt
+        </a>
+      ) : null}
+    </AccessibleDialog>
   );
 }
