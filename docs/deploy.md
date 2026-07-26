@@ -89,6 +89,10 @@ The home page emits this as `talentapp:project_verification` metadata when set.
 
 ## Vercel
 
+Set `NEXT_PUBLIC_APP_URL` in both Preview and Production so canonical metadata,
+`robots.txt`, and `sitemap.xml` always advertise the intended HTTPS origin
+instead of falling back to `http://localhost:3000`.
+
 Set these production environment variables:
 
 ```bash
