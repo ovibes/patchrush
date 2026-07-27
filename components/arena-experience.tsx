@@ -142,9 +142,11 @@ export function ArenaExperience(props: ArenaExperienceProps) {
   const roundAnnouncement = isToday
     ? `Viewing today's playable round ${formatRoundId(roundId)}.`
     : `Viewing past round ${formatRoundId(roundId)}. History is view only.`;
-  const introDescription = isToday
-    ? "Choose a patch, see its score before you move, and make today count."
-    : "Review past rounds, compare placements, and return to today's arena when you're ready to play.";
+  const introDescription = !isToday
+    ? "Review past rounds, compare placements, and return to today's arena when you're ready to play."
+    : configured
+      ? "Choose a patch, see its score before you move, and make today count."
+      : "Choose a patch, preview its score, and practice today's arena before the live round opens.";
   const predictedScore = selectedCell
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;

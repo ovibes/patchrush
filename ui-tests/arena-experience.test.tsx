@@ -46,6 +46,11 @@ describe("ArenaExperience", () => {
   it("labels unconfigured actions as preview only", () => {
     renderArena({ configured: false, walletAddress: "" });
     expect(screen.getByRole("button", { name: "Demo preview only" })).toBeDisabled();
+    expect(
+      screen.getByText(
+        "Choose a patch, preview its score, and practice today's arena before the live round opens."
+      )
+    ).toBeInTheDocument();
     expect(screen.getByText(/demo mode/i)).toBeInTheDocument();
   });
 
