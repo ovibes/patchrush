@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | PatchRush"
   },
   description:
-    "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and jump into the live or demo arena.",
+    "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and choose the live or demo arena.",
   keywords: [
     "PatchRush",
     "on-chain game",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Choose Today's Arena | PatchRush",
     description:
-      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and jump into the live or demo arena.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and choose the live or demo arena.",
     url: "/",
     siteName: "PatchRush",
     type: "website",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Choose Today's Arena | PatchRush",
     description:
-      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and jump into the live or demo arena.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and choose the live or demo arena.",
     images: [
       {
         url: "/og.png",
