@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ArenaExperience } from "@/components/arena-experience";
+import { CellActionModal } from "@/components/cell-action-modal";
 import {
   buildEmptyBoard,
   emptyPlayerRoundStats,
@@ -74,6 +75,36 @@ describe("ArenaExperience", () => {
 
     expect(screen.getByRole("button", { name: "Already boosted" })).toBeDisabled();
     expect(screen.getByText("15")).toBeInTheDocument();
+  });
+
+  it("uses the updated wallet wording for claimed patch boosts", () => {
+    render(
+      <CellActionModal
+        cell={{
+          x: 0,
+          y: 0,
+          index: 0,
+          owner: "0xabcdef1234567890",
+          color: 0xcf3d7a,
+          score: 13,
+          boosts: 2
+        }}
+        color={0xcf3d7a}
+        message=""
+        networkLabel="Celo"
+        onClaim={vi.fn()}
+        onClose={vi.fn()}
+        onConnect={vi.fn()}
+        onBoost={vi.fn()}
+        pending={false}
+        roundId={20260710}
+        txUrl=""
+        walletConnected={true}
+        walletLabel="Celo wallet"
+      />
+    );
+
+    expect(screen.getByText("Boost this claimed patch once in your wallet.")).toBeInTheDocument();
   });
 
   it("announces the selected patch in the inspector", () => {

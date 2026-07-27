@@ -52,7 +52,7 @@ export function CellActionModal({
   const actionHelp = !walletConnected
     ? `Connect ${walletLabel} to continue. No transaction is sent yet.`
     : claimed
-      ? "Boost this claimed patch once from your wallet."
+      ? "Boost this claimed patch once in your wallet."
       : "Claim this open patch with your selected color.";
   const actionButtonLabel = !walletConnected
     ? `Connect ${walletLabel} to act on row ${row}, column ${column}`
