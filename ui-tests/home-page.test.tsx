@@ -54,7 +54,7 @@ describe("HomePage", () => {
     ).toHaveTextContent("Preview today's arenas");
     expect(
       screen.getByText(
-        "No signup required. Preview the board in demo mode, then connect a wallet when you're ready to play live."
+        "No signup required. Preview the board in demo mode, then connect a wallet when the live round opens."
       )
     ).toBeInTheDocument();
   });

@@ -112,7 +112,7 @@ export default function HomePage() {
             />
             <span id={heroCtaDescriptionId}>
               No signup required. Preview the board in demo mode, then connect a wallet when
-              you&apos;re ready to play live.
+              the live round opens.
             </span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
