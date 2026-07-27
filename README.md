@@ -27,7 +27,9 @@ npm run dev
 
 PatchRush runs in demo mode locally without any env file. Add a local
 `.env.local` only when you want the app to read live on-chain state through
-`NEXT_PUBLIC_PATCHRUSH_*` values.
+the public `NEXT_PUBLIC_PATCHRUSH_*` contract values plus the matching
+`NEXT_PUBLIC_CELO_*` and `NEXT_PUBLIC_STACKS_*` RPC/API settings described in
+[`docs/deploy.md`](./docs/deploy.md).
 
 Set `NEXT_PUBLIC_APP_URL` before preview or production builds so the canonical
 URL, `robots.txt`, and `sitemap.xml` all point at the correct HTTPS origin.
