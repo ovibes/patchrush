@@ -77,6 +77,14 @@ export default function HomePage() {
   const dailyPreviewDescriptionId = "daily-preview-description";
   const dailyPreviewTriggerText =
     celoReady || stacksReady ? "Choose today's arena" : "Preview today's arenas";
+  const heroTriggerLabel =
+    celoReady || stacksReady
+      ? "Choose today's arena from the hero section"
+      : "Preview today's arenas from the hero section";
+  const dailyPreviewTriggerLabel =
+    celoReady || stacksReady
+      ? "Choose an arena from the board preview"
+      : "Preview today's arenas from the board preview";
 
   return (
     <div className="landing-page">
@@ -99,7 +107,7 @@ export default function HomePage() {
               stacksNetworkLabel={stacksNetworkLabel}
               celoReady={celoReady}
               stacksReady={stacksReady}
-              triggerLabel="Choose today's arena from the hero section"
+              triggerLabel={heroTriggerLabel}
               triggerDescribedBy={heroCtaDescriptionId}
             />
             <span id={heroCtaDescriptionId}>
@@ -180,7 +188,7 @@ export default function HomePage() {
             stacksNetworkLabel={stacksNetworkLabel}
             celoReady={celoReady}
             stacksReady={stacksReady}
-            triggerLabel="Choose an arena from the board preview"
+            triggerLabel={dailyPreviewTriggerLabel}
             triggerText={dailyPreviewTriggerText}
             triggerDescribedBy={`${dailyPreviewCountId} ${dailyPreviewDescriptionId}`}
           />
