@@ -146,6 +146,11 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     ? getPredictedClaimScore(cells, selectedCell.index)
     : BASE_SCORE;
   const occupiedNeighbors = Math.max(0, (predictedScore - BASE_SCORE) / NEIGHBOR_BONUS);
+  const selectionAnnouncement = selectedCell
+    ? `Selected patch ${selectedCell.y + 1}.${selectedCell.x + 1}. ${
+        selectedCell.owner ? "Claimed territory" : "Open territory"
+      }.`
+    : "No patch selected.";
 
   const inspectorContent = useMemo<ReactNode>(() => {
     if (!selectedCell) {
@@ -209,6 +214,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
 
     return (
       <>
+        <p className="sr-only" aria-live="polite" aria-atomic="true">
+          {selectionAnnouncement}
+        </p>
         <div className="inspector-heading">
           <div>
             <span className="eyebrow">Patch {selectedCell.y + 1}.{selectedCell.x + 1}</span>
@@ -308,6 +316,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     selectedHasBoosted,
     predictedScore,
     occupiedNeighbors,
+    selectionAnnouncement,
     color,
     onBoost,
     onClaim,
@@ -539,7 +548,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
         />
 
         {!mobileInspector ? (
-          <aside className="patch-inspector arena-inspector-desktop" aria-live="polite">
+          <aside className="patch-inspector arena-inspector-desktop">
             {inspectorContent}
           </aside>
         ) : null}

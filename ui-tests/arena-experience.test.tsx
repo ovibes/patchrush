@@ -45,14 +45,14 @@ function renderArena(overrides: Partial<Parameters<typeof ArenaExperience>[0]> =
 describe("ArenaExperience", () => {
   it("labels unconfigured actions as preview only", () => {
     renderArena({ configured: false, walletAddress: "" });
-    expect(screen.getByRole("button", { name: "Preview only" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Demo preview only" })).toBeDisabled();
     expect(screen.getByText(/demo mode/i)).toBeInTheDocument();
   });
 
   it("makes historical rounds view-only", () => {
     renderArena({ roundId: 20260709 });
     expect(screen.getByRole("button", { name: "History is view-only" })).toBeDisabled();
-    expect(screen.getByText(/claims and boosts are available only on today's board/i)).toBeInTheDocument();
+    expect(screen.getByText(/claims and boosts are available only on today's arena/i)).toBeInTheDocument();
   });
 
   it("shows boost eligibility for a claimed patch", () => {
@@ -69,6 +69,18 @@ describe("ArenaExperience", () => {
 
     expect(screen.getByRole("button", { name: "Already boosted" })).toBeDisabled();
     expect(screen.getByText("15")).toBeInTheDocument();
+  });
+
+  it("announces the selected patch in the inspector", () => {
+    renderArena();
+    expect(screen.getByText("Selected patch 1.1. Open territory.")).toHaveAttribute(
+      "aria-live",
+      "polite"
+    );
+    expect(screen.getByText("Selected patch 1.1. Open territory.")).toHaveAttribute(
+      "aria-atomic",
+      "true"
+    );
   });
 
   it("keeps transaction feedback outside the patch action", () => {

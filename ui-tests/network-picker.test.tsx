@@ -14,7 +14,7 @@ describe("NetworkPickerModal", () => {
         stacksReady={false}
       />
     );
-    const trigger = screen.getByRole("button", { name: /compare today's arenas/i });
+    const trigger = screen.getByRole("button", { name: /choose today's arena/i });
     await user.click(trigger);
 
     const dialog = screen.getByRole("dialog", { name: "Choose today's arena" });
