@@ -57,6 +57,11 @@ describe("HomePage", () => {
         "No signup required. Preview the board in demo mode, then connect a wallet when the live round opens."
       )
     ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Pick a patch, earn more for smart placement, and shape a shared 6×6 arena one move at a time, whether you start in demo mode or jump into the live round."
+      )
+    ).toBeInTheDocument();
   });
 
   it("uses live-round timing copy for demo-only arena cards", async () => {
