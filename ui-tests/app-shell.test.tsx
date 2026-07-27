@@ -43,6 +43,20 @@ describe("AppShell", () => {
     usePathname.mockReset();
   });
 
+  it("announces the brand link as the current page on home", () => {
+    usePathname.mockReturnValue("/");
+    const { container } = render(
+      <AppShell>
+        <div>Content</div>
+      </AppShell>
+    );
+
+    const brandLink = container.querySelector(".site-brand");
+
+    expect(brandLink).toHaveAttribute("aria-label", "Current page: PatchRush home");
+    expect(brandLink).toHaveAttribute("aria-current", "page");
+  });
+
   it("announces the active footer arena link as the current page", () => {
     usePathname.mockReturnValue("/celo");
     render(

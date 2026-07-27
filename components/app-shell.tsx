@@ -20,6 +20,7 @@ const routes = [
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const onHomePage = pathname === "/";
+  const homeLinkLabel = onHomePage ? "Current page: PatchRush home" : "Open PatchRush home";
   const celoReady = Boolean(publicEnv.celoContractAddress);
   const stacksReady = Boolean(
     publicEnv.stacksContractAddress && publicEnv.stacksContractName
@@ -36,7 +37,7 @@ export function AppShell({ children }: AppShellProps) {
     : viewingArena
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
-  const homeFooterLabel = onHomePage ? "Current page: PatchRush home" : "Open PatchRush home";
+  const homeFooterLabel = homeLinkLabel;
   const celoFooterText = celoReady ? "Today's Celo live arena" : "Today's Celo demo arena";
   const stacksFooterText = stacksReady
     ? "Today's Stacks live arena"
@@ -63,8 +64,9 @@ export function AppShell({ children }: AppShellProps) {
         <Link
           href="/"
           className="site-brand"
-          aria-label="PatchRush home"
-          title="PatchRush home"
+          aria-current={onHomePage ? "page" : undefined}
+          aria-label={homeLinkLabel}
+          title={homeLinkLabel}
         >
           <Image
             src="/patchrush-logo.png"
