@@ -99,7 +99,7 @@ export default function HomePage() {
           <h1 id="home-title">Claim territory.<br />Build your score.<br /><em>Return tomorrow.</em></h1>
           <p>
             Pick a patch, earn more for smart placement, and shape a shared 6×6 arena one
-            move at a time, whether you start in demo mode or jump into the live round.
+            move at a time, whether you start in demo mode or join the live round.
           </p>
           <div className="hero-actions">
             <NetworkPickerModal

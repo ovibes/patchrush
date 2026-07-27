@@ -59,7 +59,7 @@ describe("HomePage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Pick a patch, earn more for smart placement, and shape a shared 6×6 arena one move at a time, whether you start in demo mode or jump into the live round."
+        "Pick a patch, earn more for smart placement, and shape a shared 6×6 arena one move at a time, whether you start in demo mode or join the live round."
       )
     ).toBeInTheDocument();
   });
