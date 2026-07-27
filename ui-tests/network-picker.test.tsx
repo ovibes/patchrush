@@ -92,7 +92,7 @@ describe("NetworkPickerModal", () => {
     await user.click(screen.getByRole("button", { name: /choose today's arena/i }));
     expect(
       screen.getByText(
-        "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet is ready."
+        "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet already works."
       )
     ).toBeInTheDocument();
   });
