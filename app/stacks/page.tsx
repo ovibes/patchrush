@@ -4,14 +4,14 @@ import { StacksConsole } from "@/components/stacks-console";
 export const metadata: Metadata = {
   title: "Open Today's Stacks Arena",
   description:
-    "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks-compatible wallet.",
+    "Open today's PatchRush arena on Stacks for live play or demo preview with Leather, Xverse, or another Stacks-compatible wallet.",
   alternates: {
     canonical: "/stacks"
   },
   openGraph: {
     title: "Open Today's Stacks Arena | PatchRush",
     description:
-      "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks-compatible wallet.",
+      "Open today's PatchRush arena on Stacks for live play or demo preview with Leather, Xverse, or another Stacks-compatible wallet.",
     url: "/stacks",
     siteName: "PatchRush",
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Open Today's Stacks Arena | PatchRush",
     description:
-      "Open today's PatchRush arena on Stacks in live or demo mode with Leather, Xverse, or another Stacks-compatible wallet.",
+      "Open today's PatchRush arena on Stacks for live play or demo preview with Leather, Xverse, or another Stacks-compatible wallet.",
     images: [
       {
         url: "/og.png",
