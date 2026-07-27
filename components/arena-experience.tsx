@@ -139,6 +139,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     roundId >= todayRoundId
       ? `Already viewing today's round ${formatRoundId(todayRoundId)}`
       : `View round ${formatRoundId(nextRoundId)}`;
+  const roundAnnouncement = isToday
+    ? `Viewing today's playable round ${formatRoundId(roundId)}.`
+    : `Viewing past round ${formatRoundId(roundId)}. History is view only.`;
   const introDescription = isToday
     ? "Choose a patch, see its score before you move, and make today count."
     : "Review past rounds, compare placements, and return to today's arena when you're ready to play.";
@@ -359,6 +362,9 @@ export function ArenaExperience(props: ArenaExperienceProps) {
       </section>
 
       <section className="round-bar" aria-label="Round navigation">
+        <p className="sr-only" aria-live="polite" aria-atomic="true">
+          {roundAnnouncement}
+        </p>
         <div className="round-date">
           <CalendarDays aria-hidden="true" />
           <div>

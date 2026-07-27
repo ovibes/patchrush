@@ -83,6 +83,48 @@ describe("ArenaExperience", () => {
     );
   });
 
+  it("announces whether the viewed round is playable or history", () => {
+    const { rerender } = renderArena();
+    expect(
+      screen.getByText(/Viewing today's playable round .*UTC\./)
+    ).toHaveAttribute("aria-live", "polite");
+
+    rerender(
+      <ArenaExperience
+        network="celo"
+        networkLabel="Celo"
+        networkDetail="Mainnet"
+        configured={true}
+        cells={buildEmptyBoard("celo")}
+        selectedIndex={0}
+        selectedHasBoosted={false}
+        color={0x36d399}
+        walletAddress="0x1234567890abcdef"
+        walletName="Celo wallet"
+        playerStats={emptyPlayerRoundStats}
+        roundId={20260709}
+        todayRoundId={20260710}
+        loadState="ready"
+        loadError=""
+        transaction={idleTransaction}
+        pendingClaimIndex={null}
+        pendingBoostIndex={null}
+        onSelect={vi.fn()}
+        onCloseSelection={vi.fn()}
+        onColorChange={vi.fn()}
+        onConnect={vi.fn()}
+        onRefresh={vi.fn()}
+        onRoundChange={vi.fn()}
+        onClaim={vi.fn()}
+        onBoost={vi.fn()}
+      />
+    );
+
+    expect(
+      screen.getByText(/Viewing past round .*UTC\. History is view only\./)
+    ).toHaveAttribute("aria-atomic", "true");
+  });
+
   it("keeps transaction feedback outside the patch action", () => {
     renderArena({
       transaction: {
