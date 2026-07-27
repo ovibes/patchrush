@@ -98,4 +98,28 @@ describe("GameBoard", () => {
       "ArrowLeft ArrowRight ArrowUp ArrowDown Home End Control+Home Control+End Meta+Home Meta+End Enter Space"
     );
   });
+
+  it("describes the board preview without calling it a sample board", () => {
+    const cells = buildEmptyBoard("celo");
+    cells[0] = {
+      ...cells[0],
+      owner: "0x1234567890abcdef",
+      color: 0x36d399,
+      score: 10,
+      boosts: 0
+    };
+
+    render(
+      <GameBoard
+        cells={cells}
+        selectedIndex={0}
+        networkLabel="Today's board preview"
+      />
+    );
+
+    expect(
+      screen.getByText(/preview only\. 1 of 36 patches are already claimed in this board preview\./i)
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/sample board/i)).not.toBeInTheDocument();
+  });
 });
