@@ -60,18 +60,18 @@ export default function HomePage() {
     : "Open today's Stacks demo arena";
   const celoCardAriaLabel = celoReady
     ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
-    : "Open today's Celo demo arena and connect a Celo-compatible wallet when live";
+    : "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens";
   const stacksCardAriaLabel = stacksReady
     ? "Open today's live Stacks arena with Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open today's Stacks demo arena and connect a Stacks wallet when live";
+    : "Open today's Stacks demo arena and connect a Stacks wallet when the live round opens";
   const celoCardDescriptionId = "celo-card-description";
   const stacksCardDescriptionId = "stacks-card-description";
   const celoCardDescription = celoReady
     ? "MiniPay-ready and designed for quick mobile play."
-    : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when live.";
+    : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when the live round opens.";
   const stacksCardDescription = stacksReady
     ? "Built for Leather, Xverse, and other Stacks wallets."
-    : "Open the demo now, then connect a Stacks wallet for the same daily rules when live.";
+    : "Open the demo now, then connect a Stacks wallet for the same daily rules when the live round opens.";
   const heroCtaDescriptionId = "hero-arena-cta-description";
   const dailyPreviewCountId = "daily-preview-count";
   const dailyPreviewDescriptionId = "daily-preview-description";
