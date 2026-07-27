@@ -42,7 +42,7 @@ export function NetworkPickerModal({
       ? "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet is ready."
       : stacksReady
         ? "Stacks is live today, while Celo stays available in demo mode. The game is identical on both networks, so you can start where your wallet is ready."
-        : "Both networks are in demo mode today. Start on either network now, then connect the wallet flow that best fits your device when live.";
+        : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when live.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
     : "Open the demo now, then connect a Celo-compatible wallet when live";
