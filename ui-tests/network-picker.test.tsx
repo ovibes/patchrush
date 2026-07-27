@@ -73,7 +73,7 @@ describe("NetworkPickerModal", () => {
     expect(screen.getByRole("dialog", { name: /preview today's arenas/i })).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when live."
+        "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens."
       )
     ).toBeInTheDocument();
   });

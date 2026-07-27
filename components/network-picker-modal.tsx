@@ -42,19 +42,19 @@ export function NetworkPickerModal({
       ? "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet is ready."
       : stacksReady
         ? "Stacks is live today, while Celo stays available in demo mode. The game is identical on both networks, so you can start where your wallet is ready."
-        : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when live.";
+        : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
-    : "Open the demo now, then connect a Celo-compatible wallet when live";
+    : "Open the demo now, then connect a Celo-compatible wallet when the live round opens";
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open the demo now, then connect a Stacks wallet when live";
+    : "Open the demo now, then connect a Stacks wallet when the live round opens";
   const celoChoiceAriaLabel = celoReady
     ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
-    : "Open today's Celo demo arena and connect a Celo-compatible wallet when live";
+    : "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens";
   const stacksChoiceAriaLabel = stacksReady
     ? "Open today's live Stacks arena with Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open today's Stacks demo arena and connect a Stacks wallet when live";
+    : "Open today's Stacks demo arena and connect a Stacks wallet when the live round opens";
   return (
     <>
       <button
