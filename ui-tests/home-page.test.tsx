@@ -52,6 +52,11 @@ describe("HomePage", () => {
     expect(
       screen.getByRole("button", { name: "Preview today's arenas from the board preview" })
     ).toHaveTextContent("Preview today's arenas");
+    expect(
+      screen.getByText(
+        "No signup required. Preview the board in demo mode, then connect a wallet when you're ready to play live."
+      )
+    ).toBeInTheDocument();
   });
 
   it("uses live-round timing copy for demo-only arena cards", async () => {

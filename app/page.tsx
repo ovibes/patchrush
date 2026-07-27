@@ -111,7 +111,8 @@ export default function HomePage() {
               triggerDescribedBy={heroCtaDescriptionId}
             />
             <span id={heroCtaDescriptionId}>
-              No signup required. Start in demo mode, then connect a wallet when you&apos;re ready.
+              No signup required. Preview the board in demo mode, then connect a wallet when
+              you&apos;re ready to play live.
             </span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
