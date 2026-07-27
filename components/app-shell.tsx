@@ -41,12 +41,18 @@ export function AppShell({ children }: AppShellProps) {
   const stacksFooterText = stacksReady
     ? "Today's Stacks live arena"
     : "Today's Stacks demo arena";
-  const celoFooterLabel = celoReady
-    ? "Open today's live Celo arena"
-    : "Open today's Celo demo arena";
-  const stacksFooterLabel = stacksReady
-    ? "Open today's live Stacks arena"
-    : "Open today's Stacks demo arena";
+  const viewingCeloArena = pathname.startsWith("/celo");
+  const viewingStacksArena = pathname.startsWith("/stacks");
+  const celoFooterLabel = viewingCeloArena
+    ? `Current page: ${celoFooterText}`
+    : celoReady
+      ? "Open today's live Celo arena"
+      : "Open today's Celo demo arena";
+  const stacksFooterLabel = viewingStacksArena
+    ? `Current page: ${stacksFooterText}`
+    : stacksReady
+      ? "Open today's live Stacks arena"
+      : "Open today's Stacks demo arena";
 
   return (
     <div className="app-shell">
@@ -117,14 +123,14 @@ export function AppShell({ children }: AppShellProps) {
           </Link>
           <Link
             href="/celo"
-            aria-current={pathname.startsWith("/celo") ? "page" : undefined}
+            aria-current={viewingCeloArena ? "page" : undefined}
             aria-label={celoFooterLabel}
           >
             {celoFooterText}
           </Link>
           <Link
             href="/stacks"
-            aria-current={pathname.startsWith("/stacks") ? "page" : undefined}
+            aria-current={viewingStacksArena ? "page" : undefined}
             aria-label={stacksFooterLabel}
           >
             {stacksFooterText}
