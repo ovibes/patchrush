@@ -85,8 +85,16 @@ export function AppShell({ children }: AppShellProps) {
         <nav className="site-nav" aria-label="Primary navigation">
           {routes.map((route) => {
             const active = route.href === "/" ? pathname === "/" : pathname.startsWith(route.href);
+            const navLinkLabel = active
+              ? `Current page: ${route.label}`
+              : `Open ${route.label}`;
             return (
-              <Link href={route.href} key={route.href} aria-current={active ? "page" : undefined}>
+              <Link
+                href={route.href}
+                key={route.href}
+                aria-current={active ? "page" : undefined}
+                aria-label={navLinkLabel}
+              >
                 {route.label}
               </Link>
             );

@@ -72,4 +72,21 @@ describe("AppShell", () => {
       screen.getByRole("link", { name: "Open today's live Stacks arena" })
     ).not.toHaveAttribute("aria-current");
   });
+
+  it("announces the active header navigation link as the current page", () => {
+    usePathname.mockReturnValue("/stacks");
+    render(
+      <AppShell>
+        <div>Content</div>
+      </AppShell>
+    );
+
+    expect(screen.getByRole("link", { name: "Current page: Stacks" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+    expect(screen.getByRole("link", { name: "Open Home" })).not.toHaveAttribute(
+      "aria-current"
+    );
+  });
 });
