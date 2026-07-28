@@ -9,14 +9,14 @@ import { getBoardStats, sampleCeloCells } from "@/lib/patchrush";
 export const metadata: Metadata = {
   title: "Choose Today's Arena",
   description:
-    "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+    "Preview today's PatchRush board, compare Celo and Stacks, and choose the live play or demo preview that fits your wallet.",
   alternates: {
     canonical: "/"
   },
   openGraph: {
     title: "Choose Today's Arena | PatchRush",
     description:
-      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live play or demo preview that fits your wallet.",
     url: "/",
     siteName: "PatchRush",
     type: "website",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Choose Today's Arena | PatchRush",
     description:
-      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live or demo arena that fits your wallet.",
+      "Preview today's PatchRush board, compare Celo and Stacks, and choose the live play or demo preview that fits your wallet.",
     images: [
       {
         url: "/og.png",
