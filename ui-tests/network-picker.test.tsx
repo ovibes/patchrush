@@ -73,7 +73,7 @@ describe("NetworkPickerModal", () => {
     expect(screen.getByRole("dialog", { name: /preview today's arenas/i })).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens."
+        "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens at 00:00 UTC."
       )
     ).toBeInTheDocument();
   });
@@ -92,7 +92,7 @@ describe("NetworkPickerModal", () => {
     await user.click(screen.getByRole("button", { name: /choose today's arena/i }));
     expect(
       screen.getByText(
-        "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet already works."
+        "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
       )
     ).toBeInTheDocument();
   });

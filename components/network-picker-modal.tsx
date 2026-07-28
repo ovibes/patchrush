@@ -39,22 +39,22 @@ export function NetworkPickerModal({
   const descriptionText = celoReady && stacksReady
     ? "Both Celo and Stacks are live today. The game is identical on both networks, so use the wallet already on your device."
     : celoReady
-      ? "Celo is live today, while Stacks stays available in demo mode. The game is identical on both networks, so you can start where your wallet already works."
+      ? "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
       : stacksReady
-        ? "Stacks is live today, while Celo stays available in demo mode. The game is identical on both networks, so you can start where your wallet already works."
-        : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens.";
+        ? "Stacks is live today, while Celo stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
+        : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens at 00:00 UTC.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
-    : "Open the demo now, then connect a Celo-compatible wallet when the live round opens";
+    : "Open the demo now, then connect a Celo-compatible wallet when the live round opens at 00:00 UTC";
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open the demo now, then connect a Stacks wallet when the live round opens";
+    : "Open the demo now, then connect a Stacks wallet when the live round opens at 00:00 UTC";
   const celoChoiceAriaLabel = celoReady
     ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
-    : "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens";
+    : "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens at 00:00 UTC";
   const stacksChoiceAriaLabel = stacksReady
     ? "Open today's live Stacks arena with Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open today's Stacks demo arena and connect a Stacks wallet when the live round opens";
+    : "Open today's Stacks demo arena and connect a Stacks wallet when the live round opens at 00:00 UTC";
   return (
     <>
       <button
