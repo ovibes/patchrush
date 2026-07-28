@@ -89,4 +89,17 @@ describe("AppShell", () => {
       "aria-current"
     );
   });
+
+  it("uses choose wording for the home header action when a live arena is available", () => {
+    usePathname.mockReturnValue("/");
+    render(
+      <AppShell>
+        <div>Content</div>
+      </AppShell>
+    );
+
+    expect(
+      screen.getByRole("link", { name: "Jump to today's arena comparison section" })
+    ).toHaveTextContent("Choose today's arena");
+  });
 });
