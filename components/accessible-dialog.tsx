@@ -120,6 +120,8 @@ export function AccessibleDialog({
             return;
           }
 
+          const preferred =
+            panelRef.current.querySelector<HTMLElement>("[data-autofocus]") ?? focusable[0];
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
           if (
@@ -128,9 +130,12 @@ export function AccessibleDialog({
           ) {
             event.preventDefault();
             last.focus();
+          } else if (!event.shiftKey && document.activeElement === panelRef.current) {
+            event.preventDefault();
+            preferred.focus();
           } else if (!event.shiftKey && document.activeElement === last) {
             event.preventDefault();
-            first.focus();
+            preferred.focus();
           }
         }}
       >

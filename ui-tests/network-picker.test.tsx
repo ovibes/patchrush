@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { NetworkPickerModal } from "@/components/network-picker-modal";
 
 describe("NetworkPickerModal", () => {
-  it("opens accessibly, focuses the first network choice, wraps backward focus, closes with Escape, and restores focus", async () => {
+  it("opens accessibly, focuses the first network choice, wraps focus from the dialog panel, closes with Escape, and restores focus", async () => {
     const user = userEvent.setup();
     render(
       <NetworkPickerModal
@@ -26,9 +26,19 @@ describe("NetworkPickerModal", () => {
         })
       ).toHaveFocus();
     });
+    dialog.focus();
+    await user.tab();
+    expect(
+      screen.getByRole("link", {
+        name: /open today's live celo arena with minipay or another celo-compatible wallet/i
+      })
+    ).toHaveFocus();
+    dialog.focus();
     await user.tab({ shift: true });
     expect(
-      screen.getByRole("button", { name: /close network picker/i })
+      screen.getByRole("link", {
+        name: /open today's stacks demo arena and connect a stacks wallet when the live round opens at 00:00 utc/i
+      })
     ).toHaveFocus();
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
