@@ -99,6 +99,23 @@ describe("GameBoard", () => {
     );
   });
 
+  it("announces when a patch action is pending", () => {
+    const cells = buildEmptyBoard("celo");
+    render(
+      <GameBoard
+        cells={cells}
+        selectedIndex={null}
+        networkLabel="Celo"
+        onSelect={() => undefined}
+        pendingClaimIndex={0}
+      />
+    );
+
+    expect(screen.getByRole("gridcell", { name: /transaction pending/i })).toHaveAccessibleName(
+      /estimated claim score 10 points\. transaction pending\./i
+    );
+  });
+
   it("describes the board preview without calling it a sample board", () => {
     const cells = buildEmptyBoard("celo");
     cells[0] = {

@@ -128,11 +128,12 @@ export function GameBoard({
               ? "Already boosted by you."
               : "Select to view boost details."
             : `Estimated claim score ${predictedScore} points.`;
+          const pendingText = pending ? " Transaction pending." : "";
           const cellLabel = claimed
             ? `Patch row ${cell.y + 1}, column ${cell.x + 1}. ${
                 yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
-              }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}`
-            : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}`;
+              }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}${pendingText}`
+            : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}${pendingText}`;
 
           return (
             <button
