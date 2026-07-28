@@ -81,6 +81,10 @@ export default function HomePage() {
     celoReady || stacksReady
       ? "Choose today's arena from the hero section"
       : "Preview today's arenas from the hero section";
+  const heroCtaDescription =
+    celoReady || stacksReady
+      ? "No signup required. Preview the board in demo mode, or connect a wallet now to join the live round."
+      : "No signup required. Preview the board in demo mode, then connect a wallet when the live round opens.";
   const dailyPreviewTriggerLabel =
     celoReady || stacksReady
       ? "Choose an arena from the board preview"
@@ -110,10 +114,7 @@ export default function HomePage() {
               triggerLabel={heroTriggerLabel}
               triggerDescribedBy={heroCtaDescriptionId}
             />
-            <span id={heroCtaDescriptionId}>
-              No signup required. Preview the board in demo mode, then connect a wallet when
-              the live round opens.
-            </span>
+            <span id={heroCtaDescriptionId}>{heroCtaDescription}</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
             <li><strong>3</strong> claims per UTC day</li>

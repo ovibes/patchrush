@@ -69,6 +69,30 @@ describe("HomePage", () => {
     ).toBeInTheDocument();
   });
 
+  it("updates hero helper copy when a live arena is available", async () => {
+    vi.doMock("@/lib/env", () => ({
+      getCeloChainLabel: () => "Celo Mainnet",
+      publicEnv: {
+        talentProjectVerification: "",
+        celoContractAddress: "0xabc",
+        stacksContractAddress: "",
+        stacksContractName: ""
+      }
+    }));
+
+    const { default: HomePage } = await import("@/app/page");
+    render(<HomePage />);
+
+    expect(
+      screen.getByRole("button", { name: "Choose today's arena from the hero section" })
+    ).toHaveTextContent("Choose today's arena from the hero section");
+    expect(
+      screen.getByText(
+        "No signup required. Preview the board in demo mode, or connect a wallet now to join the live round."
+      )
+    ).toBeInTheDocument();
+  });
+
   it("uses live-round timing copy for demo-only arena cards", async () => {
     vi.doMock("@/lib/env", () => ({
       getCeloChainLabel: () => "Celo Sepolia",
