@@ -99,7 +99,7 @@ describe("AppShell", () => {
     );
 
     expect(
-      screen.getByRole("link", { name: "Jump to today's arena comparison section" })
+      screen.getByRole("link", { name: "Jump to today's arena chooser section" })
     ).toHaveTextContent("Choose today's arena");
   });
 });

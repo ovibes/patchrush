@@ -37,7 +37,9 @@ export function AppShell({ children }: AppShellProps) {
       : "Preview today's arenas"
     : currentArenaText;
   const playLinkLabel = onHomePage
-    ? "Jump to today's arena comparison section"
+    ? celoReady || stacksReady
+      ? "Jump to today's arena chooser section"
+      : "Jump to today's arena preview section"
     : viewingArena
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
