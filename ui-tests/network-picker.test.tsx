@@ -102,7 +102,26 @@ describe("NetworkPickerModal", () => {
     await user.click(screen.getByRole("button", { name: /choose today's arena/i }));
     expect(
       screen.getByText(
-        "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
+        "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so start with the wallet you already use."
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the both-live helper copy wallet-centric", async () => {
+    const user = userEvent.setup();
+    render(
+      <NetworkPickerModal
+        celoNetworkLabel="Celo Mainnet"
+        stacksNetworkLabel="Stacks Mainnet"
+        celoReady
+        stacksReady
+      />
+    );
+
+    await user.click(screen.getByRole("button", { name: /choose today's arena/i }));
+    expect(
+      screen.getByText(
+        "Both Celo and Stacks are live today. The game is identical on both networks, so start with the wallet you already use."
       )
     ).toBeInTheDocument();
   });

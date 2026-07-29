@@ -37,11 +37,11 @@ export function NetworkPickerModal({
     : "Preview today's arenas";
   const defaultTriggerText = hasLiveNetwork ? "Choose today's arena" : "Preview today's arenas";
   const descriptionText = celoReady && stacksReady
-    ? "Both Celo and Stacks are live today. The game is identical on both networks, so use the wallet already on your device."
+    ? "Both Celo and Stacks are live today. The game is identical on both networks, so start with the wallet you already use."
     : celoReady
-      ? "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
+      ? "Celo is live today, while Stacks stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so start with the wallet you already use."
       : stacksReady
-        ? "Stacks is live today, while Celo stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so you can start where your wallet already works."
+        ? "Stacks is live today, while Celo stays available in demo mode until the next round opens at 00:00 UTC. The game is identical on both networks, so start with the wallet you already use."
         : "Both networks are in demo mode today. Start on either network now, then connect the wallet that best fits your device when the live round opens at 00:00 UTC.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
