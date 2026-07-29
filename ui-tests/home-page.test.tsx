@@ -109,12 +109,12 @@ describe("HomePage", () => {
 
     expect(
       screen.getByRole("link", {
-        name: "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens"
+        name: "Celo arena demo. Connect a Celo-compatible wallet when the live round opens"
       })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
-        name: "Open today's Stacks demo arena and connect a Stacks wallet when the live round opens"
+        name: "Stacks arena demo. Connect a Stacks wallet when the live round opens"
       })
     ).toBeInTheDocument();
     expect(
@@ -126,6 +126,32 @@ describe("HomePage", () => {
       screen.getByText(
         "Open the demo now, then connect a Stacks wallet for the same daily rules when the live round opens."
       )
+    ).toBeInTheDocument();
+  });
+
+  it("front-loads live arena card labels with the network name", async () => {
+    vi.doMock("@/lib/env", () => ({
+      getCeloChainLabel: () => "Celo Mainnet",
+      publicEnv: {
+        talentProjectVerification: "",
+        celoContractAddress: "0xabc",
+        stacksContractAddress: "ST123",
+        stacksContractName: "patchrush"
+      }
+    }));
+
+    const { default: HomePage } = await import("@/app/page");
+    render(<HomePage />);
+
+    expect(
+      screen.getByRole("link", {
+        name: "Celo arena, live today. Open with MiniPay or another Celo-compatible wallet"
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", {
+        name: "Stacks arena, live today. Open with Leather, Xverse, or another Stacks-compatible wallet"
+      })
     ).toBeInTheDocument();
   });
 });
