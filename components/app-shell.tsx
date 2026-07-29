@@ -18,12 +18,17 @@ const routes = [
     currentLabel: "Current page: PatchRush home",
     openLabel: "Open PatchRush home"
   },
-  { href: "/celo", label: "Celo", currentLabel: "Current page: Celo", openLabel: "Open Celo" },
+  {
+    href: "/celo",
+    label: "Celo",
+    currentLabel: "Current page: Celo arena",
+    openLabel: "Open Celo arena"
+  },
   {
     href: "/stacks",
     label: "Stacks",
-    currentLabel: "Current page: Stacks",
-    openLabel: "Open Stacks"
+    currentLabel: "Current page: Stacks arena",
+    openLabel: "Open Stacks arena"
   }
 ] as const;
 

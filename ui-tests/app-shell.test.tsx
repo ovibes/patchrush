@@ -87,7 +87,7 @@ describe("AppShell", () => {
       </AppShell>
     );
 
-    expect(screen.getByRole("link", { name: "Current page: Stacks" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Current page: Stacks arena" })).toHaveAttribute(
       "aria-current",
       "page"
     );
@@ -98,6 +98,11 @@ describe("AppShell", () => {
     ).not.toHaveAttribute(
       "aria-current"
     );
+    expect(
+      within(screen.getByRole("navigation", { name: "Primary navigation" })).getByRole("link", {
+        name: "Open Celo arena"
+      })
+    ).not.toHaveAttribute("aria-current");
   });
 
   it("uses choose wording for the home header action when a live arena is available", () => {
