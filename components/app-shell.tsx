@@ -12,9 +12,19 @@ type AppShellProps = {
 };
 
 const routes = [
-  { href: "/", label: "Home" },
-  { href: "/celo", label: "Celo" },
-  { href: "/stacks", label: "Stacks" }
+  {
+    href: "/",
+    label: "Home",
+    currentLabel: "Current page: PatchRush home",
+    openLabel: "Open PatchRush home"
+  },
+  { href: "/celo", label: "Celo", currentLabel: "Current page: Celo", openLabel: "Open Celo" },
+  {
+    href: "/stacks",
+    label: "Stacks",
+    currentLabel: "Current page: Stacks",
+    openLabel: "Open Stacks"
+  }
 ] as const;
 
 export function AppShell({ children }: AppShellProps) {
@@ -91,9 +101,7 @@ export function AppShell({ children }: AppShellProps) {
         <nav className="site-nav" aria-label="Primary navigation">
           {routes.map((route) => {
             const active = route.href === "/" ? pathname === "/" : pathname.startsWith(route.href);
-            const navLinkLabel = active
-              ? `Current page: ${route.label}`
-              : `Open ${route.label}`;
+            const navLinkLabel = active ? route.currentLabel : route.openLabel;
             return (
               <Link
                 href={route.href}

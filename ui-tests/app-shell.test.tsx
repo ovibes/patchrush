@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AppShell } from "@/components/app-shell";
 
@@ -85,7 +85,11 @@ describe("AppShell", () => {
       "aria-current",
       "page"
     );
-    expect(screen.getByRole("link", { name: "Open Home" })).not.toHaveAttribute(
+    expect(
+      within(screen.getByRole("navigation", { name: "Primary navigation" })).getByRole("link", {
+        name: "Open PatchRush home"
+      })
+    ).not.toHaveAttribute(
       "aria-current"
     );
   });
