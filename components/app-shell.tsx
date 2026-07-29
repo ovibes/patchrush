@@ -54,7 +54,9 @@ export function AppShell({ children }: AppShellProps) {
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
   const homeFooterLabel = homeLinkLabel;
+  const celoFooterTextShort = "Celo arena";
   const celoFooterText = celoReady ? "Today's Celo live arena" : "Today's Celo demo arena";
+  const stacksFooterTextShort = "Stacks arena";
   const stacksFooterText = stacksReady
     ? "Today's Stacks live arena"
     : "Today's Stacks demo arena";
@@ -150,14 +152,14 @@ export function AppShell({ children }: AppShellProps) {
             aria-current={viewingCeloArena ? "page" : undefined}
             aria-label={celoFooterLabel}
           >
-            {celoFooterText}
+            {celoFooterTextShort}
           </Link>
           <Link
             href="/stacks"
             aria-current={viewingStacksArena ? "page" : undefined}
             aria-label={stacksFooterLabel}
           >
-            {stacksFooterText}
+            {stacksFooterTextShort}
           </Link>
         </nav>
       </footer>

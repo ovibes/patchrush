@@ -69,6 +69,12 @@ describe("AppShell", () => {
       screen.getByRole("link", { name: "Current page: Today's Celo live arena" })
     ).toHaveAttribute("aria-current", "page");
     expect(
+      screen.getByRole("link", { name: "Current page: Today's Celo live arena" })
+    ).toHaveTextContent("Celo arena");
+    expect(
+      screen.getByRole("link", { name: "Open today's live Stacks arena" })
+    ).toHaveTextContent("Stacks arena");
+    expect(
       screen.getByRole("link", { name: "Open today's live Stacks arena" })
     ).not.toHaveAttribute("aria-current");
   });
