@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   applicationName: "PatchRush",
   appleWebApp: {
     capable: true,
-    title: "PatchRush",
+    title: "Choose Today's Arena",
     statusBarStyle: "black-translucent"
   },
   icons: {
