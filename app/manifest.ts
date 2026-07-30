@@ -27,9 +27,9 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     shortcuts: [
       {
-        name: "Open board preview",
-        short_name: "Board Preview",
-        description: "Preview today's PatchRush board and compare Celo and Stacks.",
+        name: "Choose today's arena",
+        short_name: "Choose Arena",
+        description: "Preview today's PatchRush board, compare networks, and choose live play or demo.",
         url: "/",
         icons: [
           {
@@ -40,7 +40,7 @@ export default function manifest(): MetadataRoute.Manifest {
         ]
       },
       {
-        name: "Open Celo arena",
+        name: "Open today's Celo arena",
         short_name: "Celo Arena",
         description: "Launch today's Celo PatchRush arena for live play or demo preview.",
         url: "/celo",
@@ -53,7 +53,7 @@ export default function manifest(): MetadataRoute.Manifest {
         ]
       },
       {
-        name: "Open Stacks arena",
+        name: "Open today's Stacks arena",
         short_name: "Stacks Arena",
         description: "Launch today's Stacks PatchRush arena for live play or demo preview.",
         url: "/stacks",
