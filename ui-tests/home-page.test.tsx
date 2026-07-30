@@ -67,6 +67,9 @@ describe("HomePage", () => {
         "Every move is clear before you preview it in demo mode or approve it live in your wallet."
       )
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Same arena rules. Use the wallet you already use." })
+    ).toBeInTheDocument();
   });
 
   it("updates hero helper copy when a live arena is available", async () => {
