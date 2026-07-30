@@ -71,7 +71,7 @@ export default function HomePage() {
     : "Open the demo now, then connect a Celo-compatible wallet for quick mobile play when the live round opens.";
   const stacksCardDescription = stacksReady
     ? "Built for Leather, Xverse, and other Stacks wallets."
-    : "Open the demo now, then connect a Stacks wallet for the same daily rules when the live round opens.";
+    : "Open the demo now, then connect a Stacks-compatible wallet for the same daily rules when the live round opens.";
   const heroCtaDescriptionId = "hero-arena-cta-description";
   const dailyPreviewCountId = "daily-preview-count";
   const dailyPreviewDescriptionId = "daily-preview-description";

@@ -124,7 +124,7 @@ describe("HomePage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Open the demo now, then connect a Stacks wallet for the same daily rules when the live round opens."
+        "Open the demo now, then connect a Stacks-compatible wallet for the same daily rules when the live round opens."
       )
     ).toBeInTheDocument();
   });
