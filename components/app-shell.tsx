@@ -11,27 +11,6 @@ type AppShellProps = {
   children: ReactNode;
 };
 
-const routes = [
-  {
-    href: "/",
-    label: "Home",
-    currentLabel: "Current page: PatchRush home",
-    openLabel: "Open PatchRush home"
-  },
-  {
-    href: "/celo",
-    label: "Celo",
-    currentLabel: "Current page: Celo arena",
-    openLabel: "Open Celo arena"
-  },
-  {
-    href: "/stacks",
-    label: "Stacks",
-    currentLabel: "Current page: Stacks arena",
-    openLabel: "Open Stacks arena"
-  }
-] as const;
-
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const onHomePage = pathname === "/";
@@ -77,6 +56,26 @@ export function AppShell({ children }: AppShellProps) {
     : stacksReady
       ? "Open today's live Stacks arena"
       : "Open today's Stacks demo arena";
+  const routes = [
+    {
+      href: "/",
+      label: "Home",
+      currentLabel: "Current page: PatchRush home",
+      openLabel: "Open PatchRush home"
+    },
+    {
+      href: "/celo",
+      label: "Celo",
+      currentLabel: `Current page: ${celoFooterText}`,
+      openLabel: celoFooterLabel
+    },
+    {
+      href: "/stacks",
+      label: "Stacks",
+      currentLabel: `Current page: ${stacksFooterText}`,
+      openLabel: stacksFooterLabel
+    }
+  ] as const;
 
   return (
     <div className="app-shell">

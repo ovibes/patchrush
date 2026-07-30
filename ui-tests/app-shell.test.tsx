@@ -64,18 +64,19 @@ describe("AppShell", () => {
         <div>Content</div>
       </AppShell>
     );
+    const footerNav = screen.getByRole("navigation", { name: "Footer navigation" });
 
     expect(
-      screen.getByRole("link", { name: "Current page: Today's Celo live arena" })
+      within(footerNav).getByRole("link", { name: "Current page: Today's Celo live arena" })
     ).toHaveAttribute("aria-current", "page");
     expect(
-      screen.getByRole("link", { name: "Current page: Today's Celo live arena" })
+      within(footerNav).getByRole("link", { name: "Current page: Today's Celo live arena" })
     ).toHaveTextContent("Celo arena");
     expect(
-      screen.getByRole("link", { name: "Open today's live Stacks arena" })
+      within(footerNav).getByRole("link", { name: "Open today's live Stacks arena" })
     ).toHaveTextContent("Stacks arena");
     expect(
-      screen.getByRole("link", { name: "Open today's live Stacks arena" })
+      within(footerNav).getByRole("link", { name: "Open today's live Stacks arena" })
     ).not.toHaveAttribute("aria-current");
   });
 
@@ -86,21 +87,21 @@ describe("AppShell", () => {
         <div>Content</div>
       </AppShell>
     );
+    const headerNav = screen.getByRole("navigation", { name: "Primary navigation" });
 
-    expect(screen.getByRole("link", { name: "Current page: Stacks arena" })).toHaveAttribute(
-      "aria-current",
-      "page"
-    );
     expect(
-      within(screen.getByRole("navigation", { name: "Primary navigation" })).getByRole("link", {
+      within(headerNav).getByRole("link", { name: "Current page: Today's Stacks live arena" })
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      within(headerNav).getByRole("link", {
         name: "Open PatchRush home"
       })
     ).not.toHaveAttribute(
       "aria-current"
     );
     expect(
-      within(screen.getByRole("navigation", { name: "Primary navigation" })).getByRole("link", {
-        name: "Open Celo arena"
+      within(headerNav).getByRole("link", {
+        name: "Open today's live Celo arena"
       })
     ).not.toHaveAttribute("aria-current");
   });
