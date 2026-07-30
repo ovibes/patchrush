@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
   ),
   title: {
-    default: "PatchRush Daily Territory Arena",
+    default: "Choose Today's Arena",
     template: "%s | PatchRush"
   },
   description:
