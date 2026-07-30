@@ -63,7 +63,7 @@ export default function HomePage() {
     : "Celo arena demo. Connect a Celo-compatible wallet when the live round opens";
   const stacksCardAriaLabel = stacksReady
     ? "Stacks arena, live today. Open with Leather, Xverse, or another Stacks-compatible wallet"
-    : "Stacks arena demo. Connect a Stacks wallet when the live round opens";
+    : "Stacks arena demo. Connect a Stacks-compatible wallet when the live round opens";
   const celoCardDescriptionId = "celo-card-description";
   const stacksCardDescriptionId = "stacks-card-description";
   const celoCardDescription = celoReady

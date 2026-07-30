@@ -114,7 +114,7 @@ describe("HomePage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", {
-        name: "Stacks arena demo. Connect a Stacks wallet when the live round opens"
+        name: "Stacks arena demo. Connect a Stacks-compatible wallet when the live round opens"
       })
     ).toBeInTheDocument();
     expect(
