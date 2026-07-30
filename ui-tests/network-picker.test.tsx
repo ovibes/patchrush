@@ -37,7 +37,7 @@ describe("NetworkPickerModal", () => {
     await user.tab({ shift: true });
     expect(
       screen.getByRole("link", {
-        name: /open today's stacks demo arena and connect a stacks wallet when the live round opens at 00:00 utc/i
+        name: /open today's stacks demo arena and connect a stacks-compatible wallet when the live round opens at 00:00 utc/i
       })
     ).toHaveFocus();
     await user.keyboard("{Escape}");
