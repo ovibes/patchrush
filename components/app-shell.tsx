@@ -100,7 +100,7 @@ export function AppShell({ children }: AppShellProps) {
           />
           <span>
             <strong>PatchRush</strong>
-            <small>Daily territory</small>
+            <small>Daily territory game</small>
           </span>
         </Link>
 

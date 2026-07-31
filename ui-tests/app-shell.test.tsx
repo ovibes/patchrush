@@ -55,6 +55,7 @@ describe("AppShell", () => {
 
     expect(brandLink).toHaveAttribute("aria-label", "Current page: PatchRush home");
     expect(brandLink).toHaveAttribute("aria-current", "page");
+    expect(within(brandLink as HTMLElement).getByText("Daily territory game")).toBeVisible();
   });
 
   it("announces the active footer arena link as the current page", () => {
