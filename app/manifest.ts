@@ -29,7 +29,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Choose today's arena",
         short_name: "Choose Arena",
-        description: "Preview today's PatchRush board, compare networks, and choose live play or demo.",
+        description: "Preview today's PatchRush board, compare networks, and choose a live or demo arena.",
         url: "/",
         icons: [
           {
