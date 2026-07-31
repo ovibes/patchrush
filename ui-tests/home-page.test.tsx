@@ -90,6 +90,9 @@ describe("HomePage", () => {
       screen.getByRole("button", { name: "Choose today's arena from the hero section" })
     ).toHaveTextContent("Choose today's arena from the hero section");
     expect(
+      screen.getByRole("button", { name: "Choose today's arena from the board preview" })
+    ).toHaveTextContent("Choose today's arena");
+    expect(
       screen.getByText(
         "No signup required. Preview the board in demo mode, or connect a wallet now to join the live round."
       )

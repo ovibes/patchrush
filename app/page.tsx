@@ -87,7 +87,7 @@ export default function HomePage() {
       : "No signup required. Preview the board in demo mode, then connect a wallet when the live round opens.";
   const dailyPreviewTriggerLabel =
     celoReady || stacksReady
-      ? "Choose an arena from the board preview"
+      ? "Choose today's arena from the board preview"
       : "Preview today's arenas from the board preview";
 
   return (
