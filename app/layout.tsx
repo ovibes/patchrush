@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "territory game",
     "wallet game"
   ],
-  applicationName: "PatchRush",
+  applicationName: "PatchRush: Choose Today's Arena",
   appleWebApp: {
     capable: true,
     title: "Choose Today's Arena",
