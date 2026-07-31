@@ -4,14 +4,14 @@ import { CeloConsole } from "@/components/celo-console";
 export const metadata: Metadata = {
   title: "Open Today's Celo Arena",
   description:
-    "Open today's PatchRush arena on Celo for live play or demo preview with MiniPay or another Celo-compatible wallet.",
+    "Open today's PatchRush arena on Celo for live play or the daily demo with MiniPay or another Celo-compatible wallet.",
   alternates: {
     canonical: "/celo"
   },
   openGraph: {
     title: "Open Today's Celo Arena | PatchRush",
     description:
-      "Open today's PatchRush arena on Celo for live play or demo preview with MiniPay or another Celo-compatible wallet.",
+      "Open today's PatchRush arena on Celo for live play or the daily demo with MiniPay or another Celo-compatible wallet.",
     url: "/celo",
     siteName: "PatchRush",
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Open Today's Celo Arena | PatchRush",
     description:
-      "Open today's PatchRush arena on Celo for live play or demo preview with MiniPay or another Celo-compatible wallet.",
+      "Open today's PatchRush arena on Celo for live play or the daily demo with MiniPay or another Celo-compatible wallet.",
     images: [
       {
         url: "/og.png",
