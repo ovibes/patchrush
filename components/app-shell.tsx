@@ -39,10 +39,10 @@ export function AppShell({ children }: AppShellProps) {
       : `Open ${currentArenaText}`;
   const homeFooterLabel = homeLinkLabel;
   const celoFooterTextShort = "Celo arena";
-  const celoFooterText = celoReady ? "Today's Celo live arena" : "Today's Celo demo arena";
+  const celoFooterText = celoReady ? "Today's live Celo arena" : "Today's Celo demo arena";
   const stacksFooterTextShort = "Stacks arena";
   const stacksFooterText = stacksReady
-    ? "Today's Stacks live arena"
+    ? "Today's live Stacks arena"
     : "Today's Stacks demo arena";
   const viewingCeloArena = pathname.startsWith("/celo");
   const viewingStacksArena = pathname.startsWith("/stacks");

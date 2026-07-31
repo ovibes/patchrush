@@ -68,10 +68,10 @@ describe("AppShell", () => {
     const footerNav = screen.getByRole("navigation", { name: "Footer navigation" });
 
     expect(
-      within(footerNav).getByRole("link", { name: "Current page: Today's Celo live arena" })
+      within(footerNav).getByRole("link", { name: "Current page: Today's live Celo arena" })
     ).toHaveAttribute("aria-current", "page");
     expect(
-      within(footerNav).getByRole("link", { name: "Current page: Today's Celo live arena" })
+      within(footerNav).getByRole("link", { name: "Current page: Today's live Celo arena" })
     ).toHaveTextContent("Celo arena");
     expect(
       within(footerNav).getByRole("link", { name: "Open today's live Stacks arena" })
@@ -91,7 +91,7 @@ describe("AppShell", () => {
     const headerNav = screen.getByRole("navigation", { name: "Primary navigation" });
 
     expect(
-      within(headerNav).getByRole("link", { name: "Current page: Today's Stacks live arena" })
+      within(headerNav).getByRole("link", { name: "Current page: Today's live Stacks arena" })
     ).toHaveAttribute("aria-current", "page");
     expect(
       within(headerNav).getByRole("link", {
