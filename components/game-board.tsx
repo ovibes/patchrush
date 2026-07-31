@@ -43,8 +43,15 @@ export function GameBoard({
   const cellRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const interactive = Boolean(onSelect);
   const boardHeading = interactive ? "Arena grid" : "Board preview";
-  const sectionLabel = interactive ? `${networkLabel} arena` : `${networkLabel} board preview`;
-  const gridLabel = interactive ? `${networkLabel} PatchRush arena grid` : `${networkLabel} PatchRush board preview`;
+  const boardContextLabel = interactive
+    ? /arena/i.test(networkLabel)
+      ? networkLabel
+      : `${networkLabel} arena`
+    : /preview/i.test(networkLabel)
+      ? networkLabel
+      : `${networkLabel} board preview`;
+  const sectionLabel = boardContextLabel;
+  const gridLabel = `${boardContextLabel} grid`;
   const keyboardShortcutHints = interactive
     ? "ArrowLeft ArrowRight ArrowUp ArrowDown Home End Control+Home Control+End Meta+Home Meta+End Enter Space"
     : undefined;
