@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "PatchRush: Choose Today's Arena",
     short_name: "PatchRush",
     description:
-      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare wallet options, and choose live play or a demo preview.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare today's arenas, and choose live play or a demo preview.",
     start_url: "/",
     scope: "/",
     display: "standalone",
