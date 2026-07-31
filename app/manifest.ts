@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "PatchRush: Choose Today's Arena",
     short_name: "PatchRush",
     description:
-      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare today's arenas, and choose live play or a demo preview.",
+      "PatchRush is a daily on-chain territory game for Celo and Stacks. Preview the board, compare today's arenas, and choose live play or the daily demo.",
     start_url: "/",
     scope: "/",
     display: "standalone",
@@ -42,7 +42,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Open today's Celo arena",
         short_name: "Celo Arena",
-        description: "Launch today's Celo PatchRush arena for live play or demo preview.",
+        description: "Launch today's Celo PatchRush arena for live play or the daily demo.",
         url: "/celo",
         icons: [
           {
@@ -55,7 +55,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Open today's Stacks arena",
         short_name: "Stacks Arena",
-        description: "Launch today's Stacks PatchRush arena for live play or demo preview.",
+        description: "Launch today's Stacks PatchRush arena for live play or the daily demo.",
         url: "/stacks",
         icons: [
           {
