@@ -1,13 +1,13 @@
 # PatchRush
 
-PatchRush is a tiny on-chain territory game for Celo and Stacks. Players get
-three claims per UTC round on a shared 6×6 board, start each move at 10 points,
-score +3 for each edge-adjacent claimed patch, and can boost each claimed patch
-once per wallet per round.
+PatchRush is a daily on-chain territory game for Celo and Stacks. Players
+preview today's 6×6 arena, get three claims per UTC round, start each move at
+10 points, score +3 for each edge-adjacent claimed patch, and can boost each
+claimed patch once per wallet per round.
 
 ## Product
 
-- `/`: board preview, rules, and network entry points
+- `/`: today's board preview, rules, and arena chooser
 - `/celo`: MiniPay-ready Celo flow backed by `PatchRushArena.sol`, with a demo fallback until live values are configured
 - `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`, with a demo fallback until live values are configured
 
