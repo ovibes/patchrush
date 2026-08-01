@@ -67,6 +67,7 @@ describe("HomePage", () => {
         "Every move is clear before you preview it in demo mode or approve it live in your wallet."
       )
     ).toBeInTheDocument();
+    expect(screen.getByText("Today's board preview")).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Same arena rules. Use the wallet you already use." })
     ).toBeInTheDocument();
