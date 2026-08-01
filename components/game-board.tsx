@@ -208,8 +208,8 @@ export function GameBoard({
         </p>
       ) : (
         <p id={previewSummaryId} className="sr-only">
-          Preview only. {stats.claimed} of 36 patches are already claimed in this board
-          preview. Open patches show their estimated claim score.
+          Preview only. {stats.claimed} of 36 patches are claimed on this board preview.
+          Open patches show their estimated claim score.
         </p>
       )}
     </section>
