@@ -466,7 +466,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${walletName} connected as ${walletAddress}`
                 : configured
                   ? `${walletName} not connected`
-                  : `${walletName} demo preview mode`
+                  : `${walletName} demo mode`
             }
           >
             {walletAddress ? shortAddress(walletAddress) : configured ? "Not connected" : "Demo mode"}
@@ -501,7 +501,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${playerStats.claimsRemaining} of 3 claims remaining`
                 : configured
                   ? "Claims remaining unavailable until wallet connects"
-                  : "Claims remaining unavailable in demo preview"
+                  : "Claims remaining unavailable in demo mode"
             }
           >
             {walletAddress ? playerStats.claimsRemaining : "—"}
@@ -516,7 +516,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 ? `${playerStats.score} points`
                 : configured
                   ? "Score unavailable until wallet connects"
-                  : "Score unavailable in demo preview"
+                  : "Score unavailable in demo mode"
             }
           >
             {walletAddress ? playerStats.score : "—"}

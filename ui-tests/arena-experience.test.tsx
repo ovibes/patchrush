@@ -53,6 +53,11 @@ describe("ArenaExperience", () => {
       )
     ).toBeInTheDocument();
     expect(screen.getByText(/demo mode/i)).toBeInTheDocument();
+    expect(screen.getByLabelText("Celo wallet demo mode")).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Claims remaining unavailable in demo mode")
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText("Score unavailable in demo mode")).toBeInTheDocument();
   });
 
   it("makes historical rounds view-only", () => {
