@@ -113,6 +113,19 @@ describe("AppShell", () => {
     ).not.toHaveAttribute("aria-current");
   });
 
+  it("keeps the arena header action text compact on arena pages", () => {
+    usePathname.mockReturnValue("/stacks");
+    const { container } = render(
+      <AppShell>
+        <div>Content</div>
+      </AppShell>
+    );
+    const headerPlayLink = container.querySelector(".header-play-link");
+
+    expect(headerPlayLink).toHaveTextContent("Stacks arena");
+    expect(headerPlayLink).toHaveAttribute("aria-label", "Current page: Today's live Stacks arena");
+  });
+
   it("uses choose wording for the home header action when a live arena is available", () => {
     usePathname.mockReturnValue("/");
     render(

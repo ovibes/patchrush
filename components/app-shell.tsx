@@ -25,11 +25,12 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#daily-title" : playHref;
   const currentArenaText = `Today's ${playReady ? "live" : "demo"} ${playLabel} arena`;
+  const currentArenaLinkText = `${playLabel} arena`;
   const playLinkText = onHomePage
     ? celoReady || stacksReady
       ? "Choose today's arena"
       : "Preview today's arenas"
-    : currentArenaText;
+    : currentArenaLinkText;
   const playLinkLabel = onHomePage
     ? "Jump to today's arena chooser section"
     : viewingArena
@@ -126,7 +127,7 @@ export function AppShell({ children }: AppShellProps) {
           aria-label={playLinkLabel}
           title={playLinkLabel}
         >
-          {viewingArena ? currentArenaText : playLinkText} <ArrowRight aria-hidden="true" />
+          {playLinkText} <ArrowRight aria-hidden="true" />
         </Link>
       </header>
 
