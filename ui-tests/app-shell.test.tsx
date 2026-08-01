@@ -3,6 +3,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AppShell } from "@/components/app-shell";
 
 const usePathname = vi.fn();
+const { mockPublicEnv } = vi.hoisted(() => ({
+  mockPublicEnv: {
+    celoContractAddress: "0xcafe",
+    stacksContractAddress: "ST1234",
+    stacksContractName: "patchrush"
+  }
+}));
 
 vi.mock("next/navigation", () => ({
   usePathname: () => usePathname()
@@ -31,16 +38,15 @@ vi.mock("next/image", () => ({
 }));
 
 vi.mock("@/lib/env", () => ({
-  publicEnv: {
-    celoContractAddress: "0xcafe",
-    stacksContractAddress: "ST1234",
-    stacksContractName: "patchrush"
-  }
+  publicEnv: mockPublicEnv
 }));
 
 describe("AppShell", () => {
   beforeEach(() => {
     usePathname.mockReset();
+    mockPublicEnv.celoContractAddress = "0xcafe";
+    mockPublicEnv.stacksContractAddress = "ST1234";
+    mockPublicEnv.stacksContractName = "patchrush";
   });
 
   it("announces the brand link as the current page on home", () => {
@@ -118,5 +124,21 @@ describe("AppShell", () => {
     expect(
       screen.getByRole("link", { name: "Jump to today's arena chooser section" })
     ).toHaveTextContent("Choose today's arena");
+  });
+
+  it("keeps the chooser label for the home header action in demo-only mode", () => {
+    mockPublicEnv.celoContractAddress = "";
+    mockPublicEnv.stacksContractAddress = "";
+    mockPublicEnv.stacksContractName = "";
+    usePathname.mockReturnValue("/");
+    render(
+      <AppShell>
+        <div>Content</div>
+      </AppShell>
+    );
+
+    expect(
+      screen.getByRole("link", { name: "Jump to today's arena chooser section" })
+    ).toHaveTextContent("Preview today's arenas");
   });
 });
