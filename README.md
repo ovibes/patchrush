@@ -7,7 +7,7 @@ claimed patch once per wallet per round.
 
 ## Product
 
-- `/`: today's board preview, rules, and arena chooser
+- `/`: today's arena preview, rules, and arena chooser
 - `/celo`: MiniPay-ready Celo flow backed by `PatchRushArena.sol`, with a demo fallback until live values are configured
 - `/stacks`: Stacks Connect flow backed by `patchrush-arena.clar`, with a demo fallback until live values are configured
 
@@ -57,7 +57,7 @@ contract test matrix:
 npm run test:ui
 ```
 
-Keyboard controls in the arena support demo previews and live wallet play:
+Keyboard controls work the same in demo previews and live wallet play:
 use the arrow keys to move between patches, `Home` and `End` to jump across
 the current row, `Ctrl`/`Cmd` + `Home` or `End` to jump to the first or last
 patch on the board, and `Enter` or `Space` to open the focused patch.
