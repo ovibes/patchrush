@@ -23,7 +23,7 @@ export function AppShell({ children }: AppShellProps) {
   const playLabel = playHref === "/stacks" ? "Stacks" : "Celo";
   const playReady = playHref === "/stacks" ? stacksReady : celoReady;
   const viewingArena = pathname === playHref;
-  const playLinkHref = onHomePage ? "/#network-title" : playHref;
+  const playLinkHref = onHomePage ? "/#daily-title" : playHref;
   const currentArenaText = `Today's ${playReady ? "live" : "demo"} ${playLabel} arena`;
   const playLinkText = onHomePage
     ? celoReady || stacksReady

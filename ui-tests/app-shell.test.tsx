@@ -124,6 +124,9 @@ describe("AppShell", () => {
     expect(
       screen.getByRole("link", { name: "Jump to today's arena chooser section" })
     ).toHaveTextContent("Choose today's arena");
+    expect(
+      screen.getByRole("link", { name: "Jump to today's arena chooser section" })
+    ).toHaveAttribute("href", "/#daily-title");
   });
 
   it("keeps the chooser label for the home header action in demo-only mode", () => {
