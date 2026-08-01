@@ -135,7 +135,7 @@ describe("GameBoard", () => {
     );
 
     expect(
-      screen.getByText(/preview only\. 1 of 36 patches are claimed on this board preview\./i)
+      screen.getByText(/preview only\. 1 of 36 patch is claimed on this board preview\./i)
     ).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Today's board preview" })).toBeInTheDocument();
     expect(screen.getByRole("grid", { name: "Today's board preview grid" })).toBeInTheDocument();

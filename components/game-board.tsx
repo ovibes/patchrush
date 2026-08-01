@@ -56,6 +56,9 @@ export function GameBoard({
     ? "ArrowLeft ArrowRight ArrowUp ArrowDown Home End Control+Home Control+End Meta+Home Meta+End Enter Space"
     : undefined;
   const activeIndex = selectedIndex ?? focusIndex;
+  const previewClaimSummary = `${stats.claimed} of 36 ${
+    stats.claimed === 1 ? "patch is" : "patches are"
+  } claimed on this board preview.`;
 
   const moveFocus = (nextIndex: number) => {
     const clamped = Math.max(0, Math.min(cells.length - 1, nextIndex));
@@ -208,7 +211,7 @@ export function GameBoard({
         </p>
       ) : (
         <p id={previewSummaryId} className="sr-only">
-          Preview only. {stats.claimed} of 36 patches are claimed on this board preview.
+          Preview only. {previewClaimSummary}
           Open patches show their estimated claim score.
         </p>
       )}
