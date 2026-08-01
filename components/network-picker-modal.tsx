@@ -85,8 +85,8 @@ export function NetworkPickerModal({
           <button
             type="button"
             className="icon-button"
-            aria-label="Close network picker"
-            title="Close network picker"
+            aria-label="Close arena chooser"
+            title="Close arena chooser"
             onClick={closeDialog}
           >
             <X aria-hidden="true" />

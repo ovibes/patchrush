@@ -19,6 +19,7 @@ describe("NetworkPickerModal", () => {
 
     const dialog = screen.getByRole("dialog", { name: "Choose today's arena" });
     expect(dialog).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Close arena chooser" })).toBeInTheDocument();
     await waitFor(() => {
       expect(
         screen.getByRole("link", {
