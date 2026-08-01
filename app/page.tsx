@@ -172,7 +172,7 @@ export default function HomePage() {
       <section className="daily-section" aria-labelledby="daily-title">
         <div>
           <span className="eyebrow"><CalendarClock aria-hidden="true" /> Made for a daily ritual</span>
-          <h2 id="daily-title">Today matters.<br />Tomorrow resets.</h2>
+          <h2 id="daily-title" tabIndex={-1}>Today matters.<br />Tomorrow resets.</h2>
           <p>
             You get three claims each UTC round. Browse earlier arenas whenever you like;
             only today&apos;s arena accepts new moves.

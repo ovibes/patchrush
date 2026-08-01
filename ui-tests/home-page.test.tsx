@@ -98,6 +98,9 @@ describe("HomePage", () => {
         "No signup required. Preview the board in demo mode, or connect a wallet now to join the live round."
       )
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Today matters. Tomorrow resets." })
+    ).toHaveAttribute("tabindex", "-1");
   });
 
   it("uses live-round timing copy for demo-only arena cards", async () => {

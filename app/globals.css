@@ -596,6 +596,7 @@ summary:focus-visible,
   line-height: 1.62;
 }
 
+#daily-title,
 #network-title {
   scroll-margin-top: 108px;
 }
