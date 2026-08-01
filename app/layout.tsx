@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     "territory game",
     "wallet game"
   ],
-  applicationName: "PatchRush: Choose Today's Arena",
+  applicationName: "PatchRush",
   appleWebApp: {
     capable: true,
-    title: "Choose Today's Arena",
+    title: "PatchRush",
     statusBarStyle: "black-translucent"
   },
   icons: {
