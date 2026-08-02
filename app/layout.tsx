@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
   ),
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false
+  },
   title: {
     default: "Choose Today's Arena",
     template: "%s | PatchRush"
