@@ -1,7 +1,7 @@
 {
   "name": "patchrush",
   "version": "0.1.0",
-  "description": "PatchRush is a daily on-chain territory arena for Celo and Stacks.",
+  "description": "PatchRush is a daily on-chain territory game for Celo and Stacks.",
   "private": true,
   "type": "module",
   "homepage": "https://github.com/ovibes/patchrush#readme",
@@ -19,7 +19,7 @@
     "minipay",
     "stacks-connect",
     "onchain-game",
-    "territory-arena"
+    "daily-territory-game"
   ],
   "engines": {
     "node": ">=22.13.0"
