@@ -152,7 +152,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
     : BASE_SCORE;
   const occupiedNeighbors = Math.max(0, (predictedScore - BASE_SCORE) / NEIGHBOR_BONUS);
   const selectionAnnouncement = selectedCell
-    ? `Selected patch ${selectedCell.y + 1}.${selectedCell.x + 1}. ${
+    ? `Selected patch at row ${selectedCell.y + 1}, column ${selectedCell.x + 1}. ${
         selectedCell.owner ? "Claimed territory" : "Open territory"
       }.`
     : "No patch selected.";
