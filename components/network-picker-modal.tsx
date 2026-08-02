@@ -45,10 +45,10 @@ export function NetworkPickerModal({
         : "Both networks are in demo mode today. Start on either network now, then connect the wallet you plan to use when the live round opens at 00:00 UTC.";
   const celoChoiceText = celoReady
     ? "Best with MiniPay or a Celo-compatible wallet"
-    : "Open the demo now, then connect a Celo-compatible wallet when the live round opens at 00:00 UTC";
+    : "Open the demo now. Bring a Celo-compatible wallet when the live round opens.";
   const stacksChoiceText = stacksReady
     ? "Use Leather, Xverse, or another Stacks-compatible wallet"
-    : "Open the demo now, then connect a Stacks-compatible wallet when the live round opens at 00:00 UTC";
+    : "Open the demo now. Bring a Stacks-compatible wallet when the live round opens.";
   const celoChoiceAriaLabel = celoReady
     ? "Open today's live Celo arena with MiniPay or another Celo-compatible wallet"
     : "Open today's Celo demo arena and connect a Celo-compatible wallet when the live round opens at 00:00 UTC";
