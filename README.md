@@ -43,6 +43,8 @@ npm run dev:mobile
 That command binds the dev server to your LAN so your phone can reach the app
 through your computer's local IP address. It is the quickest way to verify
 MiniPay and other mobile wallet connections against your local build.
+Open `http://<your-computer-lan-ip>:3000` from the phone while both devices are
+on the same Wi-Fi network; `localhost` on the phone will not reach your Mac.
 
 Local routes:
 
