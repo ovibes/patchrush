@@ -25,7 +25,7 @@ export function AppShell({ children }: AppShellProps) {
   const viewingArena = pathname === playHref;
   const playLinkHref = onHomePage ? "/#daily-title" : playHref;
   const currentArenaText = `Today's ${playReady ? "live" : "demo"} ${playLabel} arena`;
-  const currentArenaLinkText = `${playLabel} arena`;
+  const currentArenaLinkText = currentArenaText;
   const playLinkText = onHomePage
     ? celoReady || stacksReady
       ? "Choose today's arena"
@@ -37,9 +37,11 @@ export function AppShell({ children }: AppShellProps) {
       ? `Current page: ${currentArenaText}`
       : `Open ${currentArenaText}`;
   const homeFooterLabel = homeLinkLabel;
-  const celoFooterTextShort = "Celo arena";
+  const celoFooterTextShort = celoReady ? "Today's live Celo arena" : "Today's Celo demo arena";
   const celoFooterText = celoReady ? "Today's live Celo arena" : "Today's Celo demo arena";
-  const stacksFooterTextShort = "Stacks arena";
+  const stacksFooterTextShort = stacksReady
+    ? "Today's live Stacks arena"
+    : "Today's Stacks demo arena";
   const stacksFooterText = stacksReady
     ? "Today's live Stacks arena"
     : "Today's Stacks demo arena";
