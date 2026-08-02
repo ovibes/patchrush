@@ -40,7 +40,7 @@ export function CellActionModal({
   const column = cell.x + 1;
   const claimed = Boolean(cell.owner);
   const actionLabel = !walletConnected
-    ? "Connect wallet"
+    ? `Connect ${walletLabel}`
     : claimed
       ? pending
         ? "Boosting"
