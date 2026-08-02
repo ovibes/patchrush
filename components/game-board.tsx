@@ -144,6 +144,11 @@ export function GameBoard({
                 yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
               }. ${totalScore} points including ${cell.boosts} boosts. ${actionText}${pendingText}`
             : `Open patch row ${cell.y + 1}, column ${cell.x + 1}. ${actionText}${pendingText}`;
+          const tooltipText = claimed
+            ? `Patch ${cell.y + 1}.${cell.x + 1} · ${totalScore} points · ${
+                yours ? "Owned by you" : `Owned by ${shortAddress(cell.owner)}`
+              }`
+            : `Patch ${cell.y + 1}.${cell.x + 1} · Estimated claim score ${predictedScore}`;
 
           return (
             <button
@@ -168,7 +173,7 @@ export function GameBoard({
               aria-colindex={cell.x + 1}
               aria-selected={selected}
               aria-label={cellLabel}
-              title={cellLabel}
+              title={tooltipText}
               disabled={!interactive}
               tabIndex={interactive ? (activeIndex === cell.index ? 0 : -1) : -1}
               onFocus={() => setFocusIndex(cell.index)}
