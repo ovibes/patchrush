@@ -8,7 +8,7 @@
 - Set `NEXT_PUBLIC_APP_URL` to the deployed HTTPS origin and fill in the production `NEXT_PUBLIC_*` contract values before building the website.
 - Open `/`, `/celo`, and `/stacks` on the deployed HTTPS origin.
 - Verify `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest` resolve on the deployed HTTPS origin and point at the production URL.
-- Install the web app from both iPhone and Android browsers, then confirm the saved app name is `PatchRush` and the home-screen icon uses the branded mark.
+- Install the web app from both iPhone and Android browsers, then confirm the saved app name is `PatchRush`, the home-screen icon uses the branded mark, and the install shortcuts open `/`, `/celo`, and `/stacks`.
 - Verify the social preview card for `/`, `/celo`, and `/stacks` shows the expected PatchRush image and route-specific copy.
 - Create one live Celo claim and one live Celo boost from `/celo`, then save both explorer receipts.
 - Create one live Stacks claim and one live Stacks boost from `/stacks`, then save both explorer receipts.
