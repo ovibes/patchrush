@@ -11,6 +11,7 @@ npm install
 
 Create a local `.env.local` only before deployment work or live contract checks.
 The app can run in demo mode locally without any env file.
+Never commit `.env.local`; keep deployer keys and RPC secrets local only.
 
 ## Celo Mainnet
 
