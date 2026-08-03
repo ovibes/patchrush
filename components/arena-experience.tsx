@@ -488,7 +488,7 @@ export function ArenaExperience(props: ArenaExperienceProps) {
                 title={`Connect ${walletName}`}
                 onClick={() => void onConnect()}
               >
-                Connect
+                {`Connect ${walletName}`}
               </button>
             ) : null
           ) : null}
