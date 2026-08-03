@@ -117,7 +117,7 @@ export default function HomePage() {
             <span id={heroCtaDescriptionId}>{heroCtaDescription}</span>
           </div>
           <ul className="hero-proof" aria-label="Game highlights">
-            <li><strong>3</strong> claims per UTC day</li>
+            <li><strong>3</strong> claims each UTC round</li>
             <li><strong>36</strong> shared patches</li>
             <li><strong>2</strong> networks, same rules</li>
           </ul>
