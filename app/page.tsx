@@ -180,7 +180,7 @@ export default function HomePage() {
         </div>
         <div className="daily-card">
           <span>Today&apos;s board preview</span>
-          <strong id={dailyPreviewCountId} aria-label={`${stats.claimed} of 36 patches claimed today`}>
+          <strong id={dailyPreviewCountId} aria-label={`${stats.claimed} of 36 patches claimed this UTC round`}>
             {stats.claimed}
             <small aria-hidden="true">/36</small>
           </strong>
